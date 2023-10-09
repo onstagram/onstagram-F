@@ -44,7 +44,6 @@
 .menu-item:hover {
   border-radius: 6px;
   background: #e5e5e5;
-  cursor: pointer;
 }
 
 /*카테고리별 이미지섹션*/
@@ -57,6 +56,10 @@
 /*카테고리 명칭*/
 .menu-item p {
   font-size: 15px;
+}
+
+.menu-item p:hover {
+  cursor: pointer;
 }
 
 /*nav바에서 더보기 부분 섹션*/
@@ -86,18 +89,14 @@
   font-size: 15px;
 }
 
-/*메인에서 게시글이 보일 div*/
-.mainSection {
-  width: 100%;
-  height: 100%;
-}
-
 /*여기서 부터는 게시물이 나오는 메인화면 부분입니다.*/
 
 /*mainSection 부분*/
-.mainSection {
+/* .mainSection {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
