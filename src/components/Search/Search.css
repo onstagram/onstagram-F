@@ -1,0 +1,143 @@
+/*검색 */
+.search-btn-modal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+
+/*검색모달창을 감싸는 div*/
+.searchModal-content {
+  width: 450px;
+  height: 99%;
+  border: 1px solid #efefef;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 2px 2px 10px #efefef;
+  background-color: white;
+  position: absolute;
+  top: 0.3%;
+  left: 4.3%;
+  transform: translate(0, 0);
+}
+
+/*검색모달창 헤더부분*/
+.searchModal-header {
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+
+/*검색 타이틀*/
+.searchModal-header span {
+  margin-left: 25px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/*검색모달창 바디부분*/
+.searchModal-body {
+  height: 92%;
+  /* border: 1px solid black; */
+}
+
+/*검색창을 감싸는 div*/
+.searchInput {
+  height: 13%;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+/*검색창 */
+.searchInput input {
+  width: 88%;
+  height: 20%;
+  padding: 12px;
+  border: transparent;
+  border-radius: 8px;
+  background-color: #efefef;
+  outline: none;
+}
+
+/*검색 결과*/
+.searchBody {
+  height: 87%;
+}
+
+/*검색창 최근 검색 항목, 모두 지우기 버튼을 감싸는 div*/
+.searchBody-header {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*검색창 최근 검색 항목 타이틀*/
+.searchBody-header span {
+  margin-left: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*검색창 모두 지우기 버튼*/
+.searchBody-header button {
+  margin-right: 30px;
+  border: transparent;
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0095f6;
+  user-select: none;
+  cursor: pointer;
+}
+
+.searchBody-header button:hover {
+  color: #00376b;
+}
+
+/*검색 결과를 감싸는 div*/
+.searchBody-result {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/*남아있는 검색 결과*/
+.search-result {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/*검색 결과 삭제 버튼(X)*/
+.search-result img {
+  margin-right: 5px;
+}
+
+.userImg {
+  display: flex;
+}
+
+.userImg img {
+  width: 40px;
+  height: 40px;
+}
+
+.userInfo {
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+.userInfo span {
+  width: 100%;
+  /* border: 1px solid black; */
+  display: flex;
+}

@@ -9,7 +9,7 @@
   font-size: 15px;
 }
 
-/*모달ㅊ아과, 뒷 배경 기본 셋팅*/
+/*모달창과, 뒷 배경 기본 셋팅*/
 
 .modal,
 .overlay {
@@ -149,8 +149,8 @@
 
 /*작성 모달창 이미지를 감싸는 div*/
 .img-wrapper {
-  width: 450px;
-  height: 450px;
+  width: 457px;
+  height: 457px;
   border-right: 1px solid #b9b9b9;
 }
 

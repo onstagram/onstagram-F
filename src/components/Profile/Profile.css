@@ -8,13 +8,14 @@
   align-items: center;
 }
 
-/*유저 정보를 감싸는 div*/
+/*유저 정보 및 보관스토리를 감싸는 div*/
 .infoWrapper {
   width: 900px;
   height: 400px;
   border-bottom: 1px solid #b9b9b9;
 }
 
+/*유저 정보를 감싸는 div*/
 .info {
   display: flex;
   flex-direction: row;
@@ -22,15 +23,18 @@
   align-items: center;
 }
 
+/*유저 프로필 이미지를 감싸는 div*/
 .infoImg {
   width: 30%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-/*유저 이미지*/
+/*유저 프로필 이미지*/
 .infoImg img {
-  width: 100px;
-  height: 100px;
+  width: 206px;
+  height: 206px;
 }
 
 /*유저 이름, 버튼, 팔로우 팔로워 게시물, 자기소개 를 감싸는 div*/
@@ -47,33 +51,77 @@
 .infoDetail1 {
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+
+/*유저 이름*/
+.infoDetail1 span {
+  margin-left: 10px;
+}
+
+/*유저 프로필 편집, 보관된 스토리 보기 버튼*/
+.infoDetail1 button {
+  width: 150px;
+  height: 30px;
+  padding: 5px;
+  margin-left: 15px;
+  border: transparent;
+  background-color: #efefef;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/*유저 프로필 편집, 보관된 스토리 보기 버튼 갔다 대었을 때*/
+.infoDetail1 button:hover {
+  background-color: #dbdbdb;
 }
 
 /*유저 게시물, 팔로우, 팔로워를 감싸는 div*/
 .infoDetail2 {
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
 
+/*유저 게시물, 팔로우, 팔로워 확인 링크*/
+.infoDetail2 a {
+  margin-left: 10px;
+}
+
+/*유저 게시물, 팔로우, 팔로워 타이틀*/
+.infoDetail2 span {
+  margin-left: 10px;
+  font-weight: bold;
+}
+/*유저 프로필 셋팅 버튼 이미지*/
+.setImg {
+  margin-left: 10px;
+}
+
 /*유저 소개를 감싸는 div*/
 .infoDetail3 {
   width: 100%;
   height: 100%;
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+
+/*유저 소개란*/
+.infoDetail3 span {
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
 }
 
 /*셋팅 이미지*/
@@ -82,11 +130,13 @@
   height: 30px;
 }
 
+/*게시물이 보이는 아랫부분을 담당하는 div*/
 .profilePosts {
   width: 100%;
   height: 100%;
 }
 
+/*게시물, 저장됨, 태그됨 섹션을 이동하는 버튼을 감싸는 div*/
 .profilepostsBtns {
   width: 100%;
   display: flex;
@@ -95,6 +145,7 @@
   align-items: center;
 }
 
+/*게시물, 저장됨, 태그됨 중 머물러있는 페이지 버튼(색상 검정)*/
 .profilePostsBtn {
   width: 100px;
   height: 30px;
@@ -104,20 +155,24 @@
   background-color: white;
 }
 
+/*게시물, 저장됨, 태그됨 중 머물러있는 페이지 버튼에 갔다 대었을 때*/
 .profilePostsBtn:hover {
   font-weight: bold;
 }
 
+/*게시물, 저장됨, 태그됨 중 머물러있는 페이지 버튼 이미지*/
 .profilePostsBtn img {
   width: 12px;
   height: 12px;
 }
 
+/*게시물, 저장됨, 태그됨 중 머물러있는 페이지 버튼 텍스트*/
 .profilePostsBtn span {
   margin-left: 8px;
   font-size: 15px;
 }
-/*게시물, 태그, 컬렉션 중선택하지 않은 버튼들*/
+
+/*게시물, 태그, 컬렉션 중 선택하지 않은 버튼들*/
 .profilePostsBtn1 {
   width: 100px;
   height: 30px;
@@ -127,17 +182,63 @@
   background-color: white;
 }
 
+/*게시물, 태그, 컬렉션 중 선택하지 않은 버튼들 갔다 대었을 때*/
 .profilePostsBtn1:hover {
   font-weight: bold;
 }
 
+/*게시물, 태그, 컬렉션 중 선택하지 않은 버튼 이미지*/
 .profilePostsBtn1 img {
   width: 12px;
   height: 12px;
 }
 
+/*게시물, 태그, 컬렉션 중 선택하지 않은 버튼 텍스트*/
 .profilePostsBtn1 span {
   margin-left: 8px;
   font-size: 15px;
   color: #b9b9b9;
+}
+
+/*여기서 부터는 프로필 셋팅 버틑 모달에 대한 부분입니다.*/
+
+.setWrapper,
+.setOverlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.setOverlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.setContent {
+  width: 550px;
+  height: 550px;
+  border-radius: 16px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.setContent-item {
+  width: 100%;
+  height: 12.5%;
+  border-bottom: 1px solid #b6b6b6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
 }
