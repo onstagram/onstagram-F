@@ -35,9 +35,11 @@
 
 /*navMenu 카테고리*/
 .menu-item {
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  user-select: none;
 }
 
 /*카테고리가 hover 되었을 때*/
@@ -54,10 +56,12 @@
 }
 
 /*카테고리 명칭*/
-.menu-item p {
-  font-size: 15px;
+.menu-item span {
+  padding: 10px;
+  font-size: 25px;
 }
 
+/*카테고리 명칭 갔다 대었을 때*/
 .menu-item p:hover {
   cursor: pointer;
 }
@@ -65,7 +69,7 @@
 /*nav바에서 더보기 부분 섹션*/
 .navDetail {
   width: 90%;
-  height: 7%;
+  height: 5%;
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
@@ -89,14 +93,79 @@
   font-size: 15px;
 }
 
-/*여기서 부터는 게시물이 나오는 메인화면 부분입니다.*/
+/*메인 Nav바 부분에서 더 보기 모달 부분*/
 
-/*mainSection 부분*/
-/* .mainSection {
-  width: 100%;
-  height: 100%;
+/*메인 Nav바에서 더보기 버튼 부분*/
+.seeMore-modal-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+
+/*더보기 모달창 감싸는 div*/
+.seeMore-content {
+  width: 320px;
+  height: 550px;
+  border: 1px solid #efefef;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 0 20px #b9b9b9;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
+  top: 32%;
+  left: 1%;
+  transform: translate(0, 0);
+}
+
+/*더보기 모달창 내부 img&span*/
+.seeMore-content-items {
+  width: 100%;
+  height: 40%;
+  display: flex;
   align-items: center;
-} */
+}
+
+.seeMore-content-items:hover {
+  /* border-radius: 10px; */
+  background-color: #efefef;
+}
+
+/*더보기 모달창 내부 이미지*/
+.seeMore-content-items img {
+  width: 30px;
+  height: 30px;
+}
+
+/*더보기 모달창 계정전환&로그아웃*/
+.seeMore-content-items2 {
+  width: 100%;
+  height: 40%;
+  /* margin-left: 30px; */
+  display: flex;
+  align-items: center;
+}
+
+/*더보기 모달창 계정전환&로그아웃 갔다 대었을 때*/
+.seeMore-content-items2:hover {
+  background-color: #efefef;
+}
+
+/*더보기 모달창 계정전환&로그아웃 title*/
+.seeMore-content-items2 span {
+  margin-left: 20px;
+}
+
+/*문제 신고 밑 굵은 구분선*/
+.bold-bottom {
+  border-bottom: 7px solid #efefef;
+}
+
+/*계정전환 , 로그아웃 얇은 구분선*/
+.bottom {
+  border-bottom: 1px solid #efefef;
+}
+
+/*여기서 부터는 게시물이 나오는 메인화면 부분입니다.*/
