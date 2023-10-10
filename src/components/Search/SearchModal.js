@@ -40,7 +40,7 @@ function SearchModal() {
                     <span>sound4519</span>
                     <span>이진호</span>
                   </div>
-                  <img src={Profile} />
+                  <div>X</div>
                 </div>
               </div>
             </div>

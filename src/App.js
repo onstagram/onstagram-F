@@ -7,6 +7,7 @@ import ReelsPage from "./pages/ReelsPage"
 import MessagePage from "./pages/MessagePage"
 import ProfileSavedPage from "./pages/ProfileSavedPage"
 import ProfileTaggedPage from "./pages/ProfileTaggedPage"
+import SaveStory from "./components/Profile/SaveStory"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/message" element={<MessagePage />} />
         <Route path="/profile/saved" element={<ProfileSavedPage />} />
         <Route path="/profile/tagged" element={<ProfileTaggedPage />} />
+        <Route path="/profile/savestory" element={<SaveStory />} />
       </Routes>
     </BrowserRouter>
   )
