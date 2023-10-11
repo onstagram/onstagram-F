@@ -8,6 +8,7 @@ const DivLogin2 = () => {
         setFlag(!flag);
         alert("트루값입니다!");
     }
+    
     return (
         <div className="DivLogin2">
         <div className="DivImg">
@@ -28,7 +29,7 @@ const DivLogin2 = () => {
             </div>
             
             <div className="DivLoginH5Box">
-                <h5>계정이 없으신가요? <Link to={"/SignPage"}>가입하기</Link></h5>
+                <h5>계정이 없으신가요? <Link to={'/signup'}>가입하기</Link></h5>
             </div>
         </div>
     </div>

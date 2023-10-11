@@ -1,29 +1,13 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import "./Profile.css"
-import MainNav from "../Main/MainNav"
-import ProfilePost from "../../assets/Fictogram/Profile/profile-post.png"
-import grayTag from "../../assets/Fictogram/Profile/grayTag.png"
-import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
-import graySave from "../../assets/Fictogram/Profile/grayCollection.png"
-import Collect from "../../assets/Fictogram/Profile/collect.png"
-import ProfileSetModal from "./ProfileSetModal"
+import React from 'react'
+import './Profile.css'
+import MainNav from '../Main/MainNav'
+import ProfilePost from '../../assets/Fictogram/Profile/profile-post.png'
+import ProfileTag from '../../assets/Fictogram/Profile/grayTag.png'
+import ProfileImg from '../../assets/Fictogram/Nav/profile.png'
+import ProfileSaved from '../../assets/Fictogram/Profile/grayCollection.png'
+import Gear from '../../assets/Fictogram/Profile/gear.png'
 
 function Profile() {
-  const navigate = useNavigate()
-
-  const goToSaved = () => {
-    navigate("/profile/saved")
-  }
-
-  const goToTagged = () => {
-    navigate("/profile/tagged")
-  }
-
-  const goToSaveStory = () => {
-    navigate("/profile/savestory")
-  }
-
   return (
     <div className="mainWrapper">
       <MainNav />
@@ -32,66 +16,47 @@ function Profile() {
           <div className="infoWrapper">
             <div className="info">
               <div className="infoImg">
-                <img src={ProfileImg} alt="프로필 이미지" />
+                <img src={ProfileImg} />
               </div>
               <div className="infoDetail">
                 <div className="infoDetail1">
                   <span>sound4519</span>
-                  <button type="button">프로필 편집</button>
-                  <button type="button" onClick={goToSaveStory}>
-                    보관된 스토리 보기
-                  </button>
-                  <ProfileSetModal />
+                  <button>프로필 편집</button>
+                  <button>보관된 스토리 보기</button>
+                  <div className="setImg">
+                    <img src={Gear} />
+                  </div>
                 </div>
                 <div className="infoDetail2">
-                  <a>
-                    게시물
-                    <span>100</span>
-                  </a>
-                  <a>
-                    팔로우
-                    <span>200</span>
-                  </a>
-                  <a>
-                    팔로워
-                    <span>200</span>
-                  </a>
+                  <div>게시물</div>
+                  <div>팔로우</div>
+                  <div>팔로워</div>
                 </div>
-                <div className="infoDetail3">
-                  <span>안녕하세요 반갑습니다.</span>
-                </div>
+                <div className="infoDetail3">dd</div>
               </div>
             </div>
-          </div>
-          <div className="profilePostsBtns">
-            <button type="button" className="profilePostsBtn">
-              <img src={ProfilePost} alt="게시물 이미지" />
-              <span>게시물</span>
-            </button>
-            <button
-              type="button"
-              className="profilePostsBtn1"
-              onClick={goToSaved}
-            >
-              <img src={graySave} alt="게시물 저장됨" />
-              <span>저장됨</span>
-            </button>
-            <button
-              type="button"
-              className="profilePostsBtn1"
-              onClick={goToTagged}
-            >
-              <img src={grayTag} alt="게시물 태그됨" />
-              <span>태그됨</span>
-            </button>
+
+            <div>신규</div>
           </div>
           <div className="profilePosts">
-            <div className="profilePostSaved">
-              <img src={Collect} alt="저장됨 게시글 비었을때 아이콘" />
-              <h1>사진 공유</h1>
-              <span>사진을 공유하면 회원님의 프로필에 표시됩니다.</span>
+            <div className="profilepostsBtns">
+              <button type="button" className="profilePostsBtn">
+                <img src={ProfilePost} />
+                <span>게시물</span>
+              </button>
+              <button type="button" className="profilePostsBtn1">
+                <img src={ProfileSaved} />
+                <span>저장됨</span>
+              </button>
+              <button type="button" className="profilePostsBtn1">
+                <img src={ProfileTag} />
+                <span>태그됨</span>
+              </button>
             </div>
+            <div>내용부분</div>
           </div>
+          {/* <img src={ProfilePost} />
+            <img src={Avatar} /> */}
         </div>
       </div>
     </div>

@@ -7,6 +7,8 @@ import ReelsPage from "./pages/ReelsPage"
 import MessagePage from "./pages/MessagePage"
 import ProfileSavedPage from "./pages/ProfileSavedPage"
 import ProfileTaggedPage from "./pages/ProfileTaggedPage"
+import LoginPage from "./pages/LoginPage"
+import SignPage from "./pages/SignPage"
 import SaveStory from "./components/Profile/SaveStory"
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignPage />} />
         <Route path="/profile" element={<ProFilePage />} />
         <Route path="/quest" element={<QuestPage />} />
         <Route path="/reels" element={<ReelsPage />} />
