@@ -8,12 +8,12 @@ const DivSignUp = () => {
     const [dup, setDup]=useState(false);
     const handleSignUp=()=>{
         setFlag(!flag);
-        alert("트루값입니다!");                                   
+        alert("트루값입니다");                                   
         navigator(`/login`);
     }
     const handleDup=()=>{
         setDup(!dup);
-        alert('트루값입니다!');
+        alert("트루값입니다");
     }
     const handleLogin=()=>{
         navigator(`/login`);
