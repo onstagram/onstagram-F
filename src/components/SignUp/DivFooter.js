@@ -1,9 +1,9 @@
 import React from 'react';
-import './Login.css'
+import './SignUp.css'
 
 const test = () => {
     return (
-        <div className="DivLoginFooter">
+        <div className="DivFooter">
             <p>@ 2023 Onstagram from KOSA</p>
         </div>
     );

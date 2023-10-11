@@ -7,6 +7,8 @@ import ReelsPage from "./pages/ReelsPage"
 import MessagePage from "./pages/MessagePage"
 import ProfileSavedPage from "./pages/ProfileSavedPage"
 import ProfileTaggedPage from "./pages/ProfileTaggedPage"
+import LoginPage from "./pages/LoginPage"
+import SignPage from "./pages/SignPage"
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/message" element={<MessagePage />} />
         <Route path="/profile/saved" element={<ProfileSavedPage />} />
         <Route path="/profile/tagged" element={<ProfileTaggedPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignPage />} />
       </Routes>
     </BrowserRouter>
   )
