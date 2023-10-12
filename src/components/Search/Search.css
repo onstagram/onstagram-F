@@ -20,6 +20,7 @@
   left: 5.1%;
   transform: translate(0, 0);
   z-index: auto;
+
 }
 
 /*검색모달창 헤더부분*/
@@ -39,6 +40,7 @@
 /*검색모달창 바디부분*/
 .searchModal-body {
   height: 92%;
+  /* border: 1px solid black; */
 }
 
 /*검색창을 감싸는 div*/
@@ -125,8 +127,8 @@
 
 /*유저 프로필 이미지*/
 .userImg img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 /*유저아이디, 이름을 감싼 유저정보 div*/
