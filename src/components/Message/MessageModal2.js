@@ -18,15 +18,17 @@ function Message() {
 
   return (
     <div>
-      <div className="chatSend" onClick={toggleModal}>
-        <img src={Gear} alt="채팅보내기" />
+      <div onClick={toggleModal}>
+        <button type="button" className="chattingMain-btn">
+          메세지 보내기
+        </button>
       </div>
       {modal && (
-        <div className="chatModal-wrapper">
-          <div className="chatModal-overlay">
+        <div className="chatModal-wrapper2">
+          <div className="chatModal-overlay2">
             <div className="chatModal-content">
-              <div className="chatModal-header">
-                <div></div>
+              <div className="chatModal-header2">
+                <div>&nbsp; </div>
                 <span>새로운 메세지</span>
                 <button onClick={toggleModal}>
                   <img src={Cancel} alt="취소버튼" />
@@ -38,11 +40,11 @@ function Message() {
                 <input type="text" />
               </div>
               <div className="chatModal-searchList">
-                <div className="searchUser">
+                <div className="searchUser2">
                   <div className="searchImg">
                     <img src={ProfileImg} alt="프로필 이미지" />
                   </div>
-                  <div className="searchUser-info">
+                  <div className="searchUser-info2">
                     <span>이지너</span>
                     <span>sound4519</span>
                   </div>

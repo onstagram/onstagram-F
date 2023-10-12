@@ -58,6 +58,8 @@
   font-size: 15px;
 }
 
+/*카테고리 명칭 갖다 대었을 때*/
+
 .menu-item p:hover {
   cursor: pointer;
 }
@@ -99,4 +101,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} */
+}
+
+/*더보기 모달창 계정전환&로그아웃 갖다 대었을 때*/
+.seeMore-content-items2:hover {
+  background-color: #efefef;
+}
+
+/*더보기 모달창 계정전환&로그아웃 title*/
+.seeMore-content-items2 span {
+  margin-left: 20px;
+}
+
+/*문제 신고 밑 굵은 구분선*/
+.bold-bottom {
+  border-bottom: 7px solid #efefef;
+}
+
+/*계정전환 , 로그아웃 얇은 구분선*/
+.bottom {
+  border-bottom: 1px solid #efefef;
+}
+
+/*여기서 부터는 게시물이 나오는 메인화면 부분입니다.*/
+
