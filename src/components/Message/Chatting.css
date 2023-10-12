@@ -1,0 +1,550 @@
+/*채팅 화면 부분을 모두 감싸고 있는 div*/
+.chattingSection {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*채팅 화면 헤더부분*/
+.chatting-header {
+  width: 100%;
+  height: 10%;
+  margin-top: 5px;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/*채팅 화면 헤더에서 유저 정보가 보이는 부분*/
+.chatting-header-userInfo {
+  width: 85%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*채팅 화면 헤더에서 유저 프로필 이미지*/
+.chatting-header-userInfo img {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+}
+
+/*채팅 화면 헤더에서 유저 프로필 이름*/
+.chatting-header-userInfo span {
+  margin-left: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/*채팅 화면 헤더 부분 전화, 영상통화, 상세정보 버튼들*/
+.chatting-header-btns {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/*전화,영상통화,상세정보 버튼*/
+.chatting-header-btns button {
+  border: transparent;
+  background-color: white;
+  cursor: pointer;
+}
+
+/*전화,영상통화,상세정보 버튼 이미지*/
+.chatting-header-btns button > img {
+  width: 30px;
+  height: 30px;
+}
+
+/*채팅 화면에서 채팅이 보이는 부분*/
+.chatting-body {
+  width: 100%;
+  height: 82%;
+}
+
+/*채팅 화면에서 채팅을 입력할 수 잇는 부분(이모니콘,인풋,음성,사진,하트)*/
+.chatting-inputBox {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+/*채팅 화면에서 이모티콘, 인풋, 음성, 사진, 하트 전체를 감싸는 div*/
+.chatting-inputBoxes {
+  width: 95%;
+  border: 1px solid #efefef;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*채팅 화면 인풋(채팅내용입력)*/
+.chatting-inputBoxes input {
+  width: 80%;
+  padding: 12px;
+  border: transparent;
+  font-size: 15px;
+  user-select: none;
+  outline: none;
+}
+
+/*채팅 입력란 이모티콘 이미지*/
+.chatting-emoji img {
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+/*채팅 입력란 음성, 사진첨부, 하트 보내기*/
+.chatting-attach {
+}
+
+/*채팅 입력란 음성, 사진첨부, 하트 보내기 이미지*/
+.chatting-attach img {
+  width: 28px;
+  height: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/*여기서 부터는 상세정보에 대한 모달창 입니다.*/
+
+/*상세정보 전체를 감사는 div*/
+.DetailWrapper {
+  width: 35%;
+  height: 99%;
+  margin-right: 30px;
+  border: 1px solid efefef;
+  border-left: 1px solid #efefef;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  background-color: white;
+  position: absolute;
+  top: 0.8%;
+  right: -3%;
+}
+
+/*상세정보 헤더 부분*/
+.DetailHeader {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*상세정보 헤더의 타이틀 부분*/
+.DetailTitle {
+  width: 90%;
+  height: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.DetailTitle button {
+  user-select: none;
+}
+
+.DetailTitle button > img {
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
+  user-select: none;
+}
+
+/*상세정보 헤더의 메세지 알림 체크 부분*/
+.DetailAlram {
+  width: 90%;
+  height: 48%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*상세 정보 헤더의 메세지 알림 체크 버튼*/
+.DetailAlram input {
+  width: 50px;
+  height: 30px;
+  appearance: none;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background-color: #b6b6b6;
+}
+
+/*메세지 알림 체크 버튼 안에 동그라미*/
+.DetailAlram input::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  transform: scale(0.8);
+  border-radius: 50%;
+  background-color: white;
+  transition: left 250ms linear;
+}
+
+/*메세지 알림 체크 버튼 체크 되었을 때*/
+.DetailAlram input:checked {
+  background-color: #0095f6;
+}
+
+/*메세지 알림 체크 버튼 체크 한번 더 눌렀을 때*/
+.DetailAlram input:checked::before {
+  background-color: white;
+  left: 20px;
+}
+
+/*상세정보에서 참여 유저 정보를 불러오는 부분*/
+.DetailBody {
+  height: 70%;
+  margin: auto;
+}
+
+/*상세정보에서 멤버 타이틀을 감싸는 div*/
+.DetailBody-header {
+  width: 100%;
+  height: 10%;
+  border-top: 1px solid #efefef;
+}
+
+/*상세정보에서 멤버 타이틀*/
+.DetailBody-header h4 {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+/*참여 유저 정보를 감싸는 div*/
+.DetailUser {
+  width: 100%;
+  margin-top: 10px;
+  display: grid;
+  grid-template-rows: 2fr;
+  grid-auto-flow: column;
+  place-items: center;
+}
+
+/*참여 유저 정보*/
+.DetailUser-info {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/*참여 유저 프로필 이미지*/
+.DetailUser-info img {
+  width: 50px;
+  height: 50px;
+}
+
+/*참여 유저 아이디, 이름*/
+.DetailUser-content {
+  width: 100%;
+  height: 80%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*상세정보 밑 신고, 차단, 채팅삭제 버튼을 감싸는 div*/
+.DetailFooter {
+  width: 100%;
+  height: 14.5%;
+  border-top: 1px solid #efefef;
+}
+
+/*신고, 차단, 채팅삭제 버튼*/
+.DetailFooter span {
+  margin: 10px 15px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  color: red;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*여기서부터는 채팅 상세정보 내 버튼들의 모달관련 CSS 부분입니다.*/
+/*상세정보 신고, 흐릿한 검은배경  전체 div*/
+.De-Wrapper,
+.De-overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+/*상세정보 신고, 흐릿한 검은배경*/
+.De-overlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+/*신고 항목 선택창 감싸는 div*/
+.De-content {
+  width: 400px;
+  height: 550px;
+  border: transparent;
+  border-radius: 12px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*신고 항목 헤더부분*/
+.De-content-header {
+  height: 8%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+/*신고 항목 헤더 타이틀*/
+.De-content-header span {
+  margin-left: 30px;
+  color: black;
+  cursor: auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*신고 항목 종료 버튼*/
+.De-content-header button {
+  margin-right: 15px;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*신고 항목 종료 버튼 안 이미지*/
+.De-content-header button > img {
+  width: 12px;
+  height: 12px;
+}
+
+/*신고 항목 선택 안내글 감싸는 div*/
+.De-content-Select {
+  height: 6%;
+  margin-left: 15px;
+}
+
+/*신고 항목 선택 안내글*/
+.De-content-Select p {
+  margin-left: 5px;
+  font-weight: bold;
+  color: black;
+  cursor: auto;
+}
+
+/*신고 항목 내역 감싸는 div*/
+.De-content-body {
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*신고 항목 내역에 있는 항목을 감싸는 div*/
+.De-content-item {
+  height: 9%;
+  border-top: 1px solid #dcdcdc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+/*신고 항목 이름*/
+.De-content-item span {
+  margin-left: 20px;
+  padding: 0;
+  color: black;
+  font-size: 13px;
+}
+
+/*신고 항목 맨 오른쪽 화살표*/
+.De-content-item img {
+  width: 5px;
+  height: 5px;
+  margin-right: 15px;
+}
+
+/*여기서 부터는 상세정보 안에 있는 차단 Modal에 관련된 CSS 입니다.*/
+/*상세정보 차단, 흐릿한 검은배경을 감싸는 div*/
+.BlockWrapper,
+.BlockOverlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+/*상세정보 차단 흐릿한 검은 배경*/
+.BlockOverlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+/*상세정보 차단 모달을 감싸는 div*/
+.BlockContent {
+  width: 450px;
+  height: 300px;
+  /* border: 1px solid black; */
+  border-radius: 12px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*상세정보 차단 헤더부분*/
+.BlockHeader {
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*상세정보 차단 타이틀*/
+.BlockHeader h3 {
+  height: 10%;
+}
+
+/*상세정보 차단 세부설명*/
+.BlockHeader span {
+  /* height: 60%; */
+  color: black;
+  cursor: auto;
+  text-align: center;
+}
+
+/*상세정보 차단, 취소 버튼 감싸는 div*/
+.BlockBtns {
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*상세정보 차단, 취소 버튼*/
+.BlockBtns button {
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #dcdcdc;
+  font-size: 15px;
+}
+
+/*상세정보 차단 버튼 별도 CSS*/
+.BlockBtnRed {
+  color: red;
+  font-weight: bold;
+}
+
+/*상세정보 취소 버튼 별도 CSS*/
+.BlockBtnCancel {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/*여기서 부터는 채팅 삭제 모달에 대한 CSS입니다. */
+.ChatDel-wrapper,
+.ChatDel-overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.ChatDel-overlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+.ChatDel-content {
+  width: 400px;
+  height: 200px;
+  border: transparent;
+  border-radius: 12px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+}
+
+.ChatDel-header {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ChatDel-header span {
+  color: black;
+  cursor: auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+.ChatDel-btns {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.ChatDel-btns button {
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #dcdcdc;
+  user-select: none;
+}
+
+.ChatDel-red {
+  color: red;
+  font-weight: bold;
+}
+
+.ChatDel-cancel {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}

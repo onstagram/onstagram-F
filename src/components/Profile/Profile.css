@@ -66,7 +66,7 @@
   font-weight: bold;
 }
 
-/*유저 프로필 편집, 보관된 스토리 보기 버튼 갔다 대었을 때*/
+/*유저 프로필 편집, 보관된 스토리 보기 버튼 갖다 대었을 때*/
 .infoDetail1 button:hover {
   background-color: #dbdbdb;
 }
@@ -95,6 +95,7 @@
 /*유저 프로필 셋팅 버튼 이미지*/
 .setImg {
   margin-left: 10px;
+  user-select: none;
 }
 
 /*유저 소개를 감싸는 div*/
@@ -148,7 +149,7 @@
   background-color: white;
 }
 
-/*게시물, 저장됨, 태그됨 중 머물러있는 페이지 버튼에 갔다 대었을 때*/
+/*게시물, 저장됨, 태그됨 중 머물러있는 페이지 버튼에 갖다 대었을 때*/
 .profilePostsBtn:hover {
   font-weight: bold;
 }
@@ -173,7 +174,7 @@
   background-color: white;
 }
 
-/*게시물, 태그, 컬렉션 중 선택하지 않은 버튼들 갔다 대었을 때*/
+/*게시물, 태그, 컬렉션 중 선택하지 않은 버튼들 갖다 대었을 때*/
 .profilePostsBtn1:hover {
   font-weight: bold;
 }
@@ -271,14 +272,16 @@
 
 /*이전으로 가기위한 버튼 및 안내문구*/
 .storyBefore {
-  height: 13%;
+  display: flex;
+  align-items: center;
 }
 
 /*이전버튼 이미지*/
 .storyBefore img {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 /*스토리 안내 헤더부분*/

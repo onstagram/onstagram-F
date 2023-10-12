@@ -1,8 +1,8 @@
 /*메인 전체를 감싸는 div*/
 
 .mainWrapper {
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 99vh;
   margin: 0;
   padding: 0;
   display: flex;

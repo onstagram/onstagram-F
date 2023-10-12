@@ -61,7 +61,7 @@
   font-size: 20px;
 }
 
-/*카테고리 명칭 갔다 대었을 때*/
+/*카테고리 명칭 갖다 대었을 때*/
 .menu-item p:hover {
   cursor: pointer;
 }
@@ -150,7 +150,7 @@
   align-items: center;
 }
 
-/*더보기 모달창 계정전환&로그아웃 갔다 대었을 때*/
+/*더보기 모달창 계정전환&로그아웃 갖다 대었을 때*/
 .seeMore-content-items2:hover {
   background-color: #efefef;
 }
