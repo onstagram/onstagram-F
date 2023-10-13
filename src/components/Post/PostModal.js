@@ -28,6 +28,10 @@ function PostModal() {
     setNextModal(!nextModal)
   }
 
+  const fileClick = () => {
+    selectFile.current.click()
+  }
+
   const selectFile = useRef("")
 
   return (
@@ -58,10 +62,7 @@ function PostModal() {
                     style={{ display: "none" }}
                     ref={selectFile}
                   />
-                  <button
-                    className="file-btn"
-                    onClick={() => selectFile.current.click()}
-                  >
+                  <button className="file-btn" onClick={fileClick}>
                     컴퓨터에서 선택
                   </button>
                 </div>

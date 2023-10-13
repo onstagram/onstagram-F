@@ -321,3 +321,41 @@
   width: 50%;
   text-align: center;
 }
+
+/*여기서 부터는 다른 유저 프로필 들어갔을때 메세지 보내기 옆 버튼 클릭했을때 뜨는 모달에 관련된 CSS 입니다.*/
+
+.userSetImg img {
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
+}
+
+.userSetContent {
+  width: 550px;
+  height: 550px;
+  border: transparent;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.userSetBtns {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userSetBtn {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+}
+
+.userSetRed {
+  color: red;
+}
