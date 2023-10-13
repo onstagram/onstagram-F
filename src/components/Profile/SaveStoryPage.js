@@ -5,7 +5,7 @@ import DownArrow from "../../assets/Fictogram/Etc/DownArrow.png"
 import dd from "../../assets/Fictogram/Profile/collect.png"
 import { useNavigate } from "react-router-dom"
 
-function SaveStory() {
+function SaveStoryPage() {
   const navigate = useNavigate()
 
   const goToBack = () => {
@@ -38,4 +38,4 @@ function SaveStory() {
   )
 }
 
-export default SaveStory
+export default SaveStoryPage

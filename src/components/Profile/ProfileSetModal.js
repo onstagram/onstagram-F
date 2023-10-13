@@ -1,4 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
+
+import Gear from "../../assets/Fictogram/Profile/gear.png"
 
 function ProfileSetModal() {
   const [modal, setModal] = useState()
