@@ -8,6 +8,8 @@ import MessagePage from "./pages/MessagePage"
 import ProfileSavedPage from "./pages/ProfileSavedPage"
 import ProfileTaggedPage from "./pages/ProfileTaggedPage"
 import SaveStoryPage from "./components/Profile/SaveStoryPage"
+import LoginPage from "./pages/LoginPage"
+import SignPage from "./pages/SignPage"
 import ChattingPage from "./pages/ChattingPage"
 import UserPage from "./pages/UserPage"
 import UserSavedPage from "./pages/UserSavedPage"
@@ -19,6 +21,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignPage />} />
         <Route path="/profile" element={<ProFilePage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/user/saved" element={<UserSavedPage />} />

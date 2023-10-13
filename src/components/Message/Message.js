@@ -1,3 +1,4 @@
+
 import React, { useState } from "react"
 import "./Message.css"
 
@@ -20,7 +21,6 @@ function Message() {
   return (
     <div class="mainWrapper">
       <MainNav />
-
       <div className="mainSection">
         <div className="chatMain">
           <div className="chatList">

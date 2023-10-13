@@ -1,14 +1,14 @@
-import React from "react"
-import { useState } from "react"
-import { useRef } from "react"
-import "./Post.css"
+import React from 'react'
+import { useState } from 'react'
+import { useRef } from 'react'
+import './Post.css'
 
-import Post from "../../assets/Fictogram/Nav/post.png"
-import PostImg from "../../assets/Fictogram/Post/post-img.png"
-import Emoji from "../../assets/Fictogram/Post/emoji-gray.png"
-import Location from "../../assets/Fictogram/Post/location.png"
-import Arrow from "../../assets/Fictogram/Post/arrow.png"
-import Profile from "../../assets/Fictogram/Nav/profile.png"
+import Post from '../../assets/Fictogram/Nav/post.png'
+import PostImg from '../../assets/Fictogram/Post/post-img.png'
+import Emoji from '../../assets/Fictogram/Post/emoji-gray.png'
+import Location from '../../assets/Fictogram/Post/location.png'
+import Arrow from '../../assets/Fictogram/Post/arrow.png'
+import Profile from '../../assets/Fictogram/Nav/profile.png'
 
 function PostModal() {
   const [modal, setModal] = useState(false)
@@ -24,21 +24,25 @@ function PostModal() {
   }
 
   const togglePostModal = () => {
-    alert("게시가 완료되었습니다!")
+    alert('게시가 완료되었습니다!')
     setNextModal(!nextModal)
   }
 
+<<<<<<< HEAD
   const fileClick = () => {
     selectFile.current.click()
   }
 
   const selectFile = useRef("")
+=======
+  const selectFile = useRef('')
+>>>>>>> 0e3d70364e41ef73f8d7d438f19aafcf96df8f83
 
   return (
     <div>
       <div onClick={toggleModal} className="btn-modal">
-        <img src={Post} alt="만들기 이미지" />
-        <span>만들기</span>
+        <img src={Post} />
+        <p>만들기</p>
       </div>
       {modal && (
         <div className="modal">
@@ -55,11 +59,11 @@ function PostModal() {
               </div>
               <div className="modal-body">
                 <div className="modal-imgSelect">
-                  <img src={PostImg} alt="사진&영상" />
+                  <img src={PostImg} />
                   <span>사진과 영상을 여기에 끌어다 놓으세요</span>
                   <input
                     type="file"
-                    style={{ display: "none" }}
+                    style={{ display: 'none' }}
                     ref={selectFile}
                   />
                   <button className="file-btn" onClick={fileClick}>
@@ -86,12 +90,12 @@ function PostModal() {
               </div>
               <div className="post-body">
                 <div className="img-wrapper">
-                  <img src={PostImg} alt="첨부이미지" />
+                  <img src={PostImg} />
                 </div>
                 <div className="text-wrapper">
                   <div className="post-userInfo">
                     <div className="post-info">
-                      <img src={Profile} alt="유저 프로필 이미지" />
+                      <img src={Profile} />
                       <div>여기는 유저 정보</div>
                     </div>
                   </div>
@@ -101,7 +105,7 @@ function PostModal() {
                   <div className="post-etc">
                     <div>
                       <button type="button" className="emoji-btn">
-                        <img src={Emoji} alt="이모티콘" />
+                        <img src={Emoji} />
                       </button>
                     </div>
                     <div className="post-textLength">2200 / 2200</div>
@@ -111,15 +115,15 @@ function PostModal() {
                       type="text"
                       placeholder="위치 정보를 입력해주세요."
                     />
-                    <img src={Location} alt="지역 이미지" />
+                    <img src={Location} />
                   </div>
                   <div className="post-access">
                     <span>접근성</span>
-                    <img src={Arrow} alt="세부메뉴" />
+                    <img src={Arrow} />
                   </div>
                   <div className="post-advanced">
                     <span>고급설정</span>
-                    <img src={Arrow} alt="세부메뉴" />
+                    <img src={Arrow} />
                   </div>
                 </div>
               </div>
