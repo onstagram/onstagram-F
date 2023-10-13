@@ -1,14 +1,21 @@
 import React from "react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import Menu from "../../assets/Fictogram/Nav/menu.png"
 import Gear from "../../assets/Fictogram/Profile/gear.png"
 
 function SeeMoreModal() {
+  const navigate = useNavigate()
+
   const [modal, setModal] = useState()
 
   const toggleModal = () => {
     setModal(!modal)
+  }
+
+  const goToSetting = () => {
+    navigate("/setting/edit")
   }
 
   return (
@@ -19,7 +26,7 @@ function SeeMoreModal() {
       </div>
       {modal && (
         <div className="seeMore-content">
-          <div className="seeMore-content-items">
+          <div className="seeMore-content-items" onClick={goToSetting}>
             <img src={Gear} alt="설정" />
             <span>설정</span>
           </div>
