@@ -110,8 +110,8 @@
     font-size: 16px;
   }
   
-  /* 가입하기 부분 div 내의 Link 태그 */
-  .DivLoginH5Box h5 a:Link {
-    color : rgb(39,113,255);
+  /* 가입하기 부분 div 내의 Link 태그의 공통속성 */
+  .DivLoginH5Box h5 a:Link, .DivLoginH5Box h5 a:active {
+    color : black;
     text-decoration: none;
   }
