@@ -15,6 +15,8 @@ import UserPage from "./pages/UserPage"
 import UserSavedPage from "./pages/UserSavedPage"
 import SettingPage from "./pages/Setting/SettingPage"
 import LanguagePage from "./pages/Setting/LanguagePage"
+import AppWebPage from "./pages/Setting/AppWebPage"
+import Write from "./components/Profile/Write"
 
 function App() {
   return (
@@ -34,7 +36,9 @@ function App() {
         <Route path="/profile/tagged" element={<ProfileTaggedPage />} />
         <Route path="/profile/savestory" element={<SaveStoryPage />} />
         <Route path="/setting/edit" element={<SettingPage />} />
-        <Route path="/setting/Language" element={<LanguagePage />} />
+        <Route path="/setting/language" element={<LanguagePage />} />
+        <Route path="/setting/appweb" element={<AppWebPage />} />
+        <Route path="/write" element={<Write />} />
       </Routes>
     </BrowserRouter>
   )

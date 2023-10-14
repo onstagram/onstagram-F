@@ -1,18 +1,32 @@
-import React from 'react'
-import { useState } from 'react'
-import { useRef } from 'react'
-import './Post.css'
+import React from "react"
+import { useState } from "react"
+import { useRef } from "react"
+import "./Post.css"
 
-import Post from '../../assets/Fictogram/Nav/post.png'
-import PostImg from '../../assets/Fictogram/Post/post-img.png'
-import Emoji from '../../assets/Fictogram/Post/emoji-gray.png'
-import Location from '../../assets/Fictogram/Post/location.png'
-import Arrow from '../../assets/Fictogram/Post/arrow.png'
-import Profile from '../../assets/Fictogram/Nav/profile.png'
+import Post from "../../assets/Fictogram/Nav/post.png"
+import PostImg from "../../assets/Fictogram/Post/post-img.png"
+import Emoji from "../../assets/Fictogram/Post/emoji-gray.png"
+import Location from "../../assets/Fictogram/Post/location.png"
+import Arrow from "../../assets/Fictogram/Post/arrow.png"
+import Profile from "../../assets/Fictogram/Nav/profile.png"
 
 function PostModal() {
+  const today = new Date()
+  const formattedDate = `${today.getFullYear()}년 ${
+    today.getMonth() + 1
+  }월 ${today.getDate()}일`
+
   const [modal, setModal] = useState(false)
   const [nextModal, setNextModal] = useState()
+  const [member, setMember] = useState([
+    {
+      postId: "1",
+      userId: "sound4519",
+      userImg: Emoji,
+      caption: "안녕하세요",
+      postDate: formattedDate,
+    },
+  ])
 
   const toggleModal = () => {
     setModal(!modal)
@@ -24,25 +38,26 @@ function PostModal() {
   }
 
   const togglePostModal = () => {
-    alert('게시가 완료되었습니다!')
-    setNextModal(!nextModal)
+    alert("게시가 완료되었습니다!")
+    // setNextModal(!nextModal)
+    console.log(formattedDate)
   }
 
-<<<<<<< HEAD
   const fileClick = () => {
     selectFile.current.click()
   }
 
+  const onWriteHandler = (e) => {
+    console.log(e.target.value)
+  }
+
   const selectFile = useRef("")
-=======
-  const selectFile = useRef('')
->>>>>>> 0e3d70364e41ef73f8d7d438f19aafcf96df8f83
 
   return (
     <div>
       <div onClick={toggleModal} className="btn-modal">
-        <img src={Post} />
-        <p>만들기</p>
+        <img src={Post} alt="만들기 이미지" />
+        <span>만들기</span>
       </div>
       {modal && (
         <div className="modal">
@@ -59,12 +74,13 @@ function PostModal() {
               </div>
               <div className="modal-body">
                 <div className="modal-imgSelect">
-                  <img src={PostImg} />
+                  <img src={PostImg} alt="사진&영상" />
                   <span>사진과 영상을 여기에 끌어다 놓으세요</span>
                   <input
                     type="file"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                     ref={selectFile}
+                    multiple
                   />
                   <button className="file-btn" onClick={fileClick}>
                     컴퓨터에서 선택
@@ -78,6 +94,7 @@ function PostModal() {
       {nextModal && (
         <div className="modal">
           <div className="overlay">
+            {/* <form> */}
             <div className="post-content">
               <div className="modal-header">
                 <button className="close-modal" onClick={toggleNextModal}>
@@ -90,22 +107,41 @@ function PostModal() {
               </div>
               <div className="post-body">
                 <div className="img-wrapper">
-                  <img src={PostImg} />
+                  <img src={PostImg} alt="첨부이미지" name="imgId" />
                 </div>
                 <div className="text-wrapper">
                   <div className="post-userInfo">
                     <div className="post-info">
-                      <img src={Profile} />
-                      <div>여기는 유저 정보</div>
+                      <img
+                        src={Profile}
+                        alt="유저 프로필 이미지"
+                        value={selectFile}
+                      />
+                      <div>
+                        여기는 유저 정보
+                        {member.map((item) => (
+                          <div>
+                            <li key={item.postId}>{item.userId}</li>
+                            {/* <li key={item.postId}>{item.userImg}</li> */}
+                            <li key={item.postId}>{item.caption}</li>
+                            <li key={item.postId}>{item.postDate}</li>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div contenteditable className="post-main">
-                    <textarea placeholder="문구를 입력하세요..." />
+                    <textarea
+                      placeholder="문구를 입력하세요..."
+                      onChange={onWriteHandler}
+                      name="caption"
+                      maxLength={2200}
+                    />
                   </div>
                   <div className="post-etc">
                     <div>
                       <button type="button" className="emoji-btn">
-                        <img src={Emoji} />
+                        <img src={Emoji} alt="이모티콘" />
                       </button>
                     </div>
                     <div className="post-textLength">2200 / 2200</div>
@@ -115,19 +151,20 @@ function PostModal() {
                       type="text"
                       placeholder="위치 정보를 입력해주세요."
                     />
-                    <img src={Location} />
+                    <img src={Location} alt="지역 이미지" />
                   </div>
                   <div className="post-access">
                     <span>접근성</span>
-                    <img src={Arrow} />
+                    <img src={Arrow} alt="세부메뉴" />
                   </div>
                   <div className="post-advanced">
                     <span>고급설정</span>
-                    <img src={Arrow} />
+                    <img src={Arrow} alt="세부메뉴" />
                   </div>
                 </div>
               </div>
             </div>
+            {/* </form> */}
           </div>
         </div>
       )}

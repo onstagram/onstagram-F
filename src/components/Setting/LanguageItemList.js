@@ -1,4 +1,5 @@
 import React from "react"
+import "./Language.css"
 
 function LanguageItemList() {
   return (
@@ -45,10 +46,6 @@ function LanguageItemList() {
       </div>
       <div className="LanguageItem">
         <span>Suomi</span>
-        <input type="checkbox" />
-      </div>
-      <div className="LanguageItem">
-        <span>Français</span>
         <input type="checkbox" />
       </div>
     </>

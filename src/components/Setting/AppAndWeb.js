@@ -63,13 +63,13 @@ function LanguageSelect() {
             <div className="SelectList-item " onClick={goToEdit}>
               <span>프로필 편집</span>
             </div>
-            <div
-              className="SelectList-item SelectList-item-select"
-              onClick={goToLanguage}
-            >
+            <div className="SelectList-item " onClick={goToLanguage}>
               <span>언어 기본 설정</span>
             </div>
-            <div className="SelectList-item " onClick={goToAppAndWeb}>
+            <div
+              className="SelectList-item SelectList-item-select"
+              onClick={goToAppAndWeb}
+            >
               <span>앱 및 웹사이트</span>
             </div>
             <div className="SelectList-item">
@@ -102,21 +102,27 @@ function LanguageSelect() {
             </div>
           </div>
         </div>
-        <div className="LanguageWrapper">
-          <div className="LanguageContent">
-            <div className="LanguageHeader">
-              <span>언어 기본 설정</span>
+        <div className="AppWebWrapper">
+          <div className="AppWebContent">
+            <div className="AppWebHeader">
+              <span>앱 및 웹사이트</span>
             </div>
-            <div className="LanguageBody">
-              <span>앱 언어</span>
-              <p>
-                Instagram에서 버튼, 제목 및 기타 텍스트가 기본 설정 언어로
-                표시됩니다.
-              </p>
-              <input type="text" placeholder="검색" />
-            </div>
-            <div className="LanguageList">
-              <LanguageItemList />
+            <div className="AppWebBody">
+              <div className="AppWebSelect">
+                <span className="">활성</span>
+                <span>만료됨</span>
+                <span>삭제됨</span>
+              </div>
+              <div className="AppWebText">
+                <p>
+                  회원님의 Instagram 계정에 연결한 앱과 웹사이트입니다. 이 앱과
+                  웹사이트는 회원님의 공유하기로 선택한 비공개 정보에 액세스할
+                  수 있습니다.
+                </p>
+                <p className="GrayText">
+                  Instagram 계정에 액세스하도록 허용한 앱이 없습니다.
+                </p>
+              </div>
             </div>
           </div>
           <EditFooter />
