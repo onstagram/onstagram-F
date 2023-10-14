@@ -38,7 +38,7 @@ function PostModal() {
   return (
     <div>
       <div onClick={toggleModal} className="btn-modal">
-        <img src={Post} />
+        <img src={Post} alt="만들기 이미지"/>
         <p>만들기</p>
       </div>
       {modal && (
@@ -56,7 +56,7 @@ function PostModal() {
               </div>
               <div className="modal-body">
                 <div className="modal-imgSelect">
-                  <img src={PostImg} />
+                  <img src={PostImg} alt="사진과 영상 이미지"/>
                   <span>사진과 영상을 여기에 끌어다 놓으세요</span>
                   <input
                     type="file"
@@ -87,12 +87,12 @@ function PostModal() {
               </div>
               <div className="post-body">
                 <div className="img-wrapper">
-                  <img src={PostImg} />
+                  <img src={PostImg} alt="업로드 이미지"/>
                 </div>
                 <div className="text-wrapper">
                   <div className="post-userInfo">
                     <div className="post-info">
-                      <img src={Profile} />
+                      <img src={Profile} alt="유저 이미지"/>
                       <div>여기는 유저 정보</div>
                     </div>
                   </div>
@@ -102,7 +102,7 @@ function PostModal() {
                   <div className="post-etc">
                     <div>
                       <button type="button" className="emoji-btn">
-                        <img src={Emoji} />
+                        <img src={Emoji} alt="이모티콘 이미지 "/>
                       </button>
                     </div>
                     <div className="post-textLength">2200 / 2200</div>
@@ -112,15 +112,15 @@ function PostModal() {
                       type="text"
                       placeholder="위치 정보를 입력해주세요."
                     />
-                    <img src={Location} />
+                    <img src={Location} alt="지역 위치 이미지"/>
                   </div>
                   <div className="post-access">
                     <span>접근성</span>
-                    <img src={Arrow} />
+                    <img src={Arrow} alt="세부 항목 이미지"/>
                   </div>
                   <div className="post-advanced">
                     <span>고급설정</span>
-                    <img src={Arrow} />
+                    <img src={Arrow} alt="세부 항목 이미지"/>
                   </div>
                 </div>
               </div>

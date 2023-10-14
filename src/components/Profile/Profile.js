@@ -16,7 +16,7 @@ function Profile() {
           <div className="infoWrapper">
             <div className="info">
               <div className="infoImg">
-                <img src={ProfileImg} />
+                <img src={ProfileImg} alt="프로필 이미지"/>
               </div>
               <div className="infoDetail">
                 <div className="infoDetail1">
@@ -24,7 +24,7 @@ function Profile() {
                   <button>프로필 편집</button>
                   <button>보관된 스토리 보기</button>
                   <div className="setImg">
-                    <img src={Gear} />
+                    <img src={Gear} alt="셋팅 이미지"/>
                   </div>
                 </div>
                 <div className="infoDetail2">
@@ -41,15 +41,15 @@ function Profile() {
           <div className="profilePosts">
             <div className="profilepostsBtns">
               <button type="button" className="profilePostsBtn">
-                <img src={ProfilePost} />
+                <img src={ProfilePost} alt="게시물 탭 이미지"/>
                 <span>게시물</span>
               </button>
               <button type="button" className="profilePostsBtn1">
-                <img src={ProfileSaved} />
+                <img src={ProfileSaved} alt="저장됨 탭 이미지"/>
                 <span>저장됨</span>
               </button>
               <button type="button" className="profilePostsBtn1">
-                <img src={ProfileTag} />
+                <img src={ProfileTag} alt="태그됨 탭 이미지"/>
                 <span>태그됨</span>
               </button>
             </div>

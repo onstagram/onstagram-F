@@ -42,39 +42,39 @@ function MainNav() {
       </div>
       <div className="navMenu">
         <div className="menu-item" onClick={goToHome}>
-          <img src={Home} />
+          <img src={Home} alt="홈 이미지"/>
           <p>홈</p>
         </div>
         <div className="menu-item">
-          <img src={Search} />
+          <img src={Search} alt="검색 이미지"/>
           <p>검색</p>
         </div>
         <div className="menu-item" onClick={goToQuest}>
-          <img src={Compass} />
+          <img src={Compass} alt="탐색 이미지"/>
           <p>탐색탭</p>
         </div>
         <div className="menu-item" onClick={goToReels}>
-          <img src={Reels} />
+          <img src={Reels} alt="릴스 이미지"/>
           <p>릴스</p>
         </div>
         <div className="menu-item" onClick={goToMessage}>
-          <img src={Message} />
+          <img src={Message} alt="메세지 이미지"/>
           <p>메세지</p>
         </div>
         <div className="menu-item">
-          <img src={Alram} />
+          <img src={Alram} alt="알람 이미지"/>
           <p>알람</p>
         </div>
         <div className="menu-item">
           <SelectModal />
         </div>
         <div className="menu-item" onClick={goToProfile}>
-          <img src={ProfileImg} />
+          <img src={ProfileImg} alt="프로필 이미지"/>
           <p>프로필</p>
         </div>
       </div>
       <div className="navDetail">
-        <img src={Menu} />
+        <img src={Menu} alt="더보기 이미지"/>
         <p>더보기</p>
       </div>
     </div>

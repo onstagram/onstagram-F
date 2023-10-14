@@ -28,7 +28,7 @@ const DivLogin2 = () => {
           })
       } catch (err) {
             console.error(err)
-      }
+      } // eslint-disable-next-line react-hooks/exhaustive-deps
      },[email, password])
 
      // 이메일 

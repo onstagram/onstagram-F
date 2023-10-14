@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import axios from 'axios'
 import './SignUp.css'
 
@@ -62,7 +62,7 @@ const DivSignUp = () => {
                 if(!isValidInput){
                     alert('모든 값을 입력해야 합니다')
                 }
-          }
+          }// eslint-disable-next-line react-hooks/exhaustive-deps
          },[email, password, passwordCheck, userName, userPhone])
     
       // 이메일 
@@ -75,10 +75,15 @@ const DivSignUp = () => {
         if (!emailRegex.test(email)) {
           setEmailMessage('이메일 형식이 틀렸습니다')
           setIsEmail(false)
+          console.log(isEmail);
+          console.log(isPassword);
+          console.log(isPasswordCheck);
+          console.log(isUserName);
+          console.log(isUserPhone);
         } else {
           setEmailMessage('이메일 형식이 맞았습니다')
           setIsEmail(true)
-        }
+        } // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
     
       // 비밀번호
@@ -146,7 +151,7 @@ const DivSignUp = () => {
           alert('이메일을 입력해야 합니다')
         }
         else{
-          {isDup ? alert('중복된 이메일입니다') : alert('중복되지 않은 이메일입니다')}
+          isDup ? alert('중복된 이메일입니다') : alert('중복되지 않은 이메일입니다')
         }
       };
 
@@ -154,6 +159,7 @@ const DivSignUp = () => {
       const handleLogin=()=>{
         navigator("/login");
       };
+      
      
     return (
         <div className="DivSignUp">
