@@ -3,7 +3,8 @@ import React, { useState } from "react"
 import Etc from "../../assets/Fictogram/Etc/etc.png"
 import Heart from "../../assets/Fictogram/Post/heart.png"
 import Comment from "../../assets/Fictogram/Post/comment.png"
-import Share from "../../assets/Fictogram/Post/bookmark.png"
+import Collection from "../../assets/Fictogram/Post/bookmark.png"
+import Share from "../../assets/Fictogram/Nav/message.png"
 
 function PostViewModal(props) {
   const [modal, setModal] = useState()
@@ -83,12 +84,19 @@ function PostViewModal(props) {
                 <div className="postComments">댓글</div>
                 <div className="postFooter">
                   <div className="postFictos">
-                    <img className="postFictoheart" src={Heart} alt="좋아요" />
-                    <img className="postFictoGram" src={Comment} alt="댓글" />
+                    <button className="postBtn">
+                      <img src={Heart} alt="좋아요" />
+                    </button>
+                    <button className="postBtn">
+                      <img src={Comment} alt="댓글" />
+                    </button>
+                    <button className="postBtn">
+                      <img src={Share} alt="공유" />
+                    </button>
                   </div>
-                  <div>
-                    <img className="postFictoGram" src={Share} alt="공유" />
-                  </div>
+                  <button className="postBtn">
+                    <img src={Collection} alt="공유" />
+                  </button>
                 </div>
               </div>
             </div>

@@ -485,13 +485,18 @@
   align-items: center;
 }
 
-.postFictoheart {
+.postBtn img {
   width: 30px;
   height: 30px;
-  margin-right: 10px;
 }
 
-.postFictoGram {
-  width: 28px;
-  height: 28px;
+.postBtn {
+  border: transparent;
+  content: "";
+  background-color: white;
+  cursor: pointer;
+}
+
+.postBtn:checked img {
+  background-image: url("../../assets/Fictogram/Post/redHeart.png");
 }

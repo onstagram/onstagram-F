@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import axios from "axios"
+import axiosIns from "../../api/api"
 import "./SignUp.css"
 
 const DivSignUp = () => {
@@ -40,8 +40,8 @@ const DivSignUp = () => {
     async (e) => {
       e.preventDefault()
       try {
-        await axios
-          .post("https://vocal-khapse-c450f1.netlify.app/signup", {
+        await axiosIns
+          .post("/signup", {
             email: email,
             password: password,
             passwordCheck: passwordCheck,
