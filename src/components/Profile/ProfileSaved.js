@@ -43,15 +43,15 @@ function ProfileSaved() {
                   <ProfileSetModal />
                 </div>
                 <div className="infoDetail2">
-                  <a>
+                  <a href="https://www.google.com">
                     게시물
                     <span>100</span>
                   </a>
-                  <a>
+                  <a href="https://www.google.com">
                     팔로우
                     <span>200</span>
                   </a>
-                  <a>
+                  <a href="https://www.google.com">
                     팔로워
                     <span>200</span>
                   </a>
