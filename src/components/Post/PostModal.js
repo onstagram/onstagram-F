@@ -30,6 +30,7 @@ function PostModal() {
 
   const toggleModal = () => {
     setModal(!modal)
+    console.log(setMember)
   }
 
   const toggleNextModal = () => {

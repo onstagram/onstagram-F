@@ -7,7 +7,7 @@ import MainNav from "../Main/MainNav"
 import EditFooter from "./EditFooter"
 import User from "../../assets/Fictogram/Etc/user.png"
 import { useNavigate } from "react-router-dom"
-import LanguageItemList from "./LanguageItemList"
+// import LanguageItemList from "./LanguageItemList"
 
 function LanguageSelect() {
   const navigate = useNavigate()

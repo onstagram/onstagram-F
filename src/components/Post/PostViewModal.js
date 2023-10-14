@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 
-import Profile from "../../assets/Fictogram/Nav/profile.png"
 import Etc from "../../assets/Fictogram/Etc/etc.png"
 import Heart from "../../assets/Fictogram/Post/heart.png"
 import Comment from "../../assets/Fictogram/Post/comment.png"
@@ -13,8 +12,6 @@ function PostViewModal(props) {
   const showPost = () => {
     setModal(!modal)
   }
-
-  const skillList = () => {}
 
   return (
     <>

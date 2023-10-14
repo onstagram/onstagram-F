@@ -1,7 +1,6 @@
-import React from 'react'
-import MainNav from '../Main/MainNav'
-import MainSection from '../Main/MainSection'
-import '../../App.css'
+import React from "react"
+import MainNav from "../Main/MainNav"
+import "../../App.css"
 
 function Quest() {
   return (

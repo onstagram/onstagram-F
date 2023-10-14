@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useNavigate } from "react-router-dom"
 import "./Profile.css"
 import MainNav from "../Main/MainNav"
@@ -51,15 +51,15 @@ function UserProfile() {
                   <UserSetModal />
                 </div>
                 <div className="infoDetail2">
-                  <a>
+                  <a href="https://www.google.com">
                     게시물
                     <span>100</span>
                   </a>
-                  <a>
+                  <a href="https://www.google.com">
                     팔로우
                     <span>200</span>
                   </a>
-                  <a>
+                  <a href="https://www.google.com">
                     팔로워
                     <span>200</span>
                   </a>
