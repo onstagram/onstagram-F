@@ -41,7 +41,7 @@ const DivSignUp = () => {
       e.preventDefault()
       try {
         await axios
-          .post(`https://vocal-khapse-c450f1.netlify.app/signup`, {
+          .post("https://vocal-khapse-c450f1.netlify.app/signup", {
             email: email,
             password: password,
             passwordCheck: passwordCheck,
