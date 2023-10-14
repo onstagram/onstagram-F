@@ -3,15 +3,12 @@
 /* SignPage의 전체 부분 div */
 .DivSignUp{
     position:relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     width: 30%;
     height: 60vh;
     border: 1px solid black;
-    transform:translate(115%, 25%);
+    padding-top: 6vh;
+    transform: translate(115%, 25%);
 }
 
 /* SignPage의 Footer 부분 div */
@@ -31,9 +28,10 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 3vh;
+    padding-top: 3vh;
 }
 
-/* SignPage에서 텍스트 Onstagram 부분 div */
+/* SignPage에서 친구들의 사진... 부분의 텍스트 div */
 .DivOnstagramBox span{
     font-size:30px;
 }
@@ -41,21 +39,51 @@
 /* SignPage에서 Input창 부분 div의 공통 속성*/
 .DivSignUpInput, .DivSignUpInput2 {
     display: flex;
+    flex-direction: column;
+    justify-content: justify;
+    align-items: center;
+}
+
+/* SignPage에서 이메일 Input 부분의 div, 회원가입 버튼 div 부분의 공통 속성*/
+.DivSignUpEmailInputOnChange, .DivSignUpButtonOnChange{
+    display: flex;
     flex-direction: row;
+    justify-content: justify;
+    align-items: center;
+}
+ 
+/* SignPage에서 Input 부분의 div, span 영역 부분 div의 공통 속성 */
+.DivSignUpInputOnChange .DivSignUpSpan{
+    display: flex;
+    flex-direction: column;
     justify-content: justify;
     align-items: center;
 }
 
 /* SignPage에서 Input과 회원가입 버튼의 공통 속성 */
-.DivSignUpInput input,.BtnSignUp {
-    margin-right: 1vh
+.DivSignUpInput input,.BtnSignUp{
+    margin-right: 1vh;
 }
 
 /* SignPage에서 Input의 공통 속성 */
 .DivSignUpInput input, .DivSignUpInput2 input{
-    width: 100%;
     height: 3vh;
     font-size: 16px;
+}
+
+/* SignPage에서 Input에서 이메일 input창 부분의 속성 */
+.DivSignUpInput input{
+    width: 20vh;
+}
+
+/* SignPage에서 Input창 부분의 공통 속성 */
+.DivSignUpInput2 input{
+    width: 28vh;
+}
+
+/* SignPage에서 회원가입 버튼 div 부분의 공통 속성 */
+.DivSignUpButtonOnChange{
+    width: 29vh;
 }
 
 /* SignPage에서 모든 버튼의 공통 속성 */
@@ -84,7 +112,14 @@
     font-size: 11px;
 }
 
-/* SignPage에서 모든 div의 공통 속성 */
-.DivSignUp div{
+ 
+/* SignPage에서 span 영역 부분 label의 공통 속성  */
+.DivSignUpSpan{
+    height: 1vh;
     margin-bottom: 2vh;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(151,151,151);
 }
+
+
