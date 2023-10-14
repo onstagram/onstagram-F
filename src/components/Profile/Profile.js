@@ -55,6 +55,7 @@ function Profile() {
 
   const goToSaved = () => {
     navigate("/profile/saved")
+    console.log(setPosts)
   }
 
   const goToTagged = () => {

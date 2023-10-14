@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import axios from "axios"
+import axiosIns from "../../api/api"
 import "./Login.css"
 
 const DivLogin2 = () => {
@@ -14,8 +14,8 @@ const DivLogin2 = () => {
     async (e) => {
       e.preventDefault()
       try {
-        await axios
-          .get(`https://vocal-khapse-c450f1.netlify.app/login`, {
+        await axiosIns
+          .get("/login", {
             email: email,
             password: password,
           })
@@ -32,8 +32,8 @@ const DivLogin2 = () => {
           })
       } catch (err) {
         console.error(err)
-      } // eslint-disable-next-line react-hooks/exhaustive-deps
-    },
+      }
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
     [email, password]
   )
 
