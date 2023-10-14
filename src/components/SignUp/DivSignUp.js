@@ -14,6 +14,7 @@ const DivSignUp = () => {
     const [passwordCheck, setPasswordCheck] = useState('')
     const [userName, setUserName] = useState('')
     const [userPhone, setUserPhone] = useState('')
+    const [isDup, setIsDup]=useState(false);
     // let email=useSelector(state=>state.email);
     // let password=useSelector(state=>state.password);
     // let passwordCheck=useSelector(state=>state.passwordCheck);
@@ -50,7 +51,8 @@ const DivSignUp = () => {
                 console.log('res:', res)
                 if (res.status === 200) {
                   console.log(email, password, passwordCheck, userName, userPhone); 
-                  dispatch({type:'SIGNUP', payload:{email:{email}, password:{password}, passwordCheck:{passwordCheck},userName:{userName},userPhone:{userPhone}}})
+                  dispatch({type:'SIGNUP', payload:{email:{email},password:{password},passwordCheck:{passwordCheck},userName:{userName},userPhone:{userPhone}}})
+                  setIsDup(res.data.isDup);
                   navigator('/login')
                  }
               })
@@ -138,8 +140,14 @@ const DivSignUp = () => {
       }, [])
 
       //이메일 중복검사
-      const handleDup=(e)=>{
-        
+      const handleDup=()=>{
+      const isValidDupInput = email.length>=1;
+        if(!isValidDupInput){
+          alert('이메일을 입력해야 합니다')
+        }
+        else{
+          {isDup ? alert('중복된 이메일입니다') : alert('중복되지 않은 이메일입니다')}
+        }
       };
 
       //로그인 페이지로 이동
@@ -162,7 +170,7 @@ const DivSignUp = () => {
                 <div className="DivSignUpInput">
                   <label className="DivSignUpEmailInputOnChange">
                     <input type="text" name="email" placeholder="이메일" onChange={onChangeEmail}/> 
-                    <button className="BtnDup" onClick={handleDup}>중복확인</button>
+                    <button type="button" className="BtnDup" onClick={handleDup}>중복확인</button>
                   </label>
                   <label className="DivSignUpSpan">
                     <span>{emailMessage}</span>
