@@ -1,11 +1,11 @@
 import React from "react"
 import "./Profile.css"
 import MainNav from "../Main/MainNav"
-import Arrow from "../../assets/Fictogram/Post/arrow.png"
+import DownArrow from "../../assets/Fictogram/Etc/DownArrow.png"
 import dd from "../../assets/Fictogram/Profile/collect.png"
 import { useNavigate } from "react-router-dom"
 
-function SaveStory() {
+function SaveStoryPage() {
   const navigate = useNavigate()
 
   const goToBack = () => {
@@ -17,7 +17,7 @@ function SaveStory() {
       <div className="mainSection">
         <div className="storyWrapper">
           <div className="storyBefore">
-            <img src={Arrow} alt="이전 버튼" onClick={goToBack} />
+            <img src={DownArrow} alt="이전 버튼" onClick={goToBack} />
             <span>보관</span>
           </div>
           <div className="storytitle">
@@ -38,4 +38,4 @@ function SaveStory() {
   )
 }
 
-export default SaveStory
+export default SaveStoryPage

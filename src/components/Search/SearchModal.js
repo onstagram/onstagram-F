@@ -3,6 +3,7 @@ import "./Search.css"
 
 import Profile from "../../assets/Fictogram/Nav/profile.png"
 import Search from "../../assets/Fictogram/Nav/search.png"
+import XBtn from "../../assets/Fictogram/Etc/XBtn.png"
 
 function SearchModal() {
   const [modal, setModal] = useState()
@@ -40,7 +41,9 @@ function SearchModal() {
                     <span>sound4519</span>
                     <span>이진호</span>
                   </div>
-                  <img src={Profile} />
+                  <div className="search-delete">
+                    <img src={XBtn} alt="삭제 버튼 " />
+                  </div>
                 </div>
               </div>
             </div>
