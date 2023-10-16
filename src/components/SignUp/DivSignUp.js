@@ -1,13 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import axiosIns from '../../api/api'
-import './SignUp.css'
-
-const DivSignUp = () => { 
-    const dispatch=useDispatch();
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
+import axiosIns from '../../api/api'
 import './SignUp.css'
 
 const DivSignUp = () => {  
@@ -20,8 +14,7 @@ const DivSignUp = () => {
     const [passwordCheck, setPasswordCheck] = useState('')
     const [userName, setUserName] = useState('')
     const [userPhone, setUserPhone] = useState('')
-    const [isDup, setIsDup]=useState(false);
-  
+
     // let email=useSelector(state=>state.email);
     // let password=useSelector(state=>state.password);
     // let passwordCheck=useSelector(state=>state.passwordCheck);
@@ -70,7 +63,7 @@ const DivSignUp = () => {
                   navigator('/login')
                  }
                 })
-              })
+              
           } catch (err) {
                 console.error(err)
                 const isValidInput = email.length>=1&&password.length>=1&&passwordCheck.length>=1&&userName.length>=1&&userPhone.length>=1;

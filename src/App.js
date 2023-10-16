@@ -10,14 +10,15 @@ import ProfileTaggedPage from "./pages/ProfileTaggedPage"
 import LoginPage from "./pages/LoginPage"
 import SignPage from "./pages/SignPage"
 import SaveStory from "./components/Profile/SaveStoryPage"
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<PrivateRoute />}>
         <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignPage />} />
         <Route path="/profile" element={<ProFilePage />} />
         <Route path="/quest" element={<QuestPage />} />
         <Route path="/reels" element={<ReelsPage />} />
@@ -25,6 +26,10 @@ function App() {
         <Route path="/profile/saved" element={<ProfileSavedPage />} />
         <Route path="/profile/tagged" element={<ProfileTaggedPage />} />
         <Route path="/profile/savestory" element={<SaveStory />} />
+        </Route>
+        
+        <Route path="/login" element={<PublicRoute><LoginPage /></ PublicRoute>} />
+        <Route path="/signup" element={<PublicRoute><SignPage /></ PublicRoute>} />
       </Routes>
     </BrowserRouter>
   )
