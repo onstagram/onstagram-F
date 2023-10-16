@@ -9,7 +9,7 @@ import ProfileSavedPage from "./pages/ProfileSavedPage"
 import ProfileTaggedPage from "./pages/ProfileTaggedPage"
 import LoginPage from "./pages/LoginPage"
 import SignPage from "./pages/SignPage"
-import SaveStory from "./components/Profile/SaveStory"
+import SaveStory from "./components/Profile/SaveStoryPage"
 
 function App() {
   return (

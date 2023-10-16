@@ -28,15 +28,11 @@ function PostModal() {
     setNextModal(!nextModal)
   }
 
-<<<<<<< HEAD
   const fileClick = () => {
     selectFile.current.click()
   }
 
   const selectFile = useRef("")
-=======
-  const selectFile = useRef('')
->>>>>>> 0e3d70364e41ef73f8d7d438f19aafcf96df8f83
 
   return (
     <div>
@@ -135,4 +131,4 @@ function PostModal() {
   )
 }
 
-export default PostModal
+export default PostModal;
