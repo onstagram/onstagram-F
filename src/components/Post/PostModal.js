@@ -30,7 +30,7 @@ function PostModal() {
 
   const toggleModal = () => {
     setModal(!modal)
-    console.log(setMember)
+    console.log(setMember + "이건 임시로 넣어둔거에요")
   }
 
   const toggleNextModal = () => {

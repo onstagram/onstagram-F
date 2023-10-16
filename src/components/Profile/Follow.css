@@ -1,0 +1,220 @@
+/*팔로우 확인 모달창 관련 CSS*/
+
+.followBtn {
+  cursor: pointer;
+}
+
+.followWrapper,
+.followOverlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.followOverlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+.followContent {
+  width: 550px;
+  height: 550px;
+  border-radius: 12px;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.followHeader {
+  width: 100%;
+  height: 10%;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.followHeader span {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.followHeader button {
+  border: transparent;
+  background-color: white;
+  margin-right: 10px;
+}
+
+.followHeader button > img {
+  width: 15px;
+  height: 15px;
+}
+
+.followHeader2 {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.followHuman {
+  width: 275px;
+  height: 50px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.followTag {
+  width: 275px;
+  height: 50px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.followBody {
+  width: 100%;
+  height: 80%;
+}
+
+.followSearch {
+  width: 100%;
+  height: 10%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.followSearch input {
+  width: 490px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background-color: #efefef;
+  outline: none;
+}
+
+.followSearch button {
+}
+
+.followSearchResult {
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: row;
+}
+
+.result {
+  width: 100%;
+  height: 97%;
+  margin-top: 10px;
+  border-bottom-right-radius: 12px;
+  overflow-y: auto;
+}
+
+.resultUser {
+  width: 500px;
+  height: 80px;
+  margin: 13px auto 13px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultUser img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.resultUser button {
+  width: 60px;
+  padding: 8px;
+  border: transparent;
+  border-radius: 12px;
+  background-color: #efefef;
+}
+
+.resultUser button:hover {
+  background-color: #b9b9b9;
+}
+
+.resultUserInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.resultUserIdName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.resultUserIdName span {
+  font-weight: normal;
+}
+
+/*여기서 부터는 */
+
+.HashTagWrapper {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.HashTagOverlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+.HashTagContent {
+  width: 550px;
+  height: 550px;
+  border-radius: 12px;
+  background-color: white;
+  top: 29%;
+  left: 0;
+  transform: translate(0, -50%);
+  position: absolute;
+}
+
+.HashTagHeader {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.HashTagHeader-title {
+  font-size: 20px;
+}
+
+.HashTagHeader button {
+  margin-right: 10px;
+  border: transparent;
+  background-color: white;
+  cursor: pointer;
+}
+
+.HashTagHeader button > img {
+  width: 15px;
+  height: 15px;
+  /* margin-right: 10px; */
+}

@@ -217,30 +217,6 @@
 
 /*여기서 부터는 프로필 셋팅 버튼 모달에 대한 부분입니다.*/
 
-.showPosts {
-  width: 960px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* border: 1px solid black; */
-}
-
-.showPostImgs {
-  width: 85%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.showPostImg {
-  width: 230px;
-  height: 230px;
-  background-color: #efefef;
-}
-
 /*모달을 감싸는 div*/
 .setWrapper,
 .setOverlay {
