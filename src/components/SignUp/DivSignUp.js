@@ -1,20 +1,19 @@
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch} from 'react-redux'
-import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import axiosIns from '../../api/api'
 import './SignUp.css'
 
-const DivSignUp = () => {  
-    const dispatch = useDispatch();
+const DivSignUp = () => { 
+    const dispatch=useDispatch();
     const navigator = useNavigate();
 
-    //이메일, 비밀번호, 비밀번호 확인, 닉네임, 전화번호 
+    //이메일, 비밀번호, 비밀번호 확인, 닉네임, 전화번호
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordCheck, setPasswordCheck] = useState('')
     const [userName, setUserName] = useState('')
     const [userPhone, setUserPhone] = useState('')
-    const [isDup, setIsDup]=useState(false);
     // let email=useSelector(state=>state.email);
     // let password=useSelector(state=>state.password);
     // let passwordCheck=useSelector(state=>state.passwordCheck);
@@ -34,35 +33,46 @@ const DivSignUp = () => {
     const [isPasswordCheck, setIsPasswordCheck] = useState(false)
     const [isUserName, setIsUserName] = useState(false)
     const [isUserPhone, setIsUserPhone] = useState(false)
+    const [isDup, setIsDup]=useState(true);
    
+
     //회원가입 버튼 클릭 이벤트
     const onSubmit = useCallback(
         async (e) => { 
           e.preventDefault();
           try {
-            await axios.post(`localhost:8888/signup`, {
+            await axiosIns.post(`/signup`, {
                 email: email,
                 password: password,
                 passwordCheck: passwordCheck,
                 userName: userName,
-                userPhone: userPhone,
-              })
+                userPhone: userPhone},
+                {
+                  headers:{
+                    'Content-Type':'application/json;charset=UTF-8',
+                  }
+               })
             .then((res) => {
                 console.log('res:', res)
                 if (res.status === 200) {
                   console.log(email, password, passwordCheck, userName, userPhone); 
                   dispatch({type:'SIGNUP', payload:{email:{email},password:{password},passwordCheck:{passwordCheck},userName:{userName},userPhone:{userPhone}}})
-                  setIsDup(res.data.isDup);
+                  
+                  alert('회원가입 성공했습니다')
                   navigator('/login')
                  }
-              })
+                })
           } catch (err) {
                 console.error(err)
                 const isValidInput = email.length>=1&&password.length>=1&&passwordCheck.length>=1&&userName.length>=1&&userPhone.length>=1;
                 if(!isValidInput){
-                    alert('모든 값을 입력해야 합니다')
+                  alert('모든 값을 입력해야 합니다')
+                }else{
+                  if(isDup===true){
+                    alert('이메일 중복검사를 해야 합니다')
+                  }
                 }
-          }// eslint-disable-next-line react-hooks/exhaustive-deps
+          }
          },[email, password, passwordCheck, userName, userPhone])
     
       // 이메일 
@@ -75,15 +85,10 @@ const DivSignUp = () => {
         if (!emailRegex.test(email)) {
           setEmailMessage('이메일 형식이 틀렸습니다')
           setIsEmail(false)
-          console.log(isEmail);
-          console.log(isPassword);
-          console.log(isPasswordCheck);
-          console.log(isUserName);
-          console.log(isUserPhone);
         } else {
           setEmailMessage('이메일 형식이 맞았습니다')
           setIsEmail(true)
-        } // eslint-disable-next-line react-hooks/exhaustive-deps
+        }
       }, [])
     
       // 비밀번호
@@ -131,7 +136,7 @@ const DivSignUp = () => {
       }, [])
 
        // 전화번호
-        const onChangeUserPhone = useCallback((e) => {
+       const onChangeUserPhone = useCallback((e) => {
         const userPhone=e.target.value;
         const userPhoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/
         setUserPhone(userPhone)
@@ -145,21 +150,27 @@ const DivSignUp = () => {
       }, [])
 
       //이메일 중복검사
-      const handleDup=()=>{
-      const isValidDupInput = email.length>=1;
-        if(!isValidDupInput){
+      const handleDup = useCallback((res) => { 
+        const isValidDupInput = email.length>=1;
+        if(isValidDupInput<1){
           alert('이메일을 입력해야 합니다')
+        }else if(isEmail===false){
+          alert('이메일 형식이 틀렸습니다');
+        }else{
+          if(email==='aa@naver.com'){
+            alert('중복된 이메일입니다')
+            setIsDup(true)
+          }else{
+            alert('중복되지 않은 이메일입니다')
+            setIsDup(false)
+          }
         }
-        else{
-          isDup ? alert('중복된 이메일입니다') : alert('중복되지 않은 이메일입니다')
-        }
-      };
+      },[email]);
 
       //로그인 페이지로 이동
       const handleLogin=()=>{
         navigator("/login");
       };
-      
      
     return (
         <div className="DivSignUp">
@@ -203,7 +214,7 @@ const DivSignUp = () => {
 
                 <div className="DivSignUpInput2">
                   <label className="DivSignUpInputOnChange">
-                    <input type="text" name="userName" placeholder="닉네임" onChange={onChangeUserName}/>    
+                    <input type="text" name="userName" placeholder="닉네임" onChange={onChangeUserName}/> 
                 </label>
                 <label className="DivSignUpSpan">
                   <span>{userNameMessage}</span> 
@@ -231,4 +242,4 @@ const DivSignUp = () => {
     );
 };
 
-export default DivSignUp;
+export default DivSignUp

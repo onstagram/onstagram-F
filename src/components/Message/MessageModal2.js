@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 
+import Gear from "../../assets/Fictogram/Profile/gear.png"
 import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
 import Cancel from "../../assets/Fictogram/Etc/XBtn.png"
 

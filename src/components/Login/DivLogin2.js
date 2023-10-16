@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import axios from 'axios'
+import axiosIns from '../../api/api';
 import './Login.css';
 
 const DivLogin2 = () => {
@@ -14,10 +14,14 @@ const DivLogin2 = () => {
         async (e) => { 
       e.preventDefault();
       try {
-        await axios.get(`localhost:8080/api/login`, {
+        await axiosIns.post(`/login`, {
             email: email,
-            password: password,
-          })
+            password: password},
+             {
+                headers:{
+                    'Content-Type':'application/json;charset=UTF-8',
+                }
+             })
         .then((res) => {
             console.log('res:', res)
             if (res.status === 200) {
@@ -28,7 +32,7 @@ const DivLogin2 = () => {
           })
       } catch (err) {
             console.error(err)
-      } // eslint-disable-next-line react-hooks/exhaustive-deps
+      }
      },[email, password])
 
      // 이메일 

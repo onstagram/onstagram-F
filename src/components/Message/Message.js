@@ -1,5 +1,5 @@
 
-import React from "react"
+import React, { useState } from "react"
 import "./Message.css"
 
 import Gear from "../../assets/Fictogram/Profile/gear.png"

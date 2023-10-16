@@ -53,7 +53,7 @@
 }
  
 /* SignPage에서 Input 부분의 div, span 영역 부분 div의 공통 속성 */
-.DivSignUpInputOnChange .DivSignUpSpan{
+.DivSignUpInputOnChange, .DivSignUpSpan{
     display: flex;
     flex-direction: column;
     justify-content: justify;
@@ -61,7 +61,7 @@
 }
 
 /* SignPage에서 Input과 회원가입 버튼의 공통 속성 */
-.DivSignUpInput input,.BtnSignUp{
+.DivSignUpInput input, .BtnSignUp{
     margin-right: 1vh;
 }
 
@@ -73,17 +73,17 @@
 
 /* SignPage에서 Input에서 이메일 input창 부분의 속성 */
 .DivSignUpInput input{
-    width: 20vh;
+    width: 70%;
 }
 
 /* SignPage에서 Input창 부분의 공통 속성 */
 .DivSignUpInput2 input{
-    width: 28vh;
+    width: 133%;
 }
 
 /* SignPage에서 회원가입 버튼 div 부분의 공통 속성 */
 .DivSignUpButtonOnChange{
-    width: 29vh;
+    width: 67%;
 }
 
 /* SignPage에서 모든 버튼의 공통 속성 */

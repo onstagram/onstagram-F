@@ -39,15 +39,15 @@ function ProfileSaved() {
                   </div>
                 </div>
                 <div className="infoDetail2">
-                  <a href="https://www.google.com">
+                  <a>
                     게시물
                     <span>100</span>
                   </a>
-                  <a href="https://www.google.com">
+                  <a>
                     팔로우
                     <span>200</span>
                   </a>
-                  <a href="https://www.google.com">
+                  <a>
                     팔로워
                     <span>200</span>
                   </a>

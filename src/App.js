@@ -9,7 +9,7 @@ import ProfileSavedPage from "./pages/ProfileSavedPage"
 import ProfileTaggedPage from "./pages/ProfileTaggedPage"
 import LoginPage from "./pages/LoginPage"
 import SignPage from "./pages/SignPage"
-import SaveStoryPage from "./components/Profile/SaveStoryPage"
+import SaveStory from "./components/Profile/SaveStoryPage"
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path="/message" element={<MessagePage />} />
         <Route path="/profile/saved" element={<ProfileSavedPage />} />
         <Route path="/profile/tagged" element={<ProfileTaggedPage />} />
-        <Route path="/profile/savestory" element={<SaveStoryPage />} />
+        <Route path="/profile/savestory" element={<SaveStory />} />
       </Routes>
     </BrowserRouter>
   )
