@@ -1,0 +1,533 @@
+/*게시물 클릭시 나오는 전체 화면을 감싸는 div*/
+.postWrapper,
+.postOverlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+/*모달 종료버튼*/
+.postCloseBtn {
+  width: 50px;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  position: absolute;
+}
+
+.postCloseBtn Button {
+  width: 50px;
+  height: 50px;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.postCloseBtn Button > img {
+  width: 20px;
+  height: 20px;
+}
+
+/*게시물 오버레이*/
+.postOverlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+/*게시물 보여주는 모달창 전체를 감싸는 div*/
+.postContent {
+  width: 1200px;
+  height: 700px;
+  border: transparent;
+  border-radius: 12px;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/*게시글에 로드된 이미지들을 감싸는 div*/
+.postContentItems {
+  width: 50%;
+  height: 100%;
+}
+
+/*게시글에 로드된 이미지를 감싸는 div*/
+.postContentItem {
+  width: 100%;
+  height: 100%;
+}
+
+/*게시글 이미지*/
+.postContentImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.postBody {
+  width: 50%;
+  height: 100%;
+}
+
+.postBody-user {
+  width: 100%;
+}
+
+.postBody-userinfo {
+  margin-top: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.postBody-userinfo span {
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+.postBody-userinfo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.postBody-userImg {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+.postBody-userImg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.postUserInfo span {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 50px;
+}
+
+.postBody-text {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.caption {
+  height: 300px;
+  padding: 10px;
+}
+
+.postDate {
+  margin-top: 10px;
+}
+
+.postCommentsList {
+  width: 100%;
+  height: 20%;
+  overflow-y: auto;
+}
+
+.postFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.postFictos {
+  width: 92%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.postBtn img {
+  width: 30px;
+  height: 30px;
+}
+
+.postBtn {
+  border: transparent;
+  background-color: white;
+  cursor: pointer;
+}
+
+.postCount {
+  height: 4%;
+  padding: 10px;
+}
+
+.postComments {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.postEmoji {
+  cursor: pointer;
+}
+
+.postEmoji img {
+  width: 30px;
+  height: 30px;
+}
+
+.postTextarea {
+  width: 80%;
+  height: 20px;
+  margin: 0 14px;
+  border: transparent;
+  font-size: 15px;
+  outline: none;
+  resize: none;
+}
+
+.postCommentBtn button {
+  border: transparent;
+  background-color: white;
+  color: #0095f6;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/*여기서부터는 게시글 누른후 나오는 세부 버튼에 대한 모달창입니다.*/
+
+.detailWrapper,
+.detailOverlay {
+  width: 100vw;
+  height: 100vh;
+  top: -18%;
+  left: -21%;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.detailOverlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+.detailContent {
+  width: 550px;
+  height: 550px;
+  border: transparent;
+  border-radius: 12px;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.detailContentList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentList-item {
+  width: 100%;
+  height: 100%;
+
+  border-top: 1px solid #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.contentList-itemRed {
+  border: transparent;
+  color: Red;
+  font-weight: bold;
+}
+
+/*여기는 게시물에서 세부 버튼 누르고 삭제 버튼 눌렀을때 나오는 모달창입니다.*/
+
+.deletePostWrapper,
+.deletePostOverlay {
+  width: 100vw;
+  height: 100vh;
+  top: -35%;
+  left: -110%;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.deletePostOverlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+.deletePostContent {
+  width: 450px;
+  height: 300px;
+  border: transparent;
+  border-radius: 12px;
+  background-color: white;
+  top: 48%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.deletePostHeader {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: auto;
+}
+
+.deletePostHeader p {
+  font-size: 25px;
+  font-weight: 100;
+  color: black;
+}
+
+.deletePostHeader span {
+  width: 100%;
+  margin-left: 0;
+  font-weight: 100;
+  text-align: center;
+  color: #737373;
+}
+
+.deletePostBody {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.deletePostBody-btn {
+  width: 100%;
+  height: 100%;
+  border: transparent;
+  background-color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.deletePostBody-btnRed {
+  font-weight: bold;
+  color: red;
+  border-top: 1px solid #b6b6b6;
+}
+
+.deletePostBody-btnRadius {
+  border-top: 1px solid #b6b6b6;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/*여기서 부터는 게시물 수정에 관한 모달창 CSS 입니다.*/
+.postEditWrapper,
+.postEditOverlay {
+  width: 100vw;
+  height: 100vh;
+  top: -35%;
+  left: -105%;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  cursor: auto;
+}
+
+.postEditOverlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+/*게시물 수정 모달창 div*/
+.postEditContent {
+  width: 1100px;
+  height: 700px;
+  border: transparent;
+  border-radius: 12px;
+  background-color: white;
+  top: 13%;
+  left: 18%;
+  transform: translate(0%, 0%);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.postEditContent-header {
+  width: 100%;
+  height: 7%;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postEditContent-header button {
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  margin: 0 12px;
+  cursor: pointer;
+}
+
+.postEdit-complete {
+  color: #0095f6;
+}
+
+.postEdit-complete:hover {
+  color: #00376b;
+}
+
+.postEditContent-wrapper {
+  width: 100%;
+  height: 93%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.postImg {
+  width: 50%;
+  height: 100%;
+}
+
+.postImg img {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 12px;
+}
+
+/*수정할 게시물 이미지를 감싸는 div*/
+.postEditContents {
+  width: 50%;
+  height: 100%;
+}
+
+.postEditHeader {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.postEditHeader img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.postEditBody {
+  width: 100%;
+  height: 90%;
+}
+
+.postEditCaption {
+  width: 95%;
+  height: 40%;
+  padding: 12px;
+  /* overflow: hidden; */
+}
+
+.postEditCaption textarea {
+  width: 100%;
+  height: 100%;
+  border: transparent;
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+}
+
+.postEditEmoji {
+  width: 100%;
+  height: 10%;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postEditEmoji img {
+  margin-left: 10px;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.postEditEmoji p {
+  width: 100px;
+}
+
+.postEdit-location {
+  width: 100%;
+  height: 10%;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #b9b9b9;
+}
+.postEdit-location input {
+  width: 80%;
+  margin-left: 5px;
+  padding: 6px;
+  border: transparent;
+  outline: none;
+  font-size: 15px;
+}
+
+.postEdit-location img {
+  width: 12px;
+  height: 15px;
+  margin-right: 15px;
+}
+
+.postEdit-accessed {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postEdit-accessed img {
+  width: 18px;
+  height: 12px;
+  margin-right: 13px;
+  cursor: pointer;
+}

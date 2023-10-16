@@ -7,6 +7,8 @@ import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
 import graySave from "../../assets/Fictogram/Profile/grayCollection.png"
 import Collect from "../../assets/Fictogram/Profile/collect.png"
 import UserSetModal from "./UserSetModal"
+import FollowModal from "./FollowModal"
+import FollowingModal from "./FollowingModal"
 
 function UserProfile() {
   const navigate = useNavigate()
@@ -44,18 +46,12 @@ function UserProfile() {
                   <UserSetModal />
                 </div>
                 <div className="infoDetail2">
-                  <a>
+                  <a href="https://www.google.com">
                     게시물
                     <span>100</span>
                   </a>
-                  <a>
-                    팔로우
-                    <span>200</span>
-                  </a>
-                  <a>
-                    팔로워
-                    <span>200</span>
-                  </a>
+                  <FollowModal />
+                  <FollowingModal />
                 </div>
                 <div className="infoDetail3">
                   <span>안녕하세요 반갑습니다.</span>
