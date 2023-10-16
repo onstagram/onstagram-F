@@ -28,6 +28,12 @@
     justify-content: center;
     align-items: center;
   }
+
+  .DivImg img{
+    width: 110%;
+    height: 110%;
+
+  }
   
   /* Onstagram 쪽의 큰 박스 부분 div(오른쪽) */
   .DivLoginBox{
@@ -112,6 +118,6 @@
   
   /* 가입하기 부분 div 내의 Link 태그의 공통속성 */
   .DivLoginH5Box h5 a:Link, .DivLoginH5Box h5 a:active {
-    color : black;
+    color : rgb(85,205,243);
     text-decoration: none;
   }

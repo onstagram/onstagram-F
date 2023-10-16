@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { loginUser } from '../../api/Users';
 import { setRefreshToken } from '../../storage/Cookie';
 import { SET_TOKEN } from '../../store/Auth';
+import LoginImg from '../../assets/Fictogram/LoginImg/onstagram.png';
 
 
 const DivLogin2 = () => {
@@ -78,7 +79,7 @@ const DivLogin2 = () => {
         <input type="hidden" name="remember" defaultValue="true" />
         <div className="DivLogin2">
         <div className="DivImg">
-            이미지 삽입 예정
+            <img src={LoginImg} />
         </div>
         <div className="DivLoginBox">
             <div className="DivLoginBox2">
