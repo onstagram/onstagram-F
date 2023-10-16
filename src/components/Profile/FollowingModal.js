@@ -2,11 +2,9 @@ import React, { useState } from "react"
 import "./Follow.css"
 
 import XBtn from "../../assets/Fictogram/Etc/XBtn.png"
-import { useNavigate } from "react-router-dom"
 import HashTagFollowing from "./HashTagFollowing"
 
 function FollowingModal() {
-  const navigate = useNavigate()
   const [member, setMember] = useState([
     {
       userId: "sound4519",
