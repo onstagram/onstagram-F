@@ -173,4 +173,4 @@ function PostModal() {
   )
 }
 
-export default PostModal
+export default PostModal;
