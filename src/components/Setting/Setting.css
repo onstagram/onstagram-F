@@ -1,0 +1,430 @@
+/*설정 셋팅 페이지 목록 전체를 감싸는 div */
+.SelectList {
+  width: 23%;
+  height: 100%;
+  background-color: white;
+  overflow: auto;
+}
+
+/*설정 셋팅 페이지 관리페이지 연결부분을 감싸는 div*/
+.SelectList-header {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/*설정 셋팅 페이지 계정센터 연결*/
+.SelectList-headerA {
+  width: 280px;
+  height: 250px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  box-shadow: 0 0 10px #dcdcdc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.SelectList-headerA:hover {
+  background-color: #efefef;
+}
+
+/*계정센터 로고*/
+.SelectList-Logo {
+  width: 90%;
+  height: 10%;
+  margin-left: 12px;
+  display: flex;
+}
+
+/*계정센터 로고 타이틀*/
+.SelectList-Logo span {
+  margin-left: 6px;
+}
+
+/*계정 센터 타이틀과 설명을 감싸는 div*/
+.SelectList-title {
+  width: 90%;
+  height: 30%;
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*계정 센터 타이틀*/
+.SelectTitle {
+  margin-bottom: 4px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/*계정 센터 설명*/
+.SelectTitle-text {
+  color: #b9b9b9;
+  font-size: 12px;
+}
+
+/*계정 센터 기본 설정 내역*/
+.Select-text {
+  margin-left: 12px;
+  padding: 5px;
+  display: flex;
+}
+
+/*계정 센터 기본 설정 내역 안 타이틀*/
+.Select-text span {
+  margin-left: 12px;
+  font-size: 12px;
+  color: #b9b9b9;
+}
+
+/*계정 센터에서 더보기 문구*/
+.SelectPlus {
+  margin-left: 12px;
+  padding: 6px;
+  color: #0095f6;
+  font-size: 12px;
+  font-weight: bold;
+  user-select: none;
+}
+
+/*설정페이지에서 선택할 수 있는 카테고리를 감싸는 div*/
+.SelectList-body {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*프로필 편집 타이틀*/
+.SelectList-body-title {
+  width: 82%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/*설정페이지 설정 기능 */
+.SelectList-item {
+  width: 82%;
+  height: 5%;
+  padding: 7px;
+  margin-top: 5px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/*설정페이지 설정 기능에 갖다 대었을 때*/
+.SelectList-item:hover {
+  background-color: #dcdcdc;
+}
+
+/*설정페이지 설정 기능 타이틀*/
+.SelectList-item span {
+  margin-left: 6px;
+  font-size: 15px;
+}
+
+/*설정페이지 설정 기능 중 머물러 있는 페이지*/
+.SelectList-item-select {
+  background-color: #efefef;
+}
+
+/*기능 중 프로페셔널 계정으로 전환에 추가할 css*/
+.change {
+  font-weight: bold;
+  color: #0095f6;
+  cursor: pointer;
+}
+
+/*기능 중 프로페셔널 계정에만 추가한 CSS*/
+.change:hover {
+  background-color: transparent;
+}
+
+/*여기가 설정페이지 메인 전체를 감싸는 부분*/
+.SelectProfile-edit {
+  width: 77%;
+  height: 100%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*설정 페이지 메인 부분*/
+.ProfileEdit-body {
+  width: 95%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*설정 페이지 메인 부분*/
+.ProfileEdit-bodys {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*프로필 편집 item 부분에 전체적으로 적용하는 마진*/
+.edit-margin {
+  margin: 10px 0;
+}
+
+/*설정 페이지 프로필 편집 타이틀을 감싸는 div*/
+.ProfileEdit-title {
+  width: 95%;
+  height: 10%;
+}
+
+/*설정 페이지 프로필 편집 타이틀*/
+.ProfileEdit-title p {
+  font-size: 25px;
+}
+
+/*설정 페이지 프로필 편집에서 이미지와 아이디를 감싸는 div*/
+.ProfileEdit-imgId {
+  width: 80%;
+  height: 10%;
+  display: flex;
+}
+
+/*설정 페이지 프로필 편집 이미지*/
+.ProfileEdit-imgId img {
+  width: 50px;
+  height: 50px;
+}
+
+/*설정 페이지 프로필 편집에서 아이디와 버튼을 감싸는 div*/
+.ProfileEdit-info {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*설정 페이지 프로필 편집 아이디*/
+.ProfileEdit-info span {
+  margin-left: 5px;
+}
+
+/*설정 페이지 프로필 이미지 편집 버튼*/
+.ProfileEdit-info button {
+  border: transparent;
+  background-color: white;
+  color: #0095f6;
+  font-size: 16px;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+}
+
+/*웹사이트 섹션*/
+.ProfileEdit-web {
+  width: 85%;
+  height: 17%;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+}
+
+/*웹 사이트 타이틀을 감싸는 div*/
+.web-title {
+  height: 100%;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+/*웹 사이트 내용을 감싸는 div*/
+.web-detail {
+  margin-left: 27px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*웹 사이트 input*/
+.web-detail input {
+  width: 50%;
+  padding: 8px;
+}
+
+/*웹 사이트 input에 갖다 대었을 때*/
+.web-detail input:hover {
+  cursor: no-drop;
+}
+
+/*웹 사이트 소개글*/
+.web-detail p {
+  width: 55%;
+  font-size: 12px;
+}
+
+/*자기소개 감싸는 div*/
+.ProfileEdit-intro {
+  width: 78%;
+  display: flex;
+  flex-direction: row;
+}
+
+/*자기소개 타이틀*/
+.intro-title {
+  font-weight: bold;
+}
+
+/*자기소개 작성란을 감싸는 div*/
+.intro-detail {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*자기소개 작성란*/
+.intro-detail textarea {
+  width: 330px;
+  height: 100px;
+  resize: none;
+  margin-bottom: 5px;
+}
+
+/*자기소개 작성 글자수*/
+.intro-detail span {
+  color: #b9b9b9;
+}
+
+/*성별을 감싸는 div*/
+.ProfileEdit-two {
+  width: 78%;
+  display: flex;
+  flex-direction: row;
+}
+
+.two-title {
+  font-weight: bold;
+}
+
+/*성별 input을 감싸는 div*/
+.two-detail {
+  width: 50%;
+  margin-left: 30px;
+}
+
+/*성별 input*/
+.two-detail input {
+  width: 83%;
+  padding: 6px;
+}
+
+/*프로필에 추천표시 전체를 감싸는 div*/
+.ProfileEdit-recommend {
+  width: 85%;
+  height: 15%;
+  display: flex;
+}
+
+/*프로필에 추천표시 타이틀*/
+.recommend-title {
+  width: 8%;
+  font-weight: bold;
+}
+
+/*프로필에 추천표시 input과 내용을 감싸는 div*/
+.recommend-detail {
+  width: 40%;
+  margin-left: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+/*프로필에 추천표시 선택 체크박스*/
+.recommend-detail input {
+  height: 60%;
+}
+
+/*프로필에 추천표시 설명글*/
+.recommend-detail span {
+  width: 100%;
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+/*프로필 제출 버튼을 감싸는 div*/
+.edit-submit {
+  width: 65%;
+}
+
+/*프로필 제출 버튼*/
+.edit-submit button {
+  width: 60px;
+  padding: 6px;
+  border: transparent;
+  border-radius: 6px;
+  background-color: #0095f6;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  user-select: none;
+  cursor: pointer;
+}
+
+/*프로필 제출 버튼에 갖다 대었을 때*/
+.edit-submit button:hover {
+  background-color: #1877f2;
+}
+
+/*설정 페이지 메인 footer*/
+.ProfileEdit-footer {
+  width: 95%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*footer 리스트 첫번째 div*/
+.footer-List {
+  height: 30%;
+}
+
+/*footer 리스트 항목 타이틀*/
+.footer-List span {
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/*footer 아래 리스트항목을 감싸는 div*/
+.footer-List2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+/*footer 아래 리스트 회사*/
+.footer-List2 span {
+  font-size: 13px;
+}
+
+/*footer 아래 리스트 언어 선택*/
+.language {
+  width: 70px;
+  height: 15px;
+  margin-right: 20px;
+  border: transparent;
+  outline: none;
+}

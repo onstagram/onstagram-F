@@ -1,0 +1,80 @@
+/*언어 설정 페이지를 감싸는 div*/
+.LanguageWrapper {
+  width: 77%;
+  height: 100%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*언어설정 내역을 감싸는 div*/
+.LanguageContent {
+  width: 90%;
+  height: 70%;
+  margin-top: auto;
+  border: 1px solid black;
+}
+
+/*언어 기본 설정 타이틀을 감싸는 div*/
+.LanguageHeader {
+  border: 1px solid black;
+}
+
+/*언어 기본 설정 타이틀*/
+.LanguageHeader span {
+  font-size: 25px;
+  border: 1px solid black;
+}
+
+/**/
+.LanguageBody {
+  margin-top: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.LanguageBody span {
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.LanguageBody p {
+  color: #737373;
+  border: 1px solid black;
+}
+.LanguageBody input {
+  width: 98%;
+  padding: 8px;
+  border: transparent;
+  border-radius: 4px;
+  background-color: #efefef;
+  outline: none;
+}
+
+.LanguageList {
+  width: 100%;
+  max-height: 500px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.LanguageItem {
+  width: 98%;
+  /* max-height: 30px; */
+  padding: 6px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.LanguageItem span {
+  font-size: 20px;
+}
