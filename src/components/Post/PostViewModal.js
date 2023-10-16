@@ -43,6 +43,7 @@ function PostViewModal(props) {
 
   const showPost = () => {
     setShowModal(!showModal)
+    console.log("임시", setLike, setPostImg, postImg)
   }
 
   return (

@@ -2,11 +2,9 @@ import React, { useState } from "react"
 import "./Follow.css"
 
 import XBtn from "../../assets/Fictogram/Etc/XBtn.png"
-import { useNavigate } from "react-router-dom"
 import HashTagFollowing from "./HashTagFollowing"
 
 function FollowingModal() {
-  const navigate = useNavigate()
   const [member, setMember] = useState([
     {
       userId: "sound4519",
@@ -50,10 +48,7 @@ function FollowingModal() {
 
   const followingDelete = () => {
     alert("팔로잉이 취소되었습니다. (구현중인 기능)")
-  }
-
-  const goToHashTag = () => {
-    navigate("/user/hashTag_following")
+    console.log("임시", follow, setFollow, setMember)
   }
 
   return (
@@ -86,7 +81,7 @@ function FollowingModal() {
 
                 {member.map((item) => (
                   <div className="followSearchResult">
-                    <div className="result">
+                    <div className="followingResult">
                       <div className="resultUser">
                         <div className="resultUserInfo">
                           <img src={item.profileImg} alt="팔로우 유저 이미지" />
