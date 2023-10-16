@@ -43,9 +43,10 @@ function HashTagFollowing(props) {
                   <span>해시태그</span>
                 </div>
               </div>
-              <div className="followBody">
-                <div className="followSearch">
-                  <input type="text" placeholder="검색" />
+              <div className="HashfollowBody">
+                <div>
+                  <h2>팔로우 하는 해시태그</h2>
+                  <p>해시태그를 팔로우하면 여기에 표시됩니다.</p>
                 </div>
               </div>
             </div>

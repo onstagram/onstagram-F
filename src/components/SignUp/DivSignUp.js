@@ -43,7 +43,7 @@ const DivSignUp = () => {
       try {
         await axiosIns
           .post(
-            `/signup`,
+            "/signup",
             {
               email: email,
               password: password,

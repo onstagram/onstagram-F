@@ -68,15 +68,19 @@
 .followHuman {
   width: 275px;
   height: 50px;
-  border: 1px solid black;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .followTag {
   width: 275px;
   height: 50px;
-  border: 1px solid black;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .followBody {
@@ -84,10 +88,22 @@
   height: 80%;
 }
 
+.HashfollowBody {
+  height: 79%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.HashfollowBody h2 {
+  text-align: center;
+}
+
 .followSearch {
   width: 100%;
   height: 10%;
-  margin-top: 10px;
+  margin: 10px auto;
   display: flex;
   justify-content: center;
 }
@@ -112,9 +128,15 @@
   flex-direction: row;
 }
 
+.followingResult {
+  width: 100%;
+  height: 83%;
+  overflow-y: auto;
+}
+
 .result {
   width: 100%;
-  height: 97%;
+  height: 93%;
   margin-top: 10px;
   border-bottom-right-radius: 12px;
   overflow-y: auto;
@@ -199,10 +221,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
 }
 
 .HashTagHeader-title {
+  margin-left: 20px;
   font-size: 20px;
 }
 

@@ -81,7 +81,7 @@ function FollowingModal() {
 
                 {member.map((item) => (
                   <div className="followSearchResult">
-                    <div className="result">
+                    <div className="followingResult">
                       <div className="resultUser">
                         <div className="resultUserInfo">
                           <img src={item.profileImg} alt="팔로우 유저 이미지" />
