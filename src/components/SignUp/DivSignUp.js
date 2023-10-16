@@ -88,7 +88,7 @@ const DivSignUp = () => {
           alert("모든 값을 입력해야 합니다")
         }
       }
-    },
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
     [email, password, passwordCheck, userName, userPhone]
   )
 
@@ -181,12 +181,13 @@ const DivSignUp = () => {
         alert("중복되지 않은 이메일입니다")
         setIsDup(false)
       }
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email])
 
   //로그인 페이지로 이동
   const handleLogin = () => {
     navigator("/login")
+    console.log(isPassword, isPasswordCheck, isUserName, isUserPhone, isDup)
   }
 
   return (

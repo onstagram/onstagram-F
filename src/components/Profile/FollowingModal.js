@@ -50,10 +50,7 @@ function FollowingModal() {
 
   const followingDelete = () => {
     alert("팔로잉이 취소되었습니다. (구현중인 기능)")
-  }
-
-  const goToHashTag = () => {
-    navigate("/user/hashTag_following")
+    console.log("임시", follow, setFollow, setMember)
   }
 
   return (

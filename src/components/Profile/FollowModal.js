@@ -30,6 +30,7 @@ function FollowModal() {
 
   const followDelete = () => {
     alert("삭제되었습니다.")
+    console.log("임시", follow, setFollow, setMember)
   }
 
   return (
