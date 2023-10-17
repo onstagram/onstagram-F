@@ -35,6 +35,9 @@ function MainNav() {
     navigate('/message')
   }
 
+  const goToAlarm = () => {
+    navigate('/alarm')
+  }
   return (
     <div className="nav">
       <div className="navLogo" onClick={goToHome}>
@@ -61,7 +64,7 @@ function MainNav() {
           <img src={Message} />
           <p>메세지</p>
         </div>
-        <div className="menu-item">
+        <div className="menu-item" onClick={goToAlarm}>
           <img src={Alram} />
           <p>알람</p>
         </div>

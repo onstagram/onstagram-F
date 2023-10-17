@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axiosIns from '../../api/api'
 import './SignUp.css'
 
-const DivSignUp = () => { 
-    const dispatch=useDispatch();
+const DivSignUp = () => {  
+    const dispatch = useDispatch();
     const navigator = useNavigate();
 
     //이메일, 비밀번호, 비밀번호 확인, 닉네임, 전화번호
@@ -14,6 +14,7 @@ const DivSignUp = () => {
     const [passwordCheck, setPasswordCheck] = useState('')
     const [userName, setUserName] = useState('')
     const [userPhone, setUserPhone] = useState('')
+
     // let email=useSelector(state=>state.email);
     // let password=useSelector(state=>state.password);
     // let passwordCheck=useSelector(state=>state.passwordCheck);
@@ -62,15 +63,12 @@ const DivSignUp = () => {
                   navigator('/login')
                  }
                 })
+              
           } catch (err) {
                 console.error(err)
                 const isValidInput = email.length>=1&&password.length>=1&&passwordCheck.length>=1&&userName.length>=1&&userPhone.length>=1;
                 if(!isValidInput){
                   alert('모든 값을 입력해야 합니다')
-                }else{
-                  if(isDup===true){
-                    alert('이메일 중복검사를 해야 합니다')
-                  }
                 }
           }
          },[email, password, passwordCheck, userName, userPhone])
@@ -150,7 +148,7 @@ const DivSignUp = () => {
       }, [])
 
       //이메일 중복검사
-      const handleDup = useCallback((res) => { 
+      const handleDup = useCallback(() => { 
         const isValidDupInput = email.length>=1;
         if(isValidDupInput<1){
           alert('이메일을 입력해야 합니다')
