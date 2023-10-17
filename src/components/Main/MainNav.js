@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Main.css'
 import { useNavigate } from 'react-router-dom'
-
+import SearchModal from '../Search/SearchModal'
 import Home from '../../assets/Fictogram/Nav/home.png'
-import Search from '../../assets/Fictogram/Nav/search.png'
 import Compass from '../../assets/Fictogram/Nav/compass.png'
 import Reels from '../../assets/Fictogram/Nav/reels.png'
 import Message from '../../assets/Fictogram/Nav/message.png'
-import Alram from '../../assets/Fictogram/Nav/heart.png'
 import ProfileImg from '../../assets/Fictogram/Nav/profile.png'
 import Menu from '../../assets/Fictogram/Nav/menu.png'
 import SelectModal from '../Post/PostModal'
+import Alarm from '../Alarm/Alarm'
 
 function MainNav() {
   const navigate = useNavigate()
@@ -35,9 +34,6 @@ function MainNav() {
     navigate('/message')
   }
 
-  const goToAlarm = () => {
-    navigate('/alarm')
-  }
   return (
     <div className="nav">
       <div className="navLogo" onClick={goToHome}>
@@ -49,8 +45,7 @@ function MainNav() {
           <p>홈</p>
         </div>
         <div className="menu-item">
-          <img src={Search} />
-          <p>검색</p>
+          <SearchModal />
         </div>
         <div className="menu-item" onClick={goToQuest}>
           <img src={Compass} />
@@ -64,9 +59,8 @@ function MainNav() {
           <img src={Message} />
           <p>메세지</p>
         </div>
-        <div className="menu-item" onClick={goToAlarm}>
-          <img src={Alram} />
-          <p>알람</p>
+        <div className="menu-item">
+          <Alarm />
         </div>
         <div className="menu-item">
           <SelectModal />

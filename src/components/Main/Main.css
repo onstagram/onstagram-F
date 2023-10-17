@@ -123,5 +123,19 @@
   border-bottom: 1px solid #efefef;
 }
 
-/*여기서 부터는 게시물이 나오는 메인화면 부분입니다.*/
 
+/*알림모달창을 감싸는 div*/
+.alarm-content{
+  width: 485px;
+  height: 100%;
+  border: 1px solid #efefef;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 2px 2px 10px #efefef;
+  background-color: white;
+  position: absolute;
+  top: -0.2%;
+  left: 5.1%;
+  transform: translate(0, 0);
+  z-index: auto;
+}

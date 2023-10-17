@@ -9,15 +9,18 @@
 
 /*채팅중인 유저리스트를 띄워주는 div*/
 .alarmList {
-  width: 44%;
+  width: 485px;
   height: 100%;
   border: 1px solid #efefef;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
   box-shadow: 2px 2px 10px #efefef;
   background-color: white;
-  top: 0;
-  left: -44.5%;
+  top: 6.5%;
+  left: -44.6%;
   transform: translate(0, 0);
   position: absolute;
+  z-index: auto;
 }
 
 /*채팅리스트 헤더부분*/
@@ -95,13 +98,6 @@
   background-color: #efefef;
 }
 
-.alarmUserInfo-ing {
-  padding: 8px;
-  background-color: #efefef;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
 
 /*채팅중인 사람의 프로필 이미지*/
 .alarmUserImg img {
@@ -185,22 +181,20 @@
   background-color: #1877f2;
 }
 
-.alarmDiv, .alarmDiv2{
+.alarmDiv{
   height: 89%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   user-select: none;
-}
-.alarmDiv{  
   overflow-y: scroll;
 }
+
 
 .alarmDivSub{
   border-bottom: 1px solid rgb(151,151,151);
 }
-
 
 .alarmUserInfo2{
   padding: 8px;
@@ -208,6 +202,14 @@
   flex-direction: column;
   align-items: center;  
   padding-top:50%;
+}
+
+.alarmBtnFollow{
+  padding-right:15px;
+}
+
+.alarmNoneImg{
+  padding: 0px 0px 7px 17px  ;
 }
 
 /*알림중인 사람의 프로필 이미지*/
@@ -229,7 +231,15 @@
 }
 
 /*알림 중인 사람의 정보가 담김*/
-.alarmInfo,.alarmText1,.alarmText2 {
+.alarmInfo2,.alarmText1,.alarmText2 {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.alarmInfo2{
   margin-left: 20px;
   display: flex;
   flex-direction: column;
@@ -242,4 +252,16 @@
   text-align: center;
   font-weight: bold;
   color: rgb(114,114,114);
+}
+
+.navAlarmDiv{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navAlarmDiv img{
+  width: 12%;
+  height: 100%;
+  margin: 0 15px 0 15px;
 }

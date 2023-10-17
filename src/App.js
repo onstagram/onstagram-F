@@ -12,7 +12,6 @@ import SignPage from "./pages/SignPage"
 import SaveStory from "./components/Profile/SaveStoryPage"
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
-import AlarmPage from './pages/AlarmPage';
 
 function App() {
   return (
@@ -26,14 +25,10 @@ function App() {
         <Route path="/profile/saved" element={<ProfileSavedPage />} />
         <Route path="/profile/tagged" element={<ProfileTaggedPage />} />
         <Route path="/profile/savestory" element={<SaveStory />} />
+        <Route path="/message" element={<MessagePage />} />
         </Route>
-        
         <Route path="/login" element={<PublicRoute><LoginPage /></ PublicRoute>} />
         <Route path="/signup" element={<PublicRoute><SignPage /></ PublicRoute>} />
-        
-        
-        <Route path="/message" element={<PublicRoute><MessagePage /></PublicRoute>} />
-        <Route path="/alarm" element={<PublicRoute><AlarmPage /></PublicRoute>} />
       </Routes>
     </BrowserRouter>
   )

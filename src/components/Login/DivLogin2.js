@@ -15,7 +15,6 @@ const DivLogin2 = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
     const { register, setValue, handleSubmit } = useForm();
 
     const onValid = async ({ email, password }) => {
@@ -79,7 +78,7 @@ const DivLogin2 = () => {
         <input type="hidden" name="remember" defaultValue="true" />
         <div className="DivLogin2">
         <div className="DivImg">
-            <img src={LoginImg} />
+            <img src={LoginImg} alt="로그인 페이지 이미지"/>
         </div>
         <div className="DivLoginBox">
             <div className="DivLoginBox2">

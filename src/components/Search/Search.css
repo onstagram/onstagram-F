@@ -150,3 +150,17 @@
   width: 15px;
   height: 15px;
 }
+
+.search-btn-modal{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin: 8px 0px 8px 0px;
+}
+
+.search-btn-modal img{
+  width: 12%;
+  height: 100%;
+  margin: 0px 15px 0px 15px;
+}
