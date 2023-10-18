@@ -170,7 +170,7 @@
   padding: 10px;
   border: transparent;
   border-radius: 8px;
-  background-color: #0095f6;
+  background-color: rgb(76,181,249);
   font-size: 15px;
   font-weight: bold;
   color: white;
@@ -179,7 +179,7 @@
 
 /*채팅 비어있을 때 메인내역 버튼 hover*/
 .chattingMain-btn:hover {
-  background-color: #1877f2;
+  background-color: rgb(76,181,249);
 }
 
 /*여기서 부터는 채팅 메시지 보낼 유저 찾는 모달 관련 CSS */
@@ -360,7 +360,7 @@
   margin: auto;
   border: transparent;
   border-radius: 10px;
-  background-color: #0095f6;
+  background-color: rgb(76,181,249);
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -368,7 +368,7 @@
 
 /*채팅방 만드는 버튼에 갖다 대었을 때*/
 .chatModal-btn button:hover {
-  background-color: #1877f2;
+  background-color: rgb(76,181,249);
 }
 
 /*여기서부터는 MessageModal에서 일부만 바뀌는 Modal2의 부분*/

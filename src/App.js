@@ -7,41 +7,33 @@ import ReelsPage from "./pages/ReelsPage"
 import MessagePage from "./pages/MessagePage"
 import ProfileSavedPage from "./pages/ProfileSavedPage"
 import ProfileTaggedPage from "./pages/ProfileTaggedPage"
-import SaveStoryPage from "./components/Profile/SaveStoryPage"
+import LogoutPage from "./pages/LogoutPage"
 import LoginPage from "./pages/LoginPage"
 import SignPage from "./pages/SignPage"
-import ChattingPage from "./pages/ChattingPage"
-import UserPage from "./pages/UserPage"
-import UserSavedPage from "./pages/UserSavedPage"
-import SettingPage from "./pages/Setting/SettingPage"
-import LanguagePage from "./pages/Setting/LanguagePage"
-import AppWebPage from "./pages/Setting/AppWebPage"
-import Write from "./components/Profile/Write"
+import SaveStory from "./components/Profile/SaveStoryPage"
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<PrivateRoute />}>
         <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignPage />} />
         <Route path="/profile" element={<ProFilePage />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/user/saved" element={<UserSavedPage />} />
         <Route path="/quest" element={<QuestPage />} />
         <Route path="/reels" element={<ReelsPage />} />
-        <Route path="/message" element={<MessagePage />} />
-        <Route path="/message/chat" element={<ChattingPage />} />
         <Route path="/profile/saved" element={<ProfileSavedPage />} />
         <Route path="/profile/tagged" element={<ProfileTaggedPage />} />
-        <Route path="/profile/savestory" element={<SaveStoryPage />} />
-        <Route path="/setting/edit" element={<SettingPage />} />
-        <Route path="/setting/language" element={<LanguagePage />} />
-        <Route path="/setting/appweb" element={<AppWebPage />} />
-        <Route path="/write" element={<Write />} />
+        <Route path="/profile/savestory" element={<SaveStory />} />
+        <Route path="/message" element={<MessagePage />} />
+        <Route path="/logout" element={<LogoutPage />} />
+        </Route>
+        <Route path="/login" element={<PublicRoute><LoginPage /></ PublicRoute>} />
+        <Route path="/signup" element={<PublicRoute><SignPage /></ PublicRoute>} />
       </Routes>
     </BrowserRouter>
   )
 }
 
-export default App
+export default App;

@@ -1,15 +1,15 @@
 import React from 'react'
-import DivLogin2 from '../components/Profile/Login/DivLogin2'
+import DivLogout2 from '../components/Profile/Login/DivLogout2.js'
 import DivFooter from '../components/Footer/DivFooter'
 import '../components/Profile/Login/Login.css'
 
-function Login() {
+function Logout() {
   return (
   <div>
-        <DivLogin2 />
+        <DivLogout2 />
         <DivFooter />
   </div>
 )}
 
-export default Login
+export default Logout
     
