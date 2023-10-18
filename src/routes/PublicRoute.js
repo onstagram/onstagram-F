@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import { CheckToken } from '../auth/CheckTokenl';
-import LoadingModal from '../components/Login/LoadingModal';
+import LoadingModal from '../components/Profile/Login/LoadingModal';
 
 
 export default function PublicRoute({ children }) {

@@ -1,45 +1,26 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import axiosIns from '../../api/api';
+import axiosIns from '../../../api/api';
 import './Login.css';
 import { useForm } from 'react-hook-form';
-import { loginUser } from '../../api/Users';
-import { setRefreshToken } from '../../storage/Cookie';
-import { SET_TOKEN } from '../../store/Auth';
-import LoginImg from '../../assets/Fictogram/LoginImg/onstagram.png';
+import { loginUser } from '../../../api/Users';
+import { setRefreshToken } from '../../../storage/Cookie';
+import { SET_TOKEN } from '../../../store/Auth';
+import LoginImg from '../../../assets/Fictogram/LoginImg/onstagram.png';
 
 
-const DivLogin2 = () => {
-    const dispatch = useDispatch();
+ const DivLogin2 = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
     const { register, setValue, handleSubmit } = useForm();
 
-    const onValid = async ({ email, password }) => {
-        const response = await loginUser({ email, password });
-
-        if (response.status) {
-            // 쿠키에 Refresh Token, store에 Access Token 저장
-            setRefreshToken(response.json.refresh_token);
-            dispatch(SET_TOKEN(response.json.access_token));
-
-            return navigate("/");
-        } else {
-            console.log(response.json);
-        }
-        // input 태그 값 비워주는 코드
-        setValue("password", "");
-    };
-        
-    //로그인 버튼 클릭 이벤트
-    const onSubmit = useCallback(
-        async (e) => { 
-      e.preventDefault();
-      try {
-        await axiosIns.post(`/login`, {
+    const onValid = async ({email, password }) => {
+        try {
+            const response = await loginUser({ email, password });
+            await axiosIns.post(`/login`, {
             email: email,
             password: password},
              {
@@ -47,17 +28,23 @@ const DivLogin2 = () => {
                     'Content-Type':'application/json;charset=UTF-8',
                 }
              })
-        .then((res) => {
-            console.log('res:', res)
-            if (res.status === 200) {
-              console.log(email, password); 
-              dispatch({type:'LOGIN', payload:{email:{email}, password:{password}}});
-             }
-          })
-      } catch (err) {
-            console.error(err)
-      }
-     },[email, password])
+             .then((response) => {
+                console.log('response:', response)
+                if (response.status) {
+                    // 쿠키에 Refresh Token, store에 Access Token 저장
+                    setRefreshToken(response.json.refresh_token);
+                    dispatch(SET_TOKEN(response.json.access_token,{type:'LOGIN', payload:{email:{email}, password:{password}}}));
+
+                    return navigate("/");
+                } else {
+                    console.log(response.json);
+                }
+                // input 태그 값 비워주는 코드
+                setValue("password", "");
+            })
+         } catch (err) {
+                console.error(err)
+        }}
 
      // 이메일 
     const onChangeEmail = useCallback((e) => {
@@ -75,11 +62,11 @@ const DivLogin2 = () => {
     
     return (
         <div> 
-        <form onSubmit={handleSubmit(onValid)|onSubmit}>
+        <form onSubmit={handleSubmit(onValid)}>
         <input type="hidden" name="remember" defaultValue="true" />
         <div className="DivLogin2">
         <div className="DivImg">
-            <img src={LoginImg} />
+            <img src={LoginImg} alt="로그인 페이지 이미지"/>
         </div>
         <div className="DivLoginBox">
             <div className="DivLoginBox2">

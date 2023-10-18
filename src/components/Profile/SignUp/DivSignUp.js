@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import axiosIns from '../../api/api'
+import axiosIns from '../../../api/api'
 import './SignUp.css'
 
 const DivSignUp = () => {  

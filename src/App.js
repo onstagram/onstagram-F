@@ -18,7 +18,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoute />}>
-        <Route path="/" element={<MainPage />} />
         <Route path="/profile" element={<ProFilePage />} />
         <Route path="/quest" element={<QuestPage />} />
         <Route path="/reels" element={<ReelsPage />} />
@@ -27,6 +26,7 @@ function App() {
         <Route path="/profile/savestory" element={<SaveStory />} />
         <Route path="/message" element={<MessagePage />} />
         </Route>
+        <Route path="/" element={<PublicRoute><MainPage /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><LoginPage /></ PublicRoute>} />
         <Route path="/signup" element={<PublicRoute><SignPage /></ PublicRoute>} />
       </Routes>

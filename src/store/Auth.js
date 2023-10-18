@@ -40,6 +40,6 @@ export const tokenSlice = createSlice({
   }
 })
 
-export const { SIGNUP, LOGIN, SET_TOKEN, DELETE_TOKEN } = tokenSlice.actions;
+export const { SET_TOKEN, DELETE_TOKEN } = tokenSlice.actions;
 
 export default tokenSlice.reducer;

@@ -1,6 +1,7 @@
 import React from 'react'
-import DivLogin2 from '../components/Login/DivLogin2'
-import DivFooter from '../components/Login/DivFooter'
+import DivLogin2 from '../components/Profile/Login/DivLogin2'
+import DivFooter from '../components/Footer/DivFooter'
+import '../components/Profile/Login/Login.css'
 
 function Login() {
   return (
