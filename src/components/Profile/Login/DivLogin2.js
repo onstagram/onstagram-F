@@ -4,9 +4,6 @@ import { useDispatch } from 'react-redux';
 import axiosIns from '../../../api/api';
 import './Login.css';
 import { useForm } from 'react-hook-form';
-import { loginUser } from '../../../api/Users';
-import { setRefreshToken } from '../../../storage/Cookie';
-import { SET_TOKEN } from '../../../store/Auth';
 import LoginImg from '../../../assets/Fictogram/LoginImg/onstagram.png';
 
 
@@ -19,8 +16,7 @@ import LoginImg from '../../../assets/Fictogram/LoginImg/onstagram.png';
 
     const onValid = async ({email, password }) => {
         try {
-            const response = await loginUser({ email, password });
-            await axiosIns.post(`/login`, {
+            await axiosIns.post(`/Login`, {
             email: email,
             password: password},
              {
@@ -31,9 +27,11 @@ import LoginImg from '../../../assets/Fictogram/LoginImg/onstagram.png';
              .then((response) => {
                 console.log('response:', response)
                 if (response.status) {
-                    // 쿠키에 Refresh Token, store에 Access Token 저장
-                    setRefreshToken(response.json.refresh_token);
-                    dispatch(SET_TOKEN(response.json.access_token,{type:'LOGIN', payload:{email:{email}, password:{password}}}));
+                    const token = response.data;
+                    localStorage.setItem('TOKEN', token);
+                    
+                    dispatch({type:'TOKEN', payload:{token:{token}}});
+                    dispatch({type:'LOGIN', payload:{email:{email}, password:{password}}});
 
                     return navigate("/");
                 } else {

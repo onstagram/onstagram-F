@@ -45,11 +45,11 @@ const DivSignUp = () => {
           e.preventDefault();
           try {
             await axiosIns.post(`/signup`, {
-                email: email,
-                password: password,
-                passwordCheck: passwordCheck,
-                userName: userName,
-                userPhone: userPhone},
+                  email: email,
+                  password: password,
+                  passwordCheck: passwordCheck,
+                  userName: userName,
+                  userPhone: userPhone},
                 {
                   headers:{
                     'Content-Type':'application/json;charset=UTF-8',

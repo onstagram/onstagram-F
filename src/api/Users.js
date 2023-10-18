@@ -89,7 +89,7 @@ export const requestToken = async (refreshToken) => {
         body: JSON.stringify({ refresh_token: refreshToken })
     }
 
-    const data = await getPromise('/user/login', option).catch(() => {
+    const data = await getPromise('/login', option).catch(() => {
         return statusError;
     });
 

@@ -11,9 +11,8 @@ export const tokenSlice = createSlice({
       userName: '',
       userPhone: '',
 
-      authenticated: false,
-      accessToken: null,
-      expireTime: null
+      authenticated:false,
+      token:null,
   },
   reducers: {
       SIGNUP: (state, action)=>{
@@ -27,19 +26,17 @@ export const tokenSlice = createSlice({
         state.email=action.payload.email;
         state.password=action.payload.password;
       },
-      SET_TOKEN: (state, action) => {
+      TOKEN: (state, action) => {
           state.authenticated = true;
-          state.accessToken = action.payload;
-          state.expireTime = new Date().getTime() + TOKEN_TIME_OUT;
+          state.token = action.payload.token;
       },
       DELETE_TOKEN: (state) => {
           state.authenticated = false;
           state.accessToken = null;
-          state.expireTime = null;
       },
   }
 })
 
-export const { SET_TOKEN, DELETE_TOKEN } = tokenSlice.actions;
+export const { TOKEN, DELETE_TOKEN } = tokenSlice.actions;
 
 export default tokenSlice.reducer;
