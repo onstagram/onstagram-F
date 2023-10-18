@@ -151,7 +151,7 @@
 /*작성 모달창 이미지를 감싸는 div*/
 .img-wrapper {
   width: 450px;
-  height: 450px;
+  height: 459px;
   border-right: 1px solid #b9b9b9;
 }
 
@@ -159,7 +159,9 @@
 .img-wrapper img {
   width: 100%;
   height: 100%;
+  border-bottom-left-radius: 6px;
   margin: auto;
+  object-fit: cover;
 }
 
 /*작성 모달창 세부내용*/
@@ -189,7 +191,9 @@
 
 /*유저 이미지*/
 .post-info img {
-  width: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 /*게시물 내용이 담기는 부분*/
@@ -319,26 +323,34 @@
 /*여기서 부터는 게시물 클릭시 나오는 모달창 관련 CSS*/
 
 .showPosts {
-  width: 960px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* border: 1px solid black; */
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  /* grid-template-columns: repeat(1, 1fr); */
 }
 
 .showPostImgs {
-  width: 85%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  width: 1020px;
+  /* height: 900px; */
+  display: grid;
+  overflow-y: auto;
+}
+
+.showPostImgsItem {
+  padding: 10px;
+}
+
+.showPostImgsItems {
+  width: 1000px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
 }
 
 .showPostImg {
-  width: 230px;
-  height: 230px;
+  width: 300px;
+  height: 300px;
   background-color: #efefef;
 }
 
@@ -361,8 +373,8 @@
 
 /*게시물 보여주는 모달창 전체를 감싸는 div*/
 .postContent {
-  width: 1200px;
-  height: 700px;
+  width: 1210px;
+  height: 730px;
   border: transparent;
   border-radius: 12px;
   background-color: white;
@@ -419,7 +431,7 @@
   margin-right: auto;
 }
 
-.postBody-userinfo img {
+.postBody-userinfoImg {
   width: 30px;
   height: 30px;
   margin-right: 10px;
@@ -455,16 +467,53 @@
 }
 
 .postDate {
+  margin-left: 10px;
   margin-top: 10px;
 }
 
+/*게시물 댓글 리스트를 감싸는 div*/
 .postCommentsList {
   width: 100%;
   height: 20%;
   overflow-y: auto;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.postComments {
+  width: 98%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.postComment span {
+  margin-left: 15px;
+}
+
+.postComments img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.postComments button > img {
+  width: 30px;
+  height: 30px;
+}
+
+.postComment {
+  width: 96%;
+  margin: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .postFooter {
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -494,7 +543,7 @@
   padding: 10px;
 }
 
-.postComments {
+.postCommentInputs {
   display: flex;
   flex-direction: row;
   justify-content: center;

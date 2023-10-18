@@ -1,7 +1,7 @@
 /*프로필 메인을 감싸는 div*/
 .profileWrapper {
   width: 900px;
-  height: 800px;
+  height: 850px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -123,12 +123,14 @@
 
 /*게시물이 보이는 아랫부분을 담당하는 div*/
 .profilePosts {
-  width: 100%;
+  width: 1100px;
   height: 100%;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 }
 
 /*게시물, 저장됨, 태그됨 섹션을 이동하는 버튼을 감싸는 div*/
@@ -195,6 +197,8 @@
 /*저장됨 화면 부분*/
 
 .profilePostSaved {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
