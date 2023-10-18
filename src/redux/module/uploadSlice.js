@@ -9,8 +9,8 @@ export const __getPostThunk = createAsyncThunk(
       // const { userId } = payload
       const { data } = await axios(`posts`)
       return thunkAPI.fulfillWithValue(data)
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.code)
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.code)
     }
   }
 )
@@ -19,7 +19,13 @@ export const __addPostThunk = createAsyncThunk(
   "ADD_POST",
   async (payload, thunkAPI) => {
     try {
-      await axiosIns.post("/upload", payload, {
+      // const data = await axiosIns.post("/post/register", payload.newPost, {
+      //   headers: {
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // })
+
+      await axiosIns.post("/post/register", payload, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -11,19 +11,22 @@ import Arrow from "../../assets/Fictogram/Post/arrow.png"
 import Profile from "../../assets/Fictogram/Nav/profile.png"
 import { useDispatch } from "react-redux"
 import { __addPostThunk } from "../../redux/module/uploadSlice"
+import { __postsMain } from "../../redux/module/postsSlice"
 
 function PostModal() {
   const dispatch = useDispatch()
   const imgRef = useRef()
 
-  const [inputCount, setInputCount] = useState(0)
+  const [inputCount, setInputCount] = useState(`0`)
 
   const today = new Date()
   const formattedDate = `${today.getFullYear()}년 ${
     today.getMonth() + 1
   }월 ${today.getDate()}일`
 
+  const [fileName, setFileName] = useState()
   const [caption, setCaption] = useState()
+  const [imageSrc, setImageSrc] = useState()
   const [postImg, setPostImg] = useState()
   const [modal, setModal] = useState(false)
   const [nextModal, setNextModal] = useState()
@@ -31,19 +34,43 @@ function PostModal() {
     {
       postId: "1",
       userId: "sound4519",
-      userImg:
+      postImg:
         "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
       caption: "안녕하세요",
       postDate: formattedDate,
     },
   ])
 
+  // const SaveImgFile = () => {
+  //   const file = imgRef.current.files[0]
+  //   if (file) {
+  //     const formData = new FormData()
+  //     formData.append("image", file)
+
+  //     fetch("/post/register", {
+  //       method: "POST",
+  //       body: formData,
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         setPostImg(data.imageUrl)
+  //         setModal(!modal)
+  //         setNextModal(!nextModal)
+  //         setInputCount(!inputCount)
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error uploading image", error)
+  //       })
+  //   }
+  // }
   const SaveImgFile = () => {
     const file = imgRef.current.files[0]
+    const fileName = file.name
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
-      setPostImg(reader.result)
+      setImageSrc(reader.result)
+      setPostImg(file)
       setModal(!modal)
       setNextModal(!nextModal)
       setInputCount(!inputCount)
@@ -66,30 +93,49 @@ function PostModal() {
   const togglePostModal = () => {
     alert("게시가 완료되었습니다!")
     console.log(formattedDate)
-    console.log(post.postId, post.userId, post.caption, post.postImg)
   }
 
   const fileClick = () => {
     imgRef.current.click()
   }
 
-  const onSave = () => {
-    const newPost = {
-      postId: post.postId,
-      userId: post.userId,
-      caption: caption,
-      postImg: postImg,
-      postDate: formattedDate,
-    }
-    dispatch(__addPostThunk(newPost))
+  // const onSave = () => {
+  //   const newPost = new FormData()
+  //   newPost.append("userId", "sound4519")
+  //   newPost.append("caption", caption)
+  //   newPost.append("postDate", formattedDate)
+  //   newPost.append("postImg", postImg, postImg.name)
+
+  //   dispatch(__addPostThunk(newPost))
+  //     .unwrap()
+  //     .then((result) => {
+  //       if (result) {
+  //         alert("게시가 완료되었습니다 !")
+  //         setPostImg({})
+  //         setCaption("")
+  //         setInputCount("0")
+  //         setNextModal(!nextModal)
+  //       }
+  //     })
+  // }
+  const onSave = async (e) => {
+    e.preventDefault()
+    const newPost = new FormData()
+    newPost.append("userId", "sound4519")
+    newPost.append("caption", caption)
+    newPost.append("postDate", formattedDate)
+    newPost.append("postImg", postImg)
+
+    await dispatch(__addPostThunk(newPost))
       .unwrap()
-      .then((result) => {
-        if (result) {
+      .then((response) => {
+        if (response) {
           alert("게시가 완료되었습니다 !")
-          setPostImg("null")
+          setPostImg("")
           setCaption("")
           setInputCount("0")
           setNextModal(!nextModal)
+          dispatch(__postsMain)
         }
       })
   }
@@ -106,7 +152,7 @@ function PostModal() {
     <div>
       <div onClick={toggleModal} className="btn-modal">
         <img src={Post} alt="만들기 이미지" />
-        <span>만들기</span>
+        <p>만들기</p>
       </div>
       {modal && (
         <div className="modal">
@@ -144,7 +190,6 @@ function PostModal() {
       {nextModal && (
         <div className="modal">
           <div className="overlay">
-            {/* <form method="post"> */}
             <div className="post-content">
               <div className="modal-header">
                 <button className="close-modal" onClick={toggleNextModal}>
@@ -158,7 +203,7 @@ function PostModal() {
               <div className="post-body">
                 <div className="img-wrapper">
                   <img
-                    src={postImg ? postImg : { Profile }}
+                    src={imageSrc ? imageSrc : { Profile }}
                     alt="첨부이미지"
                     name="imgId"
                     onChange={handlePostImg}
@@ -169,7 +214,7 @@ function PostModal() {
                     <div className="post-info">
                       {post.map((item) => (
                         <>
-                          <img src={item.userImg} alt="유저 프로필 이미지" />
+                          <img src={item.postImg} alt="유저 프로필 이미지" />
                           <div>
                             <span>{item.userId}</span>
                           </div>
@@ -211,7 +256,6 @@ function PostModal() {
                 </div>
               </div>
             </div>
-            {/* </form> */}
           </div>
         </div>
       )}

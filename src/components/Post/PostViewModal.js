@@ -52,24 +52,11 @@ function PostViewModal(props) {
     },
   ])
 
-  const [postImg, setPostImg] = useState([
-    {
-      imgId: "1",
-      uploadImgs: [
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-      ],
-      postId: "1",
-    },
-  ])
   const post = props.posts
 
   const showPost = () => {
     setShowModal(!showModal)
-    console.log("임시", setLike, setPostImg, postImg)
+    console.log("임시", setLike)
   }
 
   const showPosts = (userId) => {
