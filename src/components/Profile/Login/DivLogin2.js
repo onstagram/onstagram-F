@@ -44,7 +44,8 @@ import LoginImg from '../../../assets/Fictogram/LoginImg/onstagram.png';
             })
          } catch (err) {
                 console.error(err)
-        }}
+                console.log('email: '+email+', password: '+password);
+         }}
 
      // 이메일 
     const onChangeEmail = useCallback((e) => {

@@ -35,7 +35,7 @@ export const tokenSlice = createSlice({
       DELETE_TOKEN: (state) => {
           state.authenticated = false;
           state.accessToken = null;
-          state.expireTime = null
+          state.expireTime = null;
       },
   }
 })

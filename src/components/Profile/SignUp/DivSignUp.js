@@ -15,6 +15,8 @@ const DivSignUp = () => {
     const [userName, setUserName] = useState('')
     const [userPhone, setUserPhone] = useState('')
 
+    let emailDup=useSelector(state=>state.email);
+
     // let email=useSelector(state=>state.email);
     // let password=useSelector(state=>state.password);
     // let passwordCheck=useSelector(state=>state.passwordCheck);
@@ -56,7 +58,6 @@ const DivSignUp = () => {
             .then((res) => {
                 console.log('res:', res)
                 if (res.status === 200) {
-                  console.log(email, password, passwordCheck, userName, userPhone); 
                   dispatch({type:'SIGNUP', payload:{email:{email},password:{password},passwordCheck:{passwordCheck},userName:{userName},userPhone:{userPhone}}})
                   
                   alert('회원가입 성공했습니다')
@@ -66,6 +67,7 @@ const DivSignUp = () => {
               
           } catch (err) {
                 console.error(err)
+                console.log('email: '+email+', password: '+password+', passwordCheck: '+passwordCheck+', userName: '+userName+', userPhone: '+userPhone); 
                 const isValidInput = email.length>=1&&password.length>=1&&passwordCheck.length>=1&&userName.length>=1&&userPhone.length>=1;
                 if(!isValidInput){
                   alert('모든 값을 입력해야 합니다')
@@ -155,7 +157,7 @@ const DivSignUp = () => {
         }else if(isEmail===false){
           alert('이메일 형식이 틀렸습니다');
         }else{
-          if(email==='aa@naver.com'){
+          if(email===emailDup){
             alert('중복된 이메일입니다')
             setIsDup(true)
           }else{
