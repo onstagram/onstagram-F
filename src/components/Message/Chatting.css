@@ -205,7 +205,7 @@
 
 /*메세지 알림 체크 버튼 체크 되었을 때*/
 .DetailAlram input:checked {
-  background-color: #0095f6;
+  background-color: rgb(76,181,249);
 }
 
 /*메세지 알림 체크 버튼 체크 한번 더 눌렀을 때*/

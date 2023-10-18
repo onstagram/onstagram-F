@@ -39,8 +39,8 @@ function SearchModal() {
   return (
     <div>
       <div onClick={toggleModal} className="search-btn-modal">
-        <img src={Search} alt="검색 이미지" onClick={toggleModal} />
-        <span>검색</span>
+        <img src={Search} alt="검색 이미지"/>
+        <p>검색</p>
       </div>
       {modal && (
         <div className="searchModal-content">
