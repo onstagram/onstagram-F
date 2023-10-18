@@ -22,14 +22,16 @@ async function logout() {
     if (data.status) {
         dispatch(DELETE_TOKEN());
         removeCookieToken();
-        return navigate('/user/login');
+        return navigate('/login');
     } else {
         window.location.reload();
     }
 }
+
 useEffect( () => {
     logout();
 }, [])
+
     return (
         <div>
             <Link to="/login" />
