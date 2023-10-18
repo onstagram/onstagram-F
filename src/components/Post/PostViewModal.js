@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
-
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import Heart from "../../assets/Fictogram/Post/heart.png"
 import Comment from "../../assets/Fictogram/Post/comment.png"
 import Collection from "../../assets/Fictogram/Post/bookmark.png"
@@ -39,7 +38,7 @@ function PostViewModal(props) {
       count: "10",
     },
   ])
-
+  
   const [reply, setReply] = useState([
     {
       commentId: "sound5519",
@@ -66,11 +65,28 @@ function PostViewModal(props) {
     },
   ])
   const post = props.posts
-
-  const showPost = () => {
-    setShowModal(!showModal)
-    console.log("임시", setLike, setPostImg, postImg)
+    
+  const handleChange=(e)=>{
+    setReply([
+      {
+        commentId: "sound5519",
+        userId: "sound4519",
+        postId: "1",
+        content: e.target.value,
+        commentDate: formattedDate,
+        userImg:
+          "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
+      },
+    ])
   }
+  const showPost=useCallback((e)=>{
+    console.log("임시", setLike, setPostImg, postImg)
+    if(showModal===true){
+      setShowModal(false)
+    }else{
+      setShowModal(true)
+    }
+  });
 
   const showPosts = (userId) => {
     setShowModal(!showModal)
@@ -80,7 +96,7 @@ function PostViewModal(props) {
   // () => showPosts(userId) 임시
 
   return (
-    <>
+      <form>
       <div className="showPosts" onClick={showPost}>
         {post.map((item) => (
           <div className="showPostImgs">
@@ -181,69 +197,13 @@ function PostViewModal(props) {
                 </div>
 
                 <div className="postCommentsList">
-                  {reply.map((item) => (
-                    <div className="postComments">
+                  {reply.map((item,index) => (
+                    <div key={index} className="postComments">
                       <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
+                        <img name="userImg" className="postCommentUserImg" src={item.userImg} alt="유저 이미지" />
                         <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>{" "}
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>{" "}
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>{" "}
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>{" "}
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
-                        </div>
-                      </div>{" "}
-                      <div className="postComment">
-                        <img src={item.userImg} alt="유저 이미지" />
-                        <div className="commentIdName">
-                          <span>{item.commentId}</span>
-                          <span>{item.content}</span>
+                          <span name="commentId" className="postCommentId">{item.commentId}</span>
+                          <span name="content" className="postCommentContent">{item.content}</span>
                         </div>
                       </div>
                     </div>
@@ -276,10 +236,12 @@ function PostViewModal(props) {
                   </div>
                   <textarea
                     className="postTextarea"
+                    name="replyContentInput"
                     placeholder="댓글을 입력하세요 ..."
+                    onChange={handleChange}
                   />
                   <div className="postCommentBtn">
-                    <button type="submit">게시</button>
+                    <button type="submit" onClick={showPost}>게시</button>
                   </div>
                 </div>
               </div>
@@ -292,7 +254,7 @@ function PostViewModal(props) {
           </div>
         </div>
       )}
-    </>
+      </form>
   )
 }
 
