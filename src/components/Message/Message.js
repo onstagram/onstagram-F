@@ -1,5 +1,4 @@
-
-import React, { useState } from "react"
+import React from "react"
 import "./Message.css"
 
 import Gear from "../../assets/Fictogram/Profile/gear.png"
@@ -21,6 +20,7 @@ function Message() {
   return (
     <div class="mainWrapper">
       <MainNav />
+
       <div className="mainSection">
         <div className="chatMain">
           <div className="chatList">

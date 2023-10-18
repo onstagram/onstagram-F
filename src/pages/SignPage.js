@@ -7,7 +7,7 @@ const SignPage = () => {
     return (
         <div>
             <DivSignUp />
-            <DivFooter /> 
+            <DivFooter />
         </div>
     );
 };

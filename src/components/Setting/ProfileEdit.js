@@ -24,6 +24,10 @@ function ProfileEdit() {
     navigate("/setting/language")
   }
 
+  const goToAppAndWeb = () => {
+    navigate("/setting/appweb")
+  }
+
   return (
     <div className="mainWrapper">
       <MainNav />
@@ -69,7 +73,7 @@ function ProfileEdit() {
             <div className="SelectList-item" onClick={goToLanguage}>
               <span>언어 기본 설정</span>
             </div>
-            <div className="SelectList-item">
+            <div className="SelectList-item" onClick={goToAppAndWeb}>
               <span>앱 및 웹사이트</span>
             </div>
             <div className="SelectList-item">
