@@ -6,6 +6,12 @@ import Arrow from "../../assets/Fictogram/Post/arrow.png"
 
 function PostEditModal(props) {
   const [modal, setModal] = useState()
+  const [inputCount, setInputCount] = useState(0)
+
+  const onInputHandler = (e) => {
+    setInputCount(e.target.value.length)
+  }
+
   const post = props.viewPost
 
   const toggleModal = () => {
@@ -52,11 +58,14 @@ function PostEditModal(props) {
                   </div>
                   <div className="postEditBody">
                     <div className="postEditCaption">
-                      <textarea>{item.caption}</textarea>
+                      <textarea onChange={onInputHandler} maxLength="2200">
+                        {item.caption}
+                      </textarea>
                     </div>
                     <div className="postEditEmoji">
                       <img src={GrayEmoji} alt="이모티콘" />
-                      <p>2200 / 2200</p>
+
+                      <p>{inputCount} / 2200</p>
                     </div>
                     <div className="postEdit-location">
                       <input type="text" placeholder="위치추가" />

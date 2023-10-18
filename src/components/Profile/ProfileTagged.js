@@ -9,6 +9,8 @@ import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
 import ProfileSave from "../../assets/Fictogram/Profile/grayCollection.png"
 import Collect from "../../assets/Fictogram/Profile/collect.png"
 import ProfileSetModal from "./ProfileSetModal"
+import FollowModal from "./FollowModal"
+import FollowingModal from "./FollowingModal"
 
 function ProfileTagged() {
   const navigate = useNavigate()
@@ -43,18 +45,12 @@ function ProfileTagged() {
                   <ProfileSetModal />
                 </div>
                 <div className="infoDetail2">
-                  <a href="https://www.google.com">
-                    게시물
+                  <div>
+                    <span>게시물</span>
                     <span>100</span>
-                  </a>
-                  <a href="https://www.google.com">
-                    팔로우
-                    <span>200</span>
-                  </a>
-                  <a href="https://www.google.com">
-                    팔로워
-                    <span>200</span>
-                  </a>
+                  </div>
+                  <FollowModal />
+                  <FollowingModal />
                 </div>
                 <div className="infoDetail3">
                   <span>이곳은 자기소개를 남기는 부분입니다.</span>
@@ -86,7 +82,11 @@ function ProfileTagged() {
           </div>
           <div className="profilePosts">
             <div className="profilePostSaved">
-              <img src={Collect} alt="저장됨 게시글 비었을때 아이콘" />
+              <img
+                className="profilePostSavedImg"
+                src={Collect}
+                alt="저장됨 게시글 비었을때 아이콘"
+              />
               <h1>내가 나온 사진</h1>
               <span>
                 사람들이 회원님을 사진에 태그하면 태그된 사진이 여기에

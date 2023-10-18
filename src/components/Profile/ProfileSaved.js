@@ -9,6 +9,8 @@ import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
 import ProfileSave from "../../assets/Fictogram/Profile/collection.png"
 import Collect from "../../assets/Fictogram/Profile/collect.png"
 import ProfileSetModal from "./ProfileSetModal"
+import FollowModal from "./FollowModal"
+import FollowingModal from "./FollowingModal"
 
 function ProfileSaved() {
   const navigate = useNavigate()
@@ -43,18 +45,12 @@ function ProfileSaved() {
                   <ProfileSetModal />
                 </div>
                 <div className="infoDetail2">
-                  <a href="https://www.google.com">
-                    게시물
+                  <div>
+                    <span>게시물</span>
                     <span>100</span>
-                  </a>
-                  <a href="https://www.google.com">
-                    팔로우
-                    <span>200</span>
-                  </a>
-                  <a href="https://www.google.com">
-                    팔로워
-                    <span>200</span>
-                  </a>
+                  </div>
+                  <FollowModal />
+                  <FollowingModal />
                 </div>
                 <div className="infoDetail3">
                   <span>이곳은 자기소개를 남기는 부분입니다.</span>
@@ -92,7 +88,7 @@ function ProfileSaved() {
                 alt="저장됨 게시글 비었을때 아이콘"
               />
               <h1>저장</h1>
-              <span>
+              <span className="postSavedSpan  ">
                 다시 보고 싶은 사진과 동영상을 저장하세요. 콘텐츠를 저장해도
                 다른 사람에게 알림이 전송되지 않으며, 저장된 콘텐츠는 회원님만
                 볼 수 있습니다.

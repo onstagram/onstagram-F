@@ -1,18 +1,23 @@
-// import React, { useState } from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+
 import "./Profile.css"
-import MainNav from "../Main/MainNav"
+
 import ProfilePost from "../../assets/Fictogram/Profile/profile-post.png"
 import grayTag from "../../assets/Fictogram/Profile/grayTag.png"
 import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
 import graySave from "../../assets/Fictogram/Profile/grayCollection.png"
+import MainNav from "../Main/MainNav"
 import ProfileSetModal from "./ProfileSetModal"
 import PostViewModal from "../Post/PostViewModal"
-import { useState } from "react"
+import FollowModal from "./FollowModal"
+import FollowingModal from "./FollowingModal"
+import Collect from "../../assets/Fictogram/Profile/collect.png"
+import { useSelector } from "react-redux"
 
 function Profile() {
   const navigate = useNavigate()
-
+  // const userId = useSelector((state) => state.member.userId)
   const today = new Date()
   const formattedDate = `${today.getFullYear()}년 ${
     today.getMonth() + 1
@@ -23,7 +28,7 @@ function Profile() {
       postId: "1",
       userId: "sound4519",
       userImg:
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
+        "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/32E9/image/BA2Qyx3O2oTyEOsXe2ZtE8cRqGk.JPG",
       caption: "환영합니다",
       postDate: formattedDate,
     },
@@ -31,7 +36,7 @@ function Profile() {
     //   postId: "2",
     //   userId: "sound4519",
     //   userImg:
-    //     "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
+    //     "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7102.jpg",
     //   caption: "환영합니다",
     //   postDate: formattedDate,
     // },
@@ -86,18 +91,12 @@ function Profile() {
                   <ProfileSetModal />
                 </div>
                 <div className="infoDetail2">
-                  <a href="https://www.google.com">
-                    게시물
+                  <div>
+                    <span>게시물</span>
                     <span>100</span>
-                  </a>
-                  <a href="https://www.google.com">
-                    팔로우
-                    <span>200</span>
-                  </a>
-                  <a href="https://www.google.com">
-                    팔로워
-                    <span>200</span>
-                  </a>
+                  </div>
+                  <FollowModal />
+                  <FollowingModal />
                 </div>
                 <div className="infoDetail3">
                   <span>안녕하세요 반갑습니다.</span>
@@ -129,10 +128,17 @@ function Profile() {
           </div>
           <div className="profilePosts">
             <div className="profilePostSaved">
-              <PostViewModal posts={posts} />
-              {/* <img src={Collect} alt="저장됨 게시글 비었을때 아이콘" />
-              <h1>사진 공유</h1>
-              <span className="postSavedSpan">사진을 공유하면 회원님의 프로필에 표시됩니다.</span> */}
+              {posts.length > 0 ? (
+                <PostViewModal posts={posts} />
+              ) : (
+                <>
+                  <img src={Collect} alt="저장됨 게시글 비었을때 아이콘" />
+                  <h1>사진 공유</h1>
+                  <span className="postSavedSpan">
+                    사진을 공유하면 회원님의 프로필에 표시됩니다.
+                  </span>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -1,6 +1,16 @@
-import { createStore } from 'redux';
-import reducer from './reducer/reducer';
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
+import thunk from "redux-thunk"
+import logger from "redux-logger"
 
-let store=createStore(reducer);
+import uploadSlice from "./module/uploadSlice"
+import postsSlice from "./module/postsSlice"
 
-export default store;
+export const store = configureStore({
+  reducer: {
+    uploadSlice,
+    postsSlice,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+})
+
+export default store

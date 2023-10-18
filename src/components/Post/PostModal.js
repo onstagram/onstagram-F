@@ -9,28 +9,53 @@ import Emoji from "../../assets/Fictogram/Post/emoji-gray.png"
 import Location from "../../assets/Fictogram/Post/location.png"
 import Arrow from "../../assets/Fictogram/Post/arrow.png"
 import Profile from "../../assets/Fictogram/Nav/profile.png"
+import { useDispatch } from "react-redux"
+import { __addPostThunk } from "../../redux/module/uploadSlice"
 
 function PostModal() {
+  const dispatch = useDispatch()
+  const imgRef = useRef()
+
+  const [inputCount, setInputCount] = useState(0)
+
   const today = new Date()
   const formattedDate = `${today.getFullYear()}년 ${
     today.getMonth() + 1
   }월 ${today.getDate()}일`
 
+  const [caption, setCaption] = useState()
+  const [postImg, setPostImg] = useState()
   const [modal, setModal] = useState(false)
   const [nextModal, setNextModal] = useState()
-  const [member, setMember] = useState([
+  const [post, setPost] = useState([
     {
       postId: "1",
       userId: "sound4519",
-      userImg: Emoji,
+      userImg:
+        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
       caption: "안녕하세요",
       postDate: formattedDate,
     },
   ])
 
+  const SaveImgFile = () => {
+    const file = imgRef.current.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setPostImg(reader.result)
+      setModal(!modal)
+      setNextModal(!nextModal)
+      setInputCount(!inputCount)
+    }
+  }
+
   const toggleModal = () => {
     setModal(!modal)
-    console.log(setMember + "이건 임시로 넣어둔거에요")
+    const onInputHandler = (e) => {
+      setInputCount(e.target.value.length)
+    }
+    // console.log(setPost + "이건 임시로 넣어둔거에요")
   }
 
   const toggleNextModal = () => {
@@ -40,19 +65,42 @@ function PostModal() {
 
   const togglePostModal = () => {
     alert("게시가 완료되었습니다!")
-    // setNextModal(!nextModal)
     console.log(formattedDate)
+    console.log(post.postId, post.userId, post.caption, post.postImg)
   }
 
   const fileClick = () => {
-    selectFile.current.click()
+    imgRef.current.click()
   }
 
-  const onWriteHandler = (e) => {
-    console.log(e.target.value)
+  const onSave = () => {
+    const newPost = {
+      postId: post.postId,
+      userId: post.userId,
+      caption: caption,
+      postImg: postImg,
+      postDate: formattedDate,
+    }
+    dispatch(__addPostThunk(newPost))
+      .unwrap()
+      .then((result) => {
+        if (result) {
+          alert("게시가 완료되었습니다 !")
+          setPostImg("null")
+          setCaption("")
+          setInputCount("0")
+          setNextModal(!nextModal)
+        }
+      })
   }
 
-  const selectFile = useRef("")
+  const handlePostImg = (e) => {
+    setPostImg(e.target.img)
+  }
+
+  const handleCaption = (e) => {
+    setCaption(e.target.value)
+  }
 
   return (
     <div>
@@ -80,8 +128,9 @@ function PostModal() {
                   <input
                     type="file"
                     style={{ display: "none" }}
-                    ref={selectFile}
-                    multiple
+                    ref={imgRef}
+                    onChange={SaveImgFile}
+                    accept="image/jpg, image/jpeg"
                   />
                   <button className="file-btn" onClick={fileClick}>
                     컴퓨터에서 선택
@@ -95,48 +144,45 @@ function PostModal() {
       {nextModal && (
         <div className="modal">
           <div className="overlay">
-            {/* <form> */}
+            {/* <form method="post"> */}
             <div className="post-content">
               <div className="modal-header">
                 <button className="close-modal" onClick={toggleNextModal}>
                   이전으로
                 </button>
                 <h3>새 게시물 만들기</h3>
-                <button className="next-modal" onClick={togglePostModal}>
+                <button className="next-modal" onClick={onSave}>
                   공유하기
                 </button>
               </div>
               <div className="post-body">
                 <div className="img-wrapper">
-                  <img src={PostImg} alt="첨부이미지" name="imgId" />
+                  <img
+                    src={postImg ? postImg : { Profile }}
+                    alt="첨부이미지"
+                    name="imgId"
+                    onChange={handlePostImg}
+                  />
                 </div>
                 <div className="text-wrapper">
                   <div className="post-userInfo">
                     <div className="post-info">
-                      <img
-                        src={Profile}
-                        alt="유저 프로필 이미지"
-                        value={selectFile}
-                      />
-                      <div>
-                        여기는 유저 정보
-                        {member.map((item) => (
+                      {post.map((item) => (
+                        <>
+                          <img src={item.userImg} alt="유저 프로필 이미지" />
                           <div>
-                            <li key={item.postId}>{item.userId}</li>
-                            {/* <li key={item.postId}>{item.userImg}</li> */}
-                            <li key={item.postId}>{item.caption}</li>
-                            <li key={item.postId}>{item.postDate}</li>
+                            <span>{item.userId}</span>
                           </div>
-                        ))}
-                      </div>
+                        </>
+                      ))}
                     </div>
                   </div>
                   <div contenteditable className="post-main">
                     <textarea
                       placeholder="문구를 입력하세요..."
-                      onChange={onWriteHandler}
                       name="caption"
                       maxLength={2200}
+                      onChange={handleCaption}
                     />
                   </div>
                   <div className="post-etc">
@@ -145,7 +191,7 @@ function PostModal() {
                         <img src={Emoji} alt="이모티콘" />
                       </button>
                     </div>
-                    <div className="post-textLength">2200 / 2200</div>
+                    <div className="post-textLength">{inputCount}/ 2200</div>
                   </div>
                   <div className="post-location">
                     <input

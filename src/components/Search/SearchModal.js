@@ -6,6 +6,30 @@ import Search from "../../assets/Fictogram/Nav/search.png"
 import XBtn from "../../assets/Fictogram/Etc/XBtn.png"
 
 function SearchModal() {
+  const [member, setMember] = useState([
+    {
+      userId: "sssss",
+      userName: "이승진",
+      email: "sssss@gmail.com",
+      profileImg:
+        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
+    },
+    {
+      userId: "sasdasd",
+      userName: "정성민",
+      email: "smdd@gmail.com",
+      profileImg:
+        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
+    },
+    {
+      userId: "sdkfdd",
+      userName: "이진호",
+      email: "sdfsdf@gmail.com",
+      profileImg:
+        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
+    },
+  ])
+
   const [modal, setModal] = useState()
 
   const toggleModal = () => {
@@ -32,20 +56,22 @@ function SearchModal() {
                 <span>최근 검색 항목</span>
                 <button>모두 지우기</button>
               </div>
-              <div className="searchBody-result">
-                <div className="search-result">
-                  <div className="userImg">
-                    <img src={Profile} alt="프로필 이미지" />
-                  </div>
-                  <div className="userInfo">
-                    <span>sound4519</span>
-                    <span>이진호</span>
-                  </div>
-                  <div className="search-delete">
-                    <img src={XBtn} alt="삭제 버튼 " />
+              {member.map((item) => (
+                <div className="searchBody-result">
+                  <div className="search-result">
+                    <div className="userImg">
+                      <img src={item.profileImg} alt="프로필 이미지" />
+                    </div>
+                    <div className="userInfo">
+                      <span>{item.userId}</span>
+                      <span>{item.userName}</span>
+                    </div>
+                    <div className="search-delete">
+                      <img src={XBtn} alt="삭제 버튼 " />
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

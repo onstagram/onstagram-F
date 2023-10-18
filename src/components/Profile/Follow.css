@@ -41,7 +41,6 @@
 }
 
 .followHeader span {
-  margin-left: 20px;
   font-size: 20px;
 }
 
@@ -103,7 +102,7 @@
 .followSearch {
   width: 100%;
   height: 10%;
-  margin: 10px auto;
+  margin: 20px auto 0 auto;
   display: flex;
   justify-content: center;
 }
@@ -145,7 +144,7 @@
 .resultUser {
   width: 500px;
   height: 80px;
-  margin: 13px auto 13px 20px;
+  margin: 10px auto 10px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -217,6 +216,7 @@
 .HashTagHeader {
   width: 100%;
   height: 10%;
+  border-bottom: 1px solid #dcdcdc;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
