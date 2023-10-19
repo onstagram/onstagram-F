@@ -15,7 +15,7 @@ const DivSignUp = () => {
     const [userName, setUserName] = useState('')
     const [userPhone, setUserPhone] = useState('')
 
-    let emailDup=useSelector(state=>state.email);
+    const emailDup=useSelector(state=>state.email);
 
     // let email=useSelector(state=>state.email);
     // let password=useSelector(state=>state.password);

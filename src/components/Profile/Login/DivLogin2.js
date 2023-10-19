@@ -33,7 +33,8 @@ import LoginImg from '../../../assets/Fictogram/LoginImg/onstagram.png';
                     dispatch({type:'TOKEN', payload:{token:{token}}});
                     dispatch({type:'LOGIN', payload:{email:{email}, password:{password}}});
 
-                    return navigate("/");
+                    navigate("/");                                 
+
                 } else {
                     console.log(response.json);
                 }
