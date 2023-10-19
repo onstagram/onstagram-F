@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import Heart from "../../assets/Fictogram/Post/heart.png"
 import Comment from "../../assets/Fictogram/Post/comment.png"
 import Collection from "../../assets/Fictogram/Post/bookmark.png"
@@ -7,8 +7,11 @@ import Emoji from "../../assets/Fictogram/Post/emoji.png"
 import whiteXBtn from "../../assets/Fictogram/Etc/whiteXBtn.png"
 import ViewDetailModal from "./ViewDetailModal"
 import Etc from "../../assets/Fictogram/Etc/etc.png"
+import axiosIns from "../../api/api"
 import { useDispatch, useSelector } from "react-redux"
+import { useForm } from 'react-hook-form';
 import { __getPostThunk } from "../../redux/module/uploadSlice"
+
 
 function PostViewModal(props) {
   const dispatch = useDispatch()
@@ -17,6 +20,19 @@ function PostViewModal(props) {
     today.getMonth() + 1
   }월 ${today.getDate()}일`
   // const userId = props.userId
+  const { setValue } = useForm();
+  
+  const [reply, setReply] = useState([
+    {
+      commentId: "sound5519",
+      userId: "sound4519",
+      postId: "1",
+      content: "댓글입니다11",
+      commentDate: formattedDate,
+      userImg:
+        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
+    }, 
+  ])
 
   const [member, setMember] = useState([
     {
@@ -37,19 +53,7 @@ function PostViewModal(props) {
       likeDate: formattedDate,
       count: "10",
     },
-  ])
-  
-  const [reply, setReply] = useState([
-    {
-      commentId: "sound5519",
-      userId: "sound4519",
-      postId: "1",
-      content: "댓글입니다",
-      commentDate: formattedDate,
-      userImg:
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-    },
-  ])
+  ]);
 
   const [postImg, setPostImg] = useState([
     {
@@ -65,28 +69,12 @@ function PostViewModal(props) {
     },
   ])
   const post = props.posts
-    
-  const handleChange=(e)=>{
-    setReply([
-      {
-        commentId: "sound5519",
-        userId: "sound4519",
-        postId: "1",
-        content: e.target.value,
-        commentDate: formattedDate,
-        userImg:
-          "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-      },
-    ])
-  }
-  const showPost=useCallback((e)=>{
-    console.log("임시", setLike, setPostImg, postImg)
-    if(showModal===true){
-      setShowModal(false)
-    }else{
-      setShowModal(true)
-    }
-  });
+
+ 
+//   const showPost=()=>{
+//     setShowModal(!showModal)
+//     console.log("임시", setLike, setPostImg, postImg) 
+// };
 
   const showPosts = (userId) => {
     setShowModal(!showModal)
@@ -94,55 +82,50 @@ function PostViewModal(props) {
   }
 
   // () => showPosts(userId) 임시
+      const onClickContent = async()=>{
+      try{  
+        const response = await axiosIns.get(`/profile`,{
+            headers:{
+                'Content-Type':'application/json;charset=UTF-8',
+            }
+         })
+         .then((response) => {
+          setReply({
+            commentId: response.data.commentId,
+            userId: response.data.userId,
+            postId: response.data.postId,
+            content: response.data.content,
+            commentDate: response.data.commentDate,
+            userImg:response.data.userImg,
+          });
+          console.log('response:', response)
+          if (response.status===200) { 
+              setShowModal(true)
+              console.log(reply.commentId,reply.userId,reply.postId,reply.content,reply.commentDate,reply.userImg);
+              const token = response.data;
+              localStorage.setItem('TOKEN', token);
+          } else {
+              console.log(response.json);
+          }
+          setValue("content","")
+      })
+    }catch(error){
+      console.error(error)
+    }
+  }
 
   return (
-      <form>
-      <div className="showPosts" onClick={showPost}>
+      <div className="showPosts">
         {post.map((item) => (
           <div className="showPostImgs">
             <div className="showPostImgsItems">
-              <div className="showPostImgsItem">
+              <div className="showPostImgsItem" onClick={()=>{setShowModal(!showModal)}}>
                 <img
                   className="showPostImg"
                   src={item.userImg}
                   alt="게시글 이미지"
                 />
               </div>{" "}
-              <div className="showPostImgsItem">
-                <img
-                  className="showPostImg"
-                  src={item.userImg}
-                  alt="게시글 이미지"
-                />
-              </div>{" "}
-              <div className="showPostImgsItem">
-                <img
-                  className="showPostImg"
-                  src={item.userImg}
-                  alt="게시글 이미지"
-                />
-              </div>{" "}
-              <div className="showPostImgsItem">
-                <img
-                  className="showPostImg"
-                  src={item.userImg}
-                  alt="게시글 이미지"
-                />
-              </div>{" "}
-              <div className="showPostImgsItem">
-                <img
-                  className="showPostImg"
-                  src={item.userImg}
-                  alt="게시글 이미지"
-                />
-              </div>{" "}
-              <div className="showPostImgsItem">
-                <img
-                  className="showPostImg"
-                  src={item.userImg}
-                  alt="게시글 이미지"
-                />
-              </div>
             </div>
           </div>
         ))}
@@ -151,7 +134,6 @@ function PostViewModal(props) {
           <img className="showPostImg" src={Profile} alt="게시글 이미지" />
           <img className="showPostImg" src={Profile} alt="게시글 이미지" />
         </div> */}
-      </div>
       {showModal && (
         <div className="postWrapper">
           <div className="postOverlay">
@@ -161,6 +143,7 @@ function PostViewModal(props) {
                   <div className="postContentItem">
                     <img
                       className="postContentImg"
+                      name="userImg"
                       src={item.userImg}
                       alt="유저이미지"
                     />
@@ -174,12 +157,13 @@ function PostViewModal(props) {
                       <div className="postBody-userImg">
                         <img
                           className="postBody-userinfoImg "
+                          name="userImg"
                           src={item.userImg}
                           alt="유저 이미지"
                         />
                       </div>
                       <span>{item.userId}</span>
-                      <ViewDetailModal post={post} showPost={showPost} />
+                      <ViewDetailModal post={post} onClick={()=>{setShowModal(true)}} />
                     </div>
                   ))}
                 </div>
@@ -202,12 +186,14 @@ function PostViewModal(props) {
                       <div className="postComment">
                         <img name="userImg" className="postCommentUserImg" src={item.userImg} alt="유저 이미지" />
                         <div className="commentIdName">
+                        <div name="userId"></div>
+                        <div name="postId"></div>
+                        <div name="commentDate"></div>
                           <span name="commentId" className="postCommentId">{item.commentId}</span>
                           <span name="content" className="postCommentContent">{item.content}</span>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    </div>))}
                 </div>
                 <div className="postFooter">
                   <div className="postFictos">
@@ -236,12 +222,11 @@ function PostViewModal(props) {
                   </div>
                   <textarea
                     className="postTextarea"
-                    name="replyContentInput"
+                    name="content"
                     placeholder="댓글을 입력하세요 ..."
-                    onChange={handleChange}
                   />
                   <div className="postCommentBtn">
-                    <button type="submit" onClick={showPost}>게시</button>
+                    <button type="submit" onClick={onClickContent}>게시</button>
                   </div>
                 </div>
               </div>
@@ -254,8 +239,8 @@ function PostViewModal(props) {
           </div>
         </div>
       )}
-      </form>
+      </div>
   )
 }
 
-export default PostViewModal
+export default PostViewModal; 
