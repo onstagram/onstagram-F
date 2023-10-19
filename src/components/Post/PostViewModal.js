@@ -55,26 +55,13 @@ function PostViewModal(props) {
     },
   ]);
 
-  const [postImg, setPostImg] = useState([
-    {
-      imgId: "1",
-      uploadImgs: [
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-      ],
-      postId: "1",
-    },
-  ])
   const post = props.posts
 
- 
-//   const showPost=()=>{
-//     setShowModal(!showModal)
-//     console.log("임시", setLike, setPostImg, postImg) 
-// };
+  const showPost = () => {
+    setShowModal(!showModal)
+    console.log("임시", setLike)
+  }
+
 
   const showPosts = (userId) => {
     setShowModal(!showModal)
@@ -82,9 +69,10 @@ function PostViewModal(props) {
   }
 
   // () => showPosts(userId) 임시
+  
       const onClickContent = async()=>{
       try{  
-        const response = await axiosIns.get(`/profile`,{
+        await axiosIns.post(`/profile`,{
             headers:{
                 'Content-Type':'application/json;charset=UTF-8',
             }
@@ -108,9 +96,26 @@ function PostViewModal(props) {
               console.log(response.json);
           }
           setValue("content","")
-      })
+      });
     }catch(error){
       console.error(error)
+    }finally{
+      await axiosIns.get(`/profile`, {
+        headers:{
+            'Content-Type':'application/json;charset=UTF-8',
+        }
+     })
+     .then((response) => {
+      console.log('response:', response)
+      if (response.status===200) { 
+          setShowModal(true)
+          console.log(reply.commentId,reply.userId,reply.postId,reply.content,reply.commentDate,reply.userImg);
+          const token = response.data;
+          localStorage.setItem('TOKEN', token);
+      } else {
+          console.log(response.json);
+      }
+  })  
     }
   }
 

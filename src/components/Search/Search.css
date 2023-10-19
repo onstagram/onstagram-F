@@ -31,7 +31,7 @@
 
 /*검색 타이틀*/
 .searchModal-header span {
-  margin-left: 15px;
+  margin-left: 20px;
   font-size: 25px;
   font-weight: bold;
 }
@@ -90,7 +90,7 @@
   background-color: white;
   font-size: 18px;
   font-weight: bold;
-  color: rgb(76,181,249);
+  color: rgb(76, 181, 249);
   user-select: none;
   cursor: pointer;
 }
@@ -151,15 +151,8 @@
   height: 15px;
 }
 
-.search-btn-modal{
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: center;
-}
-
-.search-btn-modal img{
-  width: 12%;
-  height: 100%;
+.search-btn-modal img {
+  width: 30px;
+  /* height: 100%; */
   margin: 0px 15px 0px 15px;
 }
