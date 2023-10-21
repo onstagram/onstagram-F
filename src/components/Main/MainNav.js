@@ -1,37 +1,38 @@
-import React, { useState } from 'react'
-import './Main.css'
-import { useNavigate } from 'react-router-dom'
-import SearchModal from '../Search/SearchModal'
-import Home from '../../assets/Fictogram/Nav/home.png'
-import Compass from '../../assets/Fictogram/Nav/compass.png'
-import Reels from '../../assets/Fictogram/Nav/reels.png'
-import Message from '../../assets/Fictogram/Nav/message.png'
-import ProfileImg from '../../assets/Fictogram/Nav/profile.png'
-import Menu from '../../assets/Fictogram/Nav/menu.png'
-import SelectModal from '../Post/PostModal'
-import Alarm from '../Alarm/Alarm'
+import React, { useState } from "react"
+import "./Main.css"
+import { useNavigate } from "react-router-dom"
+import SearchModal from "../Search/SearchModal"
+import Home from "../../assets/Fictogram/Nav/home.png"
+import Compass from "../../assets/Fictogram/Nav/compass.png"
+import Reels from "../../assets/Fictogram/Nav/reels.png"
+import Message from "../../assets/Fictogram/Nav/message.png"
+import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
+import Menu from "../../assets/Fictogram/Nav/menu.png"
+import SelectModal from "../Post/PostModal"
+import Alarm from "../Alarm/Alarm"
+import SeeMoreModal from "./SeeMoreModal"
 
 function MainNav() {
   const navigate = useNavigate()
 
   const goToHome = () => {
-    navigate('/')
+    navigate("/")
   }
 
   const goToQuest = () => {
-    navigate('/quest')
+    navigate("/quest")
   }
 
   const goToProfile = () => {
-    navigate('/profile')
+    navigate("/profile")
   }
 
   const goToReels = () => {
-    navigate('/reels')
+    navigate("/reels")
   }
 
   const goToMessage = () => {
-    navigate('/message')
+    navigate("/message")
   }
 
   return (
@@ -71,8 +72,7 @@ function MainNav() {
         </div>
       </div>
       <div className="navDetail">
-        <img src={Menu} />
-        <p>더보기</p>
+        <SeeMoreModal />
       </div>
     </div>
   )

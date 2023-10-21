@@ -487,7 +487,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* justify-content: space-between; */
 }
 
 .postComment span {
@@ -504,12 +503,36 @@
   height: 30px;
 }
 
-.postComment {
-  width: 96%;
-  margin: 15px 0;
+.postCommentsDiv,.postCommentDiv,.postComment{
+  width: 98%;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.postCommentDiv{
+  margin: 15px 0;
+}
+
+.postComment {
+  justify-content: space-between;
+}
+
+.commentDelBtn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commentDelBtn button{
+  width: 50px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  background-color: white;
+  color: red;
+  border: none;
+  cursor: pointer;
 }
 
 .postFooter {
@@ -629,4 +652,8 @@
 .contentList-itemRed {
   color: Red;
   font-weight: bold;
+}
+
+.commentDelBtn{
+  
 }
