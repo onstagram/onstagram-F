@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import axiosIns from "../../../api/api"
 import "./SignUp.css"
+import Logo from "../../../assets/Etc/logo2.png"
 
 const DivSignUp = () => {
   const dispatch = useDispatch()
@@ -207,7 +208,7 @@ const DivSignUp = () => {
       <form onSubmit={onSubmit}>
         <div className="DivSignUpOnstagramBox">
           <div className="DivOnstagramBox">
-            <span>Onstagram</span>
+            <img className="DivOnStagramBoxLogo" src={Logo} alt="로고" />
           </div>
           <div>
             <span>친구들의 사진과 동영상을 보려면 가입하세요</span>

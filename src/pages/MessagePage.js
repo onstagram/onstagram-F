@@ -1,8 +1,8 @@
-import React from 'react'
-import Message from '../components/Message/Message.js'
+import React from "react"
+import ChatRoom from "../components/Message/ChatRoom.js"
 
 function MessagePage() {
-  return <Message />
+  return <ChatRoom />
 }
 
 export default MessagePage

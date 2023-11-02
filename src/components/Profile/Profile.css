@@ -35,6 +35,7 @@
 .infoImg img {
   width: 206px;
   height: 206px;
+  border-radius: 50%;
 }
 
 /*유저 이름, 버튼, 팔로우 팔로워 게시물, 자기소개 를 감싸는 div*/

@@ -8,13 +8,34 @@ const initialState = {
   isGlobalmodalPostDetail: false,
 }
 
+// export const __postsMain = createAsyncThunk(
+//   "posts/POSTS_MAIN",
+//   async (payload, thunkAPI) => {
+//     try {
+//       const {
+//         data: {
+//           memberDto: memberDto,
+//           postDto: postDto,
+//           commentList: commentList,
+//         },
+//       } = await axiosIns.get(`posts`)
+
+//       //console.log('게시글 불러오기 완료!')
+//       return thunkAPI.fulfillWithValue(memberDto, postDto, commentList)
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error)
+//     }
+//   }
+// )
+
 export const __postsMain = createAsyncThunk(
   "posts/POSTS_MAIN",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axiosIns.get(`posts`)
+      const response = await axiosIns.get(`posts`)
+      const { memberDto, postDto, commentList } = response.payload
       //console.log('게시글 불러오기 완료!')
-      return thunkAPI.fulfillWithValue(data)
+      return { memberDto, postDto, commentList }
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
     }
@@ -23,17 +44,17 @@ export const __postsMain = createAsyncThunk(
 
 export const __EditPostMain = createAsyncThunk(
   "posts/EDIT_POSTS_MAIN",
-  async (payload, thunkAPI) => {
+  async (editedPosts, thunkAPI) => {
     try {
-      //console.log('글 수정 payload : ', payload)
-      //console.log('글 수정 payload.content : ', payload.content)
-      const { data } = await axiosIns.put(`posts/${payload.id}`, {
-        content: payload.content,
-      })
-      //console.log('글 수정 data : ', data)
-      return thunkAPI.fulfillWithValue(data)
+      // Assuming editedPosts is an array of objects, each containing postId and caption
+      const responses = await Promise.all(
+        editedPosts.map((editedPost) => {
+          return axiosIns.put("post/edit", editedPost)
+        })
+      )
+      // You can return the responses if needed
+      return responses.map((response) => response.data)
     } catch (error) {
-      //console.log('글 수정 error : ', error)
       return thunkAPI.rejectWithValue(error)
     }
   }
@@ -68,7 +89,9 @@ const postsMainSlice = createSlice({
     },
     [__postsMain.fulfilled]: (state, action) => {
       state.isLoading = false // 네트워크 요청이 끝났으니, false로 변경
-      state.posts = action.payload // Store에 있는 state.data에 서버에서 가져온 action.payload 추가
+      state.posts = action.payload.postDto
+      state.member = action.payload.memberDto
+      state.commentList = action.payload.commentList // Store에 있는 state.data에 서버에서 가져온 action.payload 추가
       //console.log('posts main state.posts : ', state.posts)
       //console.log('posts main action.payload : ', action.payload)
     },
@@ -81,10 +104,20 @@ const postsMainSlice = createSlice({
       state.isLoading = true // 네트워크 요청이 시작되면 로딩상태를 true로 변경
     },
     [__EditPostMain.fulfilled]: (state, action) => {
-      state.isLoading = false // 네트워크 요청이 끝났으니, false로 변경
-      state.posts = action.payload // Store에 있는 state.data에 서버에서 가져온 action.payload 추가
-      //console.log('posts main state.posts : ', state.posts)
-      //console.log('posts main action.payload : ', action.payload)
+      state.isLoading = false
+      const editedPosts = action.payload // Assuming this is an array of edited posts
+
+      // Loop through the edited posts and update the state
+      editedPosts.forEach((editedPost) => {
+        const editedPostIndex = state.posts.findIndex(
+          (post) => post.id === editedPost.id
+        )
+
+        // Replace the old post with the edited post
+        if (editedPostIndex !== -1) {
+          state.posts[editedPostIndex] = editedPost
+        }
+      })
     },
     [__EditPostMain.rejected]: (state, action) => {
       state.isLoading = false // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경

@@ -4,7 +4,7 @@ import "./Follow.css"
 import XBtn from "../../assets/Fictogram/Etc/XBtn.png"
 import HashTagFollowing from "./HashTagFollowing"
 
-function FollowingModal() {
+function FollowingModal({ following }) {
   const [member, setMember] = useState([
     {
       userId: "sound4519",
@@ -14,32 +14,7 @@ function FollowingModal() {
         "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
     },
   ])
-  const [follow, setFollow] = useState([
-    {
-      followId: "1",
-      followUserId: "sound4519",
-      followingUserId: "sound5519",
-      followDate: "2023년 4월 12일",
-    },
-    {
-      followId: "2",
-      followUserId: "sound4519",
-      followingUserId: "sound5519",
-      followDate: "2023년 4월 12일",
-    },
-    {
-      followId: "3",
-      followUserId: "sound4519",
-      followingUserId: "sound5519",
-      followDate: "2023년 4월 12일",
-    },
-    {
-      followId: "4",
-      followUserId: "sound4519",
-      followingUserId: "sound5519",
-      followDate: "2023년 4월 12일",
-    },
-  ])
+
   const [followingModal, setFollowingModal] = useState()
 
   const followingToggle = () => {
@@ -48,14 +23,14 @@ function FollowingModal() {
 
   const followingDelete = () => {
     alert("팔로잉이 취소되었습니다. (구현중인 기능)")
-    console.log("임시", follow, setFollow, setMember)
+    console.log("임시", setMember)
   }
 
   return (
     <div>
       <div onClick={followingToggle}>
         <span>팔로워</span>
-        <span>200</span>
+        <span>{following}명</span>
       </div>
       {followingModal && (
         <div class="followWrapper">

@@ -153,8 +153,7 @@
 .SelectProfile-edit {
   width: 77%;
   height: 100%;
-  border: 1px solid red;
-  display: flex;
+  display: flex;  
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -207,6 +206,7 @@
 .ProfileEdit-imgId img {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
 }
 
 /*설정 페이지 프로필 편집에서 아이디와 버튼을 감싸는 div*/
@@ -225,11 +225,38 @@
 .ProfileEdit-info button {
   border: transparent;
   background-color: white;
-  color: rgb(76,181,249);
+  color: rgb(76, 181, 249);
   font-size: 16px;
   font-weight: bold;
   user-select: none;
   cursor: pointer;
+}
+
+/*비밀번호 입력 섹션*/
+.edit-pw-title {
+}
+
+.edit-pw-title span {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/*비밀번호 섹션*/
+.profileEdit-pw {
+  width: 85%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.edit-pw {
+  margin-left: 28px;
+}
+
+.edit-pw input {
+  width: 323px;
+  padding: 5px;
 }
 
 /*웹사이트 섹션*/
@@ -371,7 +398,7 @@
   padding: 6px;
   border: transparent;
   border-radius: 6px;
-  background-color: rgb(76,181,249);
+  background-color: rgb(76, 181, 249);
   font-size: 14px;
   font-weight: bold;
   color: white;
@@ -381,7 +408,7 @@
 
 /*프로필 제출 버튼에 갖다 대었을 때*/
 .edit-submit button:hover {
-  background-color: rgb(76,181,249);
+  background-color: rgb(76, 181, 249);
 }
 
 /*설정 페이지 메인 footer*/

@@ -1,15 +1,27 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./PostDetail.css"
+import { useDispatch } from "react-redux"
+import { __deletePostMain } from "../../redux/module/postsSlice"
 
 function ViewDeleteModal(props) {
+  const dispatch = useDispatch()
   const [modal, setModal] = useState()
 
   const toggleModal = () => {
     setModal(!modal)
   }
 
-  const DeletePost = () => {
-    alert("게시물이 삭제되었습니다.")
+  const checkbtn = () => {
+    console.log(post + " 맞냐? ")
+  }
+
+  const { post } = props
+
+  const postId = post.postId
+
+  const onClickDeletePost = (postId) => {
+    console.log(postId)
+    dispatch(__deletePostMain({ postId: postId }))
     setModal(!modal)
     props.detailToggleModal()
   }
@@ -29,13 +41,14 @@ function ViewDeleteModal(props) {
               <div className="deletePostBody">
                 <button
                   className="deletePostBody-btn deletePostBody-btnRed"
-                  onClick={DeletePost}
+                  onClick={onClickDeletePost}
                 >
                   삭제
                 </button>
                 <button
                   className="deletePostBody-btn deletePostBody-btnRadius"
-                  onClick={toggleModal}
+                  // onClick={toggleModal}
+                  onClick={checkbtn}
                 >
                   취소
                 </button>

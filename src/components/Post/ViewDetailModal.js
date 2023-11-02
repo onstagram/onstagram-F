@@ -4,11 +4,8 @@ import Etc from "../../assets/Fictogram/Etc/etc.png"
 import ViewDeleteModal from "./ViewDeleteModal"
 import PostEditModal from "./PostEditModal"
 
-function ViewDetailModal(props) {
+function ViewDetailModal({ post, showPost, member, reply }) {
   const [detailModal, setdetailModal] = useState()
-
-  const viewPost = props.post
-  const showPost1 = props.showPost
 
   const detailToggleModal = () => {
     setdetailModal(!detailModal)
@@ -30,12 +27,18 @@ function ViewDetailModal(props) {
             <div className="detailContent">
               <div className="detailContentList">
                 <div className="contentList-item contentList-itemRed">
-                  <ViewDeleteModal detailToggleModal={detailToggleModal} />
+                  <ViewDeleteModal
+                    post={post}
+                    member={member}
+                    detailToggleModal={detailToggleModal}
+                  />
                 </div>
                 <div className="contentList-item">
                   <PostEditModal
-                    viewPost={viewPost}
-                    showPost1={showPost1}
+                    post={post}
+                    showPost={showPost}
+                    member={member}
+                    reply={reply}
                     detailToggleModal={detailToggleModal}
                   />
                 </div>

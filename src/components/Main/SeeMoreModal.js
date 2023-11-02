@@ -4,8 +4,26 @@ import { useNavigate } from "react-router-dom"
 
 import Menu from "../../assets/Fictogram/Nav/menu.png"
 import Gear from "../../assets/Fictogram/Profile/gear.png"
+import jwtDecode from "jwt-decode"
 
 function SeeMoreModal() {
+  const [userId, setUserId] = useState()
+
+  const Token = localStorage.getItem("TOKEN")
+
+  if (Token && userId === undefined) {
+    // 토큰이 존재하는 경우
+    try {
+      // 토큰을 해석하여 userId를 추출합니다.
+      const decodedToken = jwtDecode(Token)
+      const userId = decodedToken.userId
+      setUserId(userId)
+    } catch (error) {
+      console.error("토큰 해석에 실패했습니다.", error)
+    }
+  } else if (!Token) {
+    console.log("토큰이 로컬 스토리지에 존재하지 않습니다.")
+  }
   const navigate = useNavigate()
 
   const [modal, setModal] = useState()
@@ -15,7 +33,13 @@ function SeeMoreModal() {
   }
 
   const goToSetting = () => {
-    navigate("/setting/edit")
+    navigate(`/setting/edit/${userId}`)
+  }
+
+  const logout = () => {
+    localStorage.removeItem("TOKEN")
+    navigate("/login")
+    console.log("하이")
   }
 
   return (
@@ -51,7 +75,7 @@ function SeeMoreModal() {
             <span>계정 전환</span>
           </div>
           <div className="bottom" />
-          <div className="seeMore-content-items2">
+          <div className="seeMore-content-items2" onClick={logout}>
             <span>로그아웃</span>
           </div>
         </div>

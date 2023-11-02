@@ -69,7 +69,7 @@
   margin-right: 10px;
   border: none;
   cursor: pointer;
-  color: rgb(76,181,249);
+  color: rgb(76, 181, 249);
   font-size: 14px;
   font-weight: 600;
 }
@@ -117,7 +117,7 @@
   padding: 8px;
   border: none;
   border-radius: 6px;
-  background-color: rgb(76,181,249);
+  background-color: rgb(76, 181, 249);
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -150,18 +150,21 @@
 
 /*작성 모달창 이미지를 감싸는 div*/
 .img-wrapper {
-  width: 450px;
-  height: 459px;
+  /* width: 450px; */
+  /* height: 459px; */
   border-right: 1px solid #b9b9b9;
+}
+
+.mainImgFile {
+  width: 410px;
+  height: 459px;
+  border-bottom-left-radius: 6px;
+  margin: auto;
+  object-fit: cover;
 }
 
 /*작성 모달창 이미지*/
 .img-wrapper img {
-  width: 100%;
-  height: 100%;
-  border-bottom-left-radius: 6px;
-  margin: auto;
-  object-fit: cover;
 }
 
 /*작성 모달창 세부내용*/
@@ -194,6 +197,11 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin-left: 10px;
+}
+
+.post-email {
+  margin-left: 10px;
 }
 
 /*게시물 내용이 담기는 부분*/
@@ -332,7 +340,7 @@
 .showPostImgs {
   width: 1020px;
   /* height: 900px; */
-  display: grid;
+  display: flex;
   overflow-y: auto;
 }
 
@@ -341,10 +349,10 @@
 }
 
 .showPostImgsItems {
-  width: 1000px;
+  /* width: 1000px; */
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   place-items: center;
 }
 

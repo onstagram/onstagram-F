@@ -17,14 +17,15 @@
   width: 90%;
   height: 10%;
   display: flex;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
-/*nav바 로고 명칭 (임시)*/
-.navLogo p {
-  font-size: 15px;
-  margin-left: 25px;
+/*nav바 로고 이미지*/
+.logoImg {
+  width: 200px;
+  height: auto;
 }
 
 /*nav바에서 카테고리별 메뉴 섹션*/
@@ -47,9 +48,10 @@
 }
 
 /*카테고리별 이미지섹션*/
-.menu-item img {
+.menu-item-img {
   width: 30px;
-  height: 100%;
+  height: 30px;
+  border-radius: 50%;
   margin: 0 15px 0 15px;
 }
 
@@ -106,12 +108,241 @@
 }
 */
 
+/*스토리 보드 부분*/
+.mainStoryBoard {
+  width: 80%;
+  height: 100%;
+}
+
+.mainStoryHeader {
+  width: 56%;
+  height: 15%;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.mainStoryHeader-item {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.storyImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.mainStoryBody {
+  width: 100%;
+  height: 80%;
+  overflow-y: auto;
+}
+
+.mainStoryContent {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainPostContent {
+  width: 600px;
+  /* height: 600px; */
+  margin-bottom: 20px;
+}
+
+.mainPostUserInfo {
+  width: 500px;
+  height: 60px;
+  /* height: 10%; */
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainPost-detailUserInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainPostUserImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.mainPostUserSpan {
+  font-size: 15px;
+}
+
+.mainPostUserInfoBtn {
+  border: transparent;
+  background-color: white;
+}
+
+.mainPostUserInfo button > img {
+  width: 30px;
+  height: 30px;
+}
+
+.mainPostUserBody-img {
+  width: 600px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainPostUserBody-img img {
+  width: 505px;
+  height: 500px;
+}
+
+/*메인 게시물 콘텐츠에서 댓글, 좋아요 등 하단 부분*/
+.mainPostFooterBtn {
+  width: 505px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainPostFooterBtn button {
+  border: transparent;
+  background-color: white;
+}
+
+.mainPostHeart {
+  width: 32px;
+  height: 32px;
+  margin-top: 4px;
+}
+
+.mainPostComm {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+}
+
+.mainPostSave {
+  width: 30px;
+  height: 30px;
+}
+
+.mainPostFooterBtn-left {
+  margin-left: auto;
+  display: flex;
+}
+
+/*메인 게시물 좋아요 갯수 감사는 div*/
+.mainPostFooterHeart {
+  width: 500px;
+  margin: 10px auto;
+}
+
+/*메인 게시물 댓글 리스트를 감싸는 div*/
+.mainPostFooterCommentList {
+  width: 500px;
+  height: 100px;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.mainPostFooterCommentList img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/*메인 게시물 댓글*/
+.mainPostFooterComment {
+  width: 470px;
+  margin: 4px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mainPostFooterComment button {
+  border: transparent;
+  background-color: white;
+}
+.mainPostFooterComment button > img {
+  width: 22px;
+  height: 22px;
+}
+
+.mainPostFooterComment span {
+  margin-left: 15px;
+}
+
+.commentSpan {
+  width: 330px;
+}
+
+.mainPostFooterCommentInput {
+  width: 500px;
+  height: 50px;
+  margin: auto;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainPostFooterCommentInput input {
+  width: 422px;
+  border: transparent;
+  outline: none;
+}
+
+.mainPostFooterCommentInput img {
+  width: 13px;
+  height: 13px;
+}
+
+.mainPostFooterCommentBtn button {
+  border: transparent;
+  background-color: white;
+}
+
+.mainPostFooterCommentBtn button > span {
+  color: rgb(83, 177, 239);
+  font-weight: bold;
+}
+
+.mainPostFooterCommentBtn img {
+  width: 13px;
+  height: 13px;
+}
+
 /*메인 Nav바에서 더보기 버튼 부분*/
 .seeMore-modal-btn {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 15px;
+  font-size: 20px;
+}
+
+.seeMore-modal-btn span {
+  margin-left: 10px;
 }
 
 /*더보기 모달창 감싸는 div*/

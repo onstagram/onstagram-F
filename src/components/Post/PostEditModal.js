@@ -3,27 +3,60 @@ import React, { useState } from "react"
 import GrayEmoji from "../../assets/Fictogram/Post/emoji-gray.png"
 import Location from "../../assets/Fictogram/Post/location.png"
 import Arrow from "../../assets/Fictogram/Post/arrow.png"
+import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
+import { useDispatch } from "react-redux"
+import { __EditPostMain } from "../../redux/module/postsSlice"
 
-function PostEditModal(props) {
+function PostEditModal({ post, showPost, member, reply, detailToggleModal }) {
+  const dispatch = useDispatch()
   const [modal, setModal] = useState()
-  const [inputCount, setInputCount] = useState(0)
+  const [inputCount, setInputCount] = useState("0")
+  const [caption, setCaption] = useState()
+  const [postId, setPostId] = useState({})
 
+  const postIds = post.postId
+  const captions = post.caption
+
+  console.log(post[0].postId, captions + "나야")
   const onInputHandler = (e) => {
     setInputCount(e.target.value.length)
   }
+  const onEdit = (e) => {
+    e.preventDefault()
 
-  const post = props.viewPost
+    for (let i = 0; i < post.length; i++) {
+      let postId = post[i].postId
+      let caption = post[i].caption
+    }
+
+    dispatch(__EditPostMain({ postId, caption })).then((response) => {
+      if (response) {
+        alert("게시물이 성공적으로 수정되었습니다 !")
+        setPostId(response.postId)
+        setCaption(response.caption)
+        new setModal(!modal)
+        detailToggleModal()
+      } else {
+        alert("게시물 수정에 실패했습니다.")
+        new setModal(!modal)
+        detailToggleModal()
+      }
+    })
+  }
+
+  // console.log(post)
+  console.log(postId, caption + "나야")
 
   const toggleModal = () => {
     setModal(!modal)
   }
 
-  const completeModal = () => {
-    alert("수정이 완료되었습니다 ! (구현중..)")
-    // setModal(!modal)
-    setModal(!modal)
-    props.detailToggleModal()
-  }
+  // const completeModal = () => {
+  //   alert("수정이 완료되었습니다 ! (구현중..)")
+
+  //   new setModal(!modal)
+  //   props.detailToggleModal()
+  // }
 
   return (
     <div>
@@ -41,7 +74,7 @@ function PostEditModal(props) {
               <button
                 className="postEdit-complete"
                 type="submit"
-                onClick={completeModal}
+                onClick={onEdit}
               >
                 완료
               </button>
@@ -49,13 +82,14 @@ function PostEditModal(props) {
             {post.map((item) => (
               <div className="postEditContent-wrapper">
                 <div className="postImg">
-                  <img src={item.userImg} alt="게시물 이미지" />
+                  <img src={item.postImg} alt="게시물 이미지" />
                 </div>
                 <div className="postEditContents">
                   <div className="postEditHeader">
-                    <img src={item.userImg} alt="유저 이미지" />
-                    <span>{item.userId}</span>
+                    <img src={member.userImg} alt="유저 이미지" />
+                    <span>{member.email}</span>
                   </div>
+
                   <div className="postEditBody">
                     <div className="postEditCaption">
                       <textarea onChange={onInputHandler} maxLength="2200">

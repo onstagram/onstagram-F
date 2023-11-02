@@ -2,6 +2,7 @@ import React from "react"
 import "./Message.css"
 import "./Chatting.css"
 
+
 import Profile from "../../assets/Fictogram/Nav/profile.png"
 import Emoji from "../../assets/Fictogram/Post/emoji.png"
 import Mike from "../../assets/Fictogram/Etc/mic.png"

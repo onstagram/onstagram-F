@@ -18,7 +18,7 @@ function UserProfile() {
     today.getMonth() + 1
   }월 ${today.getDate()}일`
 
-  const [posts, setPosts] = useState([
+  const [post, setPost] = useState([
     {
       postId: "1",
       userId: "sound4519",
@@ -116,8 +116,8 @@ function UserProfile() {
           </div>
           <div className="profilePosts">
             <div className="profilePostSaved">
-              {posts.length > 0 ? (
-                <PostViewModal posts={posts} />
+              {post.length > 0 ? (
+                <PostViewModal />
               ) : (
                 <>
                   <img

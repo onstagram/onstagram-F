@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import { useRef } from "react"
 import "./Post.css"
@@ -8,64 +8,66 @@ import PostImg from "../../assets/Fictogram/Post/post-img.png"
 import Emoji from "../../assets/Fictogram/Post/emoji-gray.png"
 import Location from "../../assets/Fictogram/Post/location.png"
 import Arrow from "../../assets/Fictogram/Post/arrow.png"
-import Profile from "../../assets/Fictogram/Nav/profile.png"
+import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
 import { useDispatch } from "react-redux"
 import { __addPostThunk } from "../../redux/module/uploadSlice"
 import { __postsMain } from "../../redux/module/postsSlice"
+import jwtDecode from "jwt-decode"
+import { __getUserEditThunk } from "../../redux/module/userSlice"
 
 function PostModal() {
   const dispatch = useDispatch()
   const imgRef = useRef()
+  const [userId, setUserId] = useState()
+  const Token = localStorage.getItem("TOKEN")
 
+  if (Token && userId === undefined) {
+    // 토큰이 존재하는 경우
+    try {
+      // 토큰을 해석하여 userId를 추출합니다.
+      const decodedToken = jwtDecode(Token)
+      const userId = decodedToken.userId
+      setUserId(userId)
+    } catch (error) {
+      console.error("토큰 해석에 실패했습니다.", error)
+    }
+  } else if (!Token) {
+    console.log("토큰이 로컬 스토리지에 존재하지 않습니다.")
+  }
   const [inputCount, setInputCount] = useState(`0`)
 
-  const today = new Date()
-  const formattedDate = `${today.getFullYear()}년 ${
-    today.getMonth() + 1
-  }월 ${today.getDate()}일`
+  // const today = new Date()
+  // const formattedDate = `${today.getFullYear()}년 ${
+  //   today.getMonth() + 1
 
-  const [fileName, setFileName] = useState()
+  // }월 ${today.getDate()}일`
+
   const [caption, setCaption] = useState()
   const [imageSrc, setImageSrc] = useState()
   const [postImg, setPostImg] = useState()
   const [modal, setModal] = useState(false)
   const [nextModal, setNextModal] = useState()
-  const [post, setPost] = useState([
-    {
-      postId: "1",
-      userId: "sound4519",
-      postImg:
-        "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-      caption: "안녕하세요",
-      postDate: formattedDate,
-    },
-  ])
+  const [post, setPost] = useState()
 
-  // const SaveImgFile = () => {
-  //   const file = imgRef.current.files[0]
-  //   if (file) {
-  //     const formData = new FormData()
-  //     formData.append("image", file)
+  const [userInfo, setUserInfo] = useState(null)
+  const [userImg, setUserImg] = useState()
+  const [email, setEmail] = useState()
 
-  //     fetch("/post/register", {
-  //       method: "POST",
-  //       body: formData,
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         setPostImg(data.imageUrl)
-  //         setModal(!modal)
-  //         setNextModal(!nextModal)
-  //         setInputCount(!inputCount)
-  //       })
-  //       .catch((error) => {
-  //         console.log("Error uploading image", error)
-  //       })
-  //   }
-  // }
+  useEffect(() => {
+    dispatch(__getUserEditThunk(userId))
+      .then((response) => {
+        setUserInfo(response.payload)
+        setUserImg(response.payload.userImg)
+        setEmail(response.payload.email)
+      })
+
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [dispatch, userId])
+
   const SaveImgFile = () => {
     const file = imgRef.current.files[0]
-    const fileName = file.name
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
@@ -76,13 +78,8 @@ function PostModal() {
       setInputCount(!inputCount)
     }
   }
-
   const toggleModal = () => {
     setModal(!modal)
-    const onInputHandler = (e) => {
-      setInputCount(e.target.value.length)
-    }
-    // console.log(setPost + "이건 임시로 넣어둔거에요")
   }
 
   const toggleNextModal = () => {
@@ -90,43 +87,22 @@ function PostModal() {
     setNextModal(!nextModal)
   }
 
-  const togglePostModal = () => {
-    alert("게시가 완료되었습니다!")
-    console.log(formattedDate)
-  }
-
   const fileClick = () => {
     imgRef.current.click()
   }
 
-  // const onSave = () => {
-  //   const newPost = new FormData()
-  //   newPost.append("userId", "sound4519")
-  //   newPost.append("caption", caption)
-  //   newPost.append("postDate", formattedDate)
-  //   newPost.append("postImg", postImg, postImg.name)
-
-  //   dispatch(__addPostThunk(newPost))
-  //     .unwrap()
-  //     .then((result) => {
-  //       if (result) {
-  //         alert("게시가 완료되었습니다 !")
-  //         setPostImg({})
-  //         setCaption("")
-  //         setInputCount("0")
-  //         setNextModal(!nextModal)
-  //       }
-  //     })
-  // }
-  const onSave = async (e) => {
+  const onSave = (e) => {
     e.preventDefault()
     const newPost = new FormData()
-    newPost.append("userId", "sound4519")
+    // newPost.append("userId", userId)
     newPost.append("caption", caption)
-    newPost.append("postDate", formattedDate)
-    newPost.append("postImg", postImg)
+    newPost.append("file", postImg)
 
-    await dispatch(__addPostThunk(newPost))
+    for (const pair of newPost.entries()) {
+      console.log(pair[0] + ": " + pair[1])
+    }
+
+    dispatch(__addPostThunk(newPost))
       .unwrap()
       .then((response) => {
         if (response) {
@@ -135,7 +111,6 @@ function PostModal() {
           setCaption("")
           setInputCount("0")
           setNextModal(!nextModal)
-          dispatch(__postsMain)
         }
       })
   }
@@ -151,7 +126,7 @@ function PostModal() {
   return (
     <div>
       <div onClick={toggleModal} className="btn-modal">
-        <img src={Post} alt="만들기 이미지" />
+        <img className="menu-item-img" src={Post} alt="만들기 이미지" />
         <p>만들기</p>
       </div>
       {modal && (
@@ -176,7 +151,6 @@ function PostModal() {
                     style={{ display: "none" }}
                     ref={imgRef}
                     onChange={SaveImgFile}
-                    accept="image/jpg, image/jpeg"
                   />
                   <button className="file-btn" onClick={fileClick}>
                     컴퓨터에서 선택
@@ -203,23 +177,20 @@ function PostModal() {
               <div className="post-body">
                 <div className="img-wrapper">
                   <img
-                    src={imageSrc ? imageSrc : { Profile }}
+                    src={imageSrc}
                     alt="첨부이미지"
                     name="imgId"
+                    className="mainImgFile"
                     onChange={handlePostImg}
                   />
                 </div>
                 <div className="text-wrapper">
                   <div className="post-userInfo">
                     <div className="post-info">
-                      {post.map((item) => (
-                        <>
-                          <img src={item.postImg} alt="유저 프로필 이미지" />
-                          <div>
-                            <span>{item.userId}</span>
-                          </div>
-                        </>
-                      ))}
+                      <img src={userImg} alt="유저 프로필 이미지" />
+                      <div className="post-email">
+                        <span>{email}</span>
+                      </div>
                     </div>
                   </div>
                   <div contenteditable className="post-main">

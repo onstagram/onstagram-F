@@ -3,7 +3,7 @@ import "./Follow.css"
 
 import XBtn from "../../assets/Fictogram/Etc/XBtn.png"
 
-function FollowModal() {
+function FollowModal({ follow }) {
   const [member, setMember] = useState([
     {
       userId: "sound4519",
@@ -11,14 +11,6 @@ function FollowModal() {
       email: "sound4519@gmail.com",
       profileImg:
         "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-    },
-  ])
-  const [follow, setFollow] = useState([
-    {
-      followId: "1",
-      followUserId: "sound4519",
-      followingUserId: "sound5519",
-      followDate: "2023년 4월 12일",
     },
   ])
 
@@ -30,14 +22,16 @@ function FollowModal() {
 
   const followDelete = () => {
     alert("삭제되었습니다.")
-    console.log("임시", follow, setFollow, setMember)
+    console.log("임시", follow, setMember)
   }
+
+  // const
 
   return (
     <>
       <div onClick={followToggleModal} className="followBtn">
         <span>팔로우</span>
-        <span>200</span>
+        <span>{follow === 0 ? 0 : follow}명</span>
       </div>
       {followModal && (
         <div class="followWrapper">
@@ -69,7 +63,7 @@ function FollowModal() {
                         <button onClick={followDelete} type="button">
                           삭제
                         </button>
-                      </div>{" "}
+                      </div>
                       <div className="resultUser">
                         <div className="resultUserInfo">
                           <img src={item.profileImg} alt="팔로우 유저 이미지" />
@@ -93,7 +87,7 @@ function FollowModal() {
                         <button onClick={followDelete} type="button">
                           삭제
                         </button>
-                      </div>{" "}
+                      </div>
                       <div className="resultUser">
                         <div className="resultUserInfo">
                           <img src={item.profileImg} alt="팔로우 유저 이미지" />

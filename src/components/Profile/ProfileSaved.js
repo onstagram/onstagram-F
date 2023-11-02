@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Profile.css"
 
@@ -11,12 +11,30 @@ import Collect from "../../assets/Fictogram/Profile/collect.png"
 import ProfileSetModal from "./ProfileSetModal"
 import FollowModal from "./FollowModal"
 import FollowingModal from "./FollowingModal"
+import jwtDecode from "jwt-decode"
 
 function ProfileSaved() {
   const navigate = useNavigate()
+  const [userId, setUserId] = useState()
+  const Token = localStorage.getItem("TOKEN")
+
+  if (Token && userId === undefined) {
+    // 토큰이 존재하는 경우
+    try {
+      // 토큰을 해석하여 userId를 추출합니다.
+      const decodedToken = jwtDecode(Token)
+      const userId = decodedToken.userId
+      setUserId(userId)
+      console.log("userId:", userId)
+    } catch (error) {
+      console.error("토큰 해석에 실패했습니다.", error)
+    }
+  } else if (!Token) {
+    console.log("토큰이 로컬 스토리지에 존재하지 않습니다.")
+  }
 
   const goToProfile = () => {
-    navigate("/profile")
+    navigate(`/mypage/${userId}`)
   }
 
   const goToTagged = () => {

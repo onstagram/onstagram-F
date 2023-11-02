@@ -2,12 +2,12 @@ import axios from "axios"
 import axiosIns from "../../api/api"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
+/*이 부분이 포스트에 들어가는 정보를 불러오는 로직*/
 export const __getPostThunk = createAsyncThunk(
-  "GET_POST",
+  "GET_POST_INFO",
   async (payload, thunkAPI) => {
     try {
-      // const { userId } = payload
-      const { data } = await axios(`posts`)
+      const { data } = await axiosIns.get("/post/getpost")
       return thunkAPI.fulfillWithValue(data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error.code)
@@ -15,16 +15,11 @@ export const __getPostThunk = createAsyncThunk(
   }
 )
 
+/**/
 export const __addPostThunk = createAsyncThunk(
   "ADD_POST",
   async (payload, thunkAPI) => {
     try {
-      // const data = await axiosIns.post("/post/register", payload.newPost, {
-      //   headers: {
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      // })
-
       await axiosIns.post("/post/register", payload, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -33,6 +28,19 @@ export const __addPostThunk = createAsyncThunk(
       return thunkAPI.fulfillWithValue(payload)
     } catch (e) {
       return thunkAPI.rejectWithValue(e)
+    }
+  }
+)
+
+/*이 로직이 프로파일에 해당하는 곳에서 게시물을 불러오는 로직 */
+export const __getPostRoadThunk = createAsyncThunk(
+  "GET_POSTS",
+  async (userId, thunkAPI) => {
+    try {
+      const { data } = await axiosIns.get(`mypage/${userId}`)
+      return thunkAPI.fulfillWithValue(data)
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error)
     }
   }
 )
@@ -66,7 +74,7 @@ export const uploadSlice = createSlice({
   extraReducers: {
     [__getPostThunk.fulfilled]: (state, action) => {
       state.isLoading = false
-      state.todo = action.payload
+      state.Post = action.payload
     },
     [__getPostThunk.rejected]: (state, action) => {
       state.isLoading = false

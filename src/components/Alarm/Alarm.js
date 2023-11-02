@@ -20,7 +20,7 @@ function Alarm() {
   return (
     <div>
       <div className="navAlarmDiv" onClick={toggleModal}>
-        <img src={Heart} alt="알림 이미지" />
+        <img className="menu-item-img" src={Heart} alt="알림 이미지" />
         <p>알림</p>
       </div>
       {modal && (

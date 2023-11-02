@@ -106,17 +106,17 @@
 .AppWebContent {
   width: 1000px;
   height: 600px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .AppWebHeader {
   padding: 10px;
   font-size: 25px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .AppWebBody {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .AppWebSelect {
@@ -142,7 +142,7 @@
 .AppWebText {
   width: 100%;
   height: 200px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .AppWebText p {

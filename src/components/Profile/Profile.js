@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import "./Profile.css"
-
+import h from "../../assets/Etc/헛.jpg"
 import ProfilePost from "../../assets/Fictogram/Profile/profile-post.png"
 import grayTag from "../../assets/Fictogram/Profile/grayTag.png"
 import ProfileImg from "../../assets/Fictogram/Nav/profile.png"
@@ -13,54 +13,77 @@ import PostViewModal from "../Post/PostViewModal"
 import FollowModal from "./FollowModal"
 import FollowingModal from "./FollowingModal"
 import Collect from "../../assets/Fictogram/Profile/collect.png"
-import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import jwtDecode from "jwt-decode"
+import { __getUserEditThunk } from "../../redux/module/userSlice"
+import {
+  __getPostRoadThunk,
+  __getPostThunk,
+} from "../../redux/module/uploadSlice"
 
 function Profile() {
-  const navigate = useNavigate()
-  // const userId = useSelector((state) => state.member.userId)
-  const today = new Date()
-  const formattedDate = `${today.getFullYear()}년 ${
-    today.getMonth() + 1
-  }월 ${today.getDate()}일`
+  const dispatch = useDispatch()
+  const [userId, setUserId] = useState()
+  const [post, setPost] = useState()
+  const [email, setEmail] = useState()
+  const [userImg, setUserImg] = useState()
+  const [introduction, setIntroduction] = useState()
+  const [follow, setFollow] = useState()
+  const [following, setFollowing] = useState()
+  const [member, setMember] = useState()
+  const [postCount, setPostCount] = useState()
+  const [postImg, setPostImg] = useState()
+  const Token = localStorage.getItem("TOKEN")
 
-  const [posts, setPosts] = useState([
-    {
-      postId: "1",
-      userId: "sound4519",
-      userImg:
-        "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/32E9/image/BA2Qyx3O2oTyEOsXe2ZtE8cRqGk.JPG",
-      caption: "환영합니다",
-      postDate: formattedDate,
-    },
-    // {
-    //   postId: "2",
-    //   userId: "sound4519",
-    //   userImg:
-    //     "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7102.jpg",
-    //   caption: "환영합니다",
-    //   postDate: formattedDate,
-    // },
-    // {
-    //   postId: "3",
-    //   userId: "sound4519",
-    //   userImg:
-    //     "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-    //   caption: "환영합니다",
-    //   postDate: formattedDate,
-    // },
-    // {
-    //   postId: "4",
-    //   userId: "sound4519",
-    //   userImg:
-    //     "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg",
-    //   caption: "환영합니다",
-    //   postDate: formattedDate,
-    // },
-  ])
+  if (Token && userId === undefined) {
+    // 토큰이 존재하는 경우
+    try {
+      // 토큰을 해석하여 userId를 추출합니다.
+      const decodedToken = jwtDecode(Token)
+      const userId = decodedToken.userId
+      setUserId(userId)
+      console.log("userId:", userId)
+    } catch (error) {
+      console.error("토큰 해석에 실패했습니다.", error)
+    }
+  } else if (!Token) {
+    console.log("토큰이 로컬 스토리지에 존재하지 않습니다.")
+  }
+
+  const navigate = useNavigate()
+
+  // const [userInfo, setUserInfo] = useState(null)
+
+  useEffect(() => {
+    dispatch(__getUserEditThunk(userId))
+      .then((response) => {
+        setEmail(response.payload.email)
+        setUserImg(response.payload.userImg)
+        setIntroduction(response.payload.introduction)
+        setFollow(response.follow)
+        setFollowing(response.following)
+        setMember(response.payload)
+      })
+      .catch((error) => {})
+  }, [dispatch, userId])
+
+  useEffect(() => {
+    dispatch(__getPostRoadThunk(userId)).then((response) => {
+      const postDtoList = response.payload.data.postDtoList
+      const postImages = postDtoList.map((postInfo) => postInfo.postImg)
+
+      setPost(postDtoList)
+      setPostImg(postImages)
+    })
+  }, [dispatch])
+
+  console.log(post + "나야")
+
+  console.log(follow + "팔로우고" + following + "팔로잉이야")
 
   const goToSaved = () => {
     navigate("/profile/saved")
-    console.log(setPosts)
+    console.log(userId)
   }
 
   const goToTagged = () => {
@@ -71,6 +94,10 @@ function Profile() {
     navigate("/profile/savestory")
   }
 
+  const goToProfileEdit = () => {
+    navigate(`/setting/edit/${userId}`)
+  }
+
   return (
     <div className="mainWrapper">
       <MainNav />
@@ -79,12 +106,14 @@ function Profile() {
           <div className="infoWrapper">
             <div className="info">
               <div className="infoImg">
-                <img src={ProfileImg} alt="프로필 이미지" />
+                <img src={userImg} alt="프로필 이미지" />
               </div>
               <div className="infoDetail">
                 <div className="infoDetail1">
-                  <span>sound4519</span>
-                  <button type="button">프로필 편집</button>
+                  <span>{email}</span>
+                  <button type="button" onClick={goToProfileEdit}>
+                    프로필 편집
+                  </button>
                   <button type="button" onClick={goToSaveStory}>
                     보관된 스토리 보기
                   </button>
@@ -93,13 +122,13 @@ function Profile() {
                 <div className="infoDetail2">
                   <div>
                     <span>게시물</span>
-                    <span>100</span>
+                    <span>{postCount}</span>
                   </div>
-                  <FollowModal />
-                  <FollowingModal />
+                  <FollowModal follow={follow} />
+                  <FollowingModal following={following} />
                 </div>
                 <div className="infoDetail3">
-                  <span>안녕하세요 반갑습니다.</span>
+                  <span>{introduction}</span>
                 </div>
               </div>
             </div>
@@ -128,11 +157,15 @@ function Profile() {
           </div>
           <div className="profilePosts">
             <div className="profilePostSaved">
-              {posts.length > 0 ? (
-                <PostViewModal posts={posts} />
+              {post && post.length > 0 ? (
+                <PostViewModal post={post} member={member} />
               ) : (
                 <>
-                  <img src={Collect} alt="저장됨 게시글 비었을때 아이콘" />
+                  <img
+                    src={Collect}
+                    alt="저장됨 게시글 비었을때 아이콘"
+                    className="profilePostSavedImg"
+                  />
                   <h1>사진 공유</h1>
                   <span className="postSavedSpan">
                     사진을 공유하면 회원님의 프로필에 표시됩니다.

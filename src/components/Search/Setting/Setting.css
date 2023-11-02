@@ -153,8 +153,8 @@
 .SelectProfile-edit {
   width: 77%;
   height: 100%;
-  border: 1px solid red;
   display: flex;
+  /* border-left: 1px solid #efefef; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
